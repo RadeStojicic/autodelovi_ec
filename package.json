@@ -1,0 +1,23 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@nuxt/devtools": "latest",
+    "@nuxtjs/tailwindcss": "^6.8.0",
+    "@types/node": "^18.16.19",
+    "nuxt": "^3.6.3",
+    "prisma": "^5.0.0"
+  },
+  "dependencies": {
+    "@pinia/nuxt": "^0.4.11",
+    "@prisma/client": "^5.0.0",
+    "pinia": "^2.1.4"
+  }
+}
