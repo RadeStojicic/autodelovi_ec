@@ -6,7 +6,12 @@ module.exports = {
     jit: true,
   },
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'primary': "#ed2724"
+      },
+     
+    },
   },
   plugins: [
     iconsPlugin({
