@@ -1,14 +1,14 @@
 <template>
-  <div class="relative mt-12 z-0 w-screen flex justify-center">
+  <div class="container mx-auto relative mt-12 z-0 flex justify-center">
     <div
-      class="max-w-7xl w-full p-4 flex justify-center items-center relative m-auto gap-8 lg:mx-14 lg:p-0 lg:max-w-screen-2xl"
+      class="w-2/3 p-4 flex flex-wrap justify-center items-center relative m-auto gap-8 lg:flex-nowrap lg:w-full lg:px-6 lg:p-0 lg:max-w-screen-2xl"
     >
       <div
-        class="flex w-full justify-center items-center gap-4 bg-gray-100 p-6 lg:p-8 rounded-lg"
+        class="flex w-full justify-center items-center gap-4 p-6 lg:p-8 rounded-lg"
         v-for="(card, index) in cards"
         :key="index"
       >
-        <div class="border bg-red-600 rounded-full flex p-3">
+        <div class="border bg-primary rounded-full flex p-3">
           <span :class="card.class" />
         </div>
         <div class="flex flex-col">

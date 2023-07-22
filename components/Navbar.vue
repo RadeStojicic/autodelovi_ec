@@ -2,10 +2,8 @@
 <template>
   <div>
     <!-- NavTop -->
-    <div class="w-screen flex items-center justify-center bg-black h-8">
-      <div
-        class="max-w-7xl w-screen flex items-center justify-between p-4 lg:mx-14 lg:p-0 text-gray-100 lg:max-w-screen-2xl"
-      >
+    <div class="bg-black text-white py-2">
+      <div class="container mx-auto flex justify-between items-center px-6">
         <div class="flex items-center justify-start">
           <span class="i-prime-phone" />
           <p class="text-xs">+381 6442786</p>
@@ -26,29 +24,25 @@
       </div>
     </div>
     <!-- NavBottom -->
-    <div class="w-screen sticky z-10">
-      <nav
-        class="flex w-screen justify-center bg-white border-b border-gray-100"
-      >
-        <div
-          class="max-w-7xl w-screen flex items-center justify-between p-4 lg:mx-14 lg:p-0 lg:max-w-screen-2xl"
-        >
+    <div class="border-b border-gray-100 z-10 relative bg-white">
+      <nav class="container mx-auto px-6">
+        <div class="flex justify-between items-center py-2 lg:py-0">
           <div class="flex items-center">
             <h1>Logo</h1>
-            <ul class="hidden lg:flex gap-8 ml-28">
+            <ul class="hidden gap-6 ml-28 lg:flex">
               <li
                 v-for="(link, index) in navLinks"
                 :key="index"
-                class="group py-6 text-sm text-gray-900 hover:border-b border-black"
+                class="group text-sm py-0 lg:py-6 text-gray-900"
               >
-                <NuxtLink :to="link.to" class="">
+                <NuxtLink :to="link.to">
                   {{ link.names }}
                 </NuxtLink>
                 <div
                   v-if="link.categories"
-                  class="absolute w-full top-full left-0 bg-white border border-gray-200 shadow-sm hidden group-hover:block"
+                  class="absolute w-full left-0 top-full bg-white border-b border-gray-200 shadow-sm hidden group-hover:block"
                 >
-                  <ul class="w-5/6 max-w-7xl m-auto justify-between flex py-12">
+                  <ul class="w-5/6 m-auto justify-between flex py-12">
                     <li
                       v-for="(category, subIndex) in link.categories"
                       :key="subIndex"
@@ -74,10 +68,10 @@
             </ul>
           </div>
 
-          <div class="flex items-center">
+          <div class="flex items-center justify-end">
             <label class="flex p-2 rounded-full sm:bg-gray-100" for="search">
               <span
-                class="i-prime-search icon sm:text-2xl text-3xl"
+                class="i-prime-search icon text-3xl sm:text-2xl"
                 aria-hidden="true"
               />
               <input
@@ -86,7 +80,7 @@
                 placeholder="Pretraži..."
               />
             </label>
-            <div class="flex items-center lg:ml-4 gap-2">
+            <div class="flex items-center justify-between gap-2 lg:ml-4">
               <span
                 class="i-prime-heart icon text-3xl hidden lg:block"
                 aria-hidden="true"
@@ -97,7 +91,7 @@
               />
               <span
                 @click="navStatus = !navStatus"
-                class="i-prime-bars block text-4xl lg:hidden cursor-pointer"
+                class="i-prime-bars flex text-4xl lg:hidden cursor-pointer"
                 aria-hidden="true"
               ></span>
             </div>
@@ -107,7 +101,7 @@
       <!--  Mobile menu -->
       <div
         v-if="navStatus"
-        class="bg-gray-100 w-screen h-screen overflow-y-auto lg:hidden"
+        class="container mx-auto bg-gray-100 -screen lg:hidden"
       >
         <ul class="flex flex-col w-full">
           <li
@@ -115,7 +109,7 @@
             :key="index"
             class="group text-sm border-b border-gray-200 text-gray-900 font-semibold flex flex-col"
           >
-            <NuxtLink :to="link.to" class="py-6 px-8 w-full">
+            <NuxtLink :to="link.to" class="py-5 px-8 w-full">
               {{ link.names }}
             </NuxtLink>
 
@@ -123,7 +117,7 @@
               <div class="">
                 <ul class="w-full flex flex-col">
                   <li
-                    class="text-gray-500"
+                    class="text-gray-500 border-t border-gray-200"
                     v-for="(category, subIndex) in link.categories"
                     :key="subIndex"
                   >

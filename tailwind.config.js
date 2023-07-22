@@ -2,13 +2,12 @@ const { iconsPlugin, getIconCollections } = require("@egoist/tailwindcss-icons")
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  tailwindcss: {
-    jit: true,
-  },
+  mode: "jit",
   theme: {
     extend: {
       colors: {
-        'primary': "#ed2724"
+        'primary': "#1d57dc",
+        'priceColor': "#fe7335"
       },
      
     },

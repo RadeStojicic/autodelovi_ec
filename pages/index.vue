@@ -3,6 +3,7 @@
     <Navbar />
     <Main />
     <Shipping />
+    <MostPopular />
   </div>
 </template>
 
