@@ -1,7 +1,7 @@
 
 <template>
   <div class="mt-12 z-0 justify-center bg-white">
-    <div class="container mx-auto w-full p-4 lg:p-6">
+    <div class="md:container mx-auto w-full p-4 lg:p-6">
       <div class="flex justify-between mt-12">
         <h1 class="text-2xl font-bold">Proizvodi na akciji</h1>
         <button>Vidi još</button>

@@ -3,7 +3,9 @@
   <div>
     <!-- NavTop -->
     <div class="bg-black text-white py-2">
-      <div class="container mx-auto flex justify-between items-center px-6">
+      <div
+        class="md:container bg-black mx-auto flex justify-between items-center px-6"
+      >
         <div class="flex items-center justify-start">
           <span class="i-prime-phone" />
           <p class="text-xs">+381 6442786</p>
@@ -24,8 +26,8 @@
       </div>
     </div>
     <!-- NavBottom -->
-    <div class="border-b border-gray-100 z-10 relative bg-white">
-      <nav class="container mx-auto px-6">
+    <div class="border-b border-gray-100 z-50 relative bg-white">
+      <nav class="md:container mx-auto px-6">
         <div class="flex justify-between items-center py-2 lg:py-0">
           <div class="flex items-center">
             <h1>Logo</h1>
@@ -68,7 +70,7 @@
             </ul>
           </div>
 
-          <div class="flex items-center justify-end">
+          <div class="flex items-center justify-end z-50">
             <label class="flex p-2 rounded-full sm:bg-gray-100" for="search">
               <span
                 class="i-prime-search icon text-3xl sm:text-2xl"
@@ -89,68 +91,13 @@
                 class="i-prime-shopping-bag icon text-3xl"
                 aria-hidden="true"
               />
-              <span
-                @click="navStatus = !navStatus"
-                v-if="!navStatus"
-                class="i-prime-bars flex text-4xl lg:hidden cursor-pointer"
-                aria-hidden="true"
-              ></span>
-              <span
-                @click="navStatus = !navStatus"
-                v-else
-                class="i-prime-times flex text-4xl lg:hidden cursor-pointer"
-                aria-hidden="true"
-              ></span>
+              <ClientOnly>
+                <responsive-nav :navLinks="navLinks" />
+              </ClientOnly>
             </div>
           </div>
         </div>
       </nav>
-      <!--  Mobile menu -->
-      <div
-        v-if="navStatus"
-        class="container mx-auto bg-gray-100 overflow-y-auto lg:hidden"
-      >
-        <ul class="flex flex-col w-full">
-          <li
-            v-for="(link, index) in navLinks"
-            :key="index"
-            class="group text-sm border-b border-gray-200 text-gray-900 font-semibold flex flex-col"
-          >
-            <NuxtLink :to="link.to" class="py-5 px-8 w-full">
-              {{ link.names }}
-            </NuxtLink>
-
-            <div v-if="link.categories" class="w-full">
-              <div class="">
-                <ul class="w-full flex flex-col">
-                  <li
-                    class="text-gray-500 border-t border-gray-200"
-                    v-for="(category, subIndex) in link.categories"
-                    :key="subIndex"
-                  >
-                    <p
-                      class="cursor-pointer w-full px-8 py-4 border-b border-gray-200"
-                    >
-                      {{ category.title }}
-                    </p>
-                    <ul class="w-full flex flex-col">
-                      <li
-                        class="group text-sm border-b border-gray-200 text-gray-900 font-semibold flex flex-col"
-                        v-for="(sublink, subLinkIndex) in category.sublinks"
-                        :key="subLinkIndex"
-                      >
-                        <NuxtLink :to="sublink.to" class="px-10 py-3 w-full">
-                          {{ sublink.names }}
-                        </NuxtLink>
-                      </li>
-                    </ul>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
     </div>
   </div>
 </template>
@@ -158,7 +105,6 @@
 <script setup  lang="ts">
 import { ref } from "vue";
 
-const navStatus = ref(false);
 const navLinks = [
   { names: "Početna", to: "/home" },
   {
@@ -167,6 +113,7 @@ const navLinks = [
     categories: [
       {
         title: "Motor i Pogon",
+        to: "/motor-i-pogon",
         sublinks: [
           { names: "Motorne komponente", to: "/category2" },
           { names: "Kuleri i hladnjaci", to: "/category2" },
@@ -177,6 +124,7 @@ const navLinks = [
       },
       {
         title: "Elektrika i Elektronika",
+        to: "/elektrika-i-elektronika",
         sublinks: [
           { names: "Akumulatori", to: "/category2" },
           { names: "Svećice i kablovi", to: "/category2" },
@@ -188,6 +136,7 @@ const navLinks = [
 
       {
         title: "Osvetljenje i Signalizacija",
+        to: "/osvetljenje-i-signalizacija",
         sublinks: [
           { names: "Farovi i sijalice", to: "/category2" },
           { names: "Migavci i svetla za maglu", to: "/category2" },
@@ -198,6 +147,7 @@ const navLinks = [
       },
       {
         title: "Karoserija i Enterijer",
+        to: "/karoserija-i-enterijer",
         sublinks: [
           { names: "Spoljna ogledala", to: "/category2" },
           { names: "Branici i amortizeri", to: "/category2" },
@@ -208,6 +158,7 @@ const navLinks = [
       },
       {
         title: "Pneumatici",
+        to: "/pneumatici",
         sublinks: [
           { names: "Zimske i letnje gume", to: "/category2" },
           { names: "Felne i ratkapne", to: "/category2" },

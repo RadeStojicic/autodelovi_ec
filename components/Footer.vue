@@ -1,7 +1,7 @@
 <template>
   <div class="h-auto py-4 bg-footerBackground">
     <div
-      class="h-full container mx-auto px-4 py-8 flex flex-col justify-center gap-8 items-center text-white"
+      class="h-full md:container mx-auto px-4 py-8 flex flex-col justify-center gap-8 items-center text-white"
     >
       <div
         class="grid grid-cols-2 gap-12 items-start justify-items-start md:justify-items-center md:grid-cols-4 md:gap-2"

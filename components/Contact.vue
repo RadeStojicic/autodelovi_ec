@@ -1,6 +1,6 @@
 <template>
   <div class="relative mb-0">
-    <div class="container mx-auto p-4 h-auto md:h-80">
+    <div class="md:container mx-auto p-4 h-auto md:h-80">
       <div
         class="flex flex-col md:flex-row items-center justify-between h-full w-full rounded-md bg-yellow-500 px-4 py-10 md:py-4 md:px-12 gap-14"
       >

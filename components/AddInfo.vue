@@ -1,7 +1,7 @@
 <template>
-  <div class="container mx-auto relative mt-12 z-0 flex justify-center">
+  <div class="md:container mx-auto relative mt-12 z-0 flex justify-center">
     <div
-      class="w-96 p-4 flex flex-wrap justify-center items-center relative m-auto gap-8 md:grid md:grid-cols-2 md:w-full lg:grid-cols-3 lg:px-6 lg:p-0"
+      class="w-96 p-4 flex flex-wrap justify-center items-center relative m-auto gap-8 md:grid md:grid-cols-2 md:w-full lg:grid lg:grid-cols-3 lg:px-6 lg:p-0"
     >
       <div
         class="flex w-full justify-center items-center gap-4 p-6 lg:p-8 rounded-lg bg-gray-100"

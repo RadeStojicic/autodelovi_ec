@@ -25,6 +25,7 @@
     "@pinia/nuxt": "^0.4.11",
     "@prisma/client": "^5.0.0",
     "cross-fetch": "^4.0.0",
-    "pinia": "^2.1.4"
+    "pinia": "^2.1.4",
+    "tw-elements": "1.0.0-beta2"
   }
 }

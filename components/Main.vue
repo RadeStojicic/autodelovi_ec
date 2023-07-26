@@ -5,11 +5,11 @@
         <div class="w-full flex items-center justify-center">
           <img
             src="/images/hero_img.jpg"
-            class="w-screen object-cover brightness-50 h-screen sm:h-104 relative lg:object-cover"
+            class="w-screen object-cover brightness-50 h-104 relative sm:h-104 lg:object-cover"
             alt=""
           />
-          <div class="absolute w-full">
-            <form class="container mx-auto p-4 md:p-8" action="">
+          <div class="absolute w-full top-8">
+            <form class="md:container mx-auto p-4 md:p-8" action="">
               <div class="flex flex-col justify-center items-center mb-16">
                 <h1
                   class="text-center text-white font-bold w-full text-4xl lg:text-5xl lg:w-2/3"
