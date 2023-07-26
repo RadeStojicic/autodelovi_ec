@@ -1,52 +1,52 @@
 <template>
   <div class="relative z-0 justify-center">
-    <main class="bg-gray-200 w-full flex justify-center items-center">
+    <main class="b flex w-full items-center justify-center bg-gray-200">
       <div class="w-full">
-        <div class="w-full flex items-center justify-center">
+        <div class="flex w-full items-center justify-center">
           <img
             src="/images/hero_img.jpg"
-            class="w-screen object-cover brightness-50 h-104 relative sm:h-104 lg:object-cover"
+            class="relative h-104 w-screen object-cover brightness-50 sm:h-104 lg:object-cover"
             alt=""
           />
-          <div class="absolute w-full top-8">
-            <form class="md:container mx-auto p-4 md:p-8" action="">
-              <div class="flex flex-col justify-center items-center mb-16">
+          <div class="absolute top-8 w-full">
+            <form class="mx-auto p-4 md:container md:p-8" action="">
+              <div class="mb-16 flex flex-col items-center justify-center">
                 <h1
-                  class="text-center text-white font-bold w-full text-4xl lg:text-5xl lg:w-2/3"
+                  class="w-full text-center text-4xl font-bold text-white lg:w-2/3 lg:text-5xl"
                 >
                   Unesite detalje vašeg vozila
                 </h1>
-                <p class="text-white text-lg text-center mt-4 sm:text-left">
+                <p class="mt-4 text-center text-lg text-white sm:text-left">
                   Pronađite savršene autodelove u nekoliko klikova
                 </p>
               </div>
 
               <div
-                class="flex flex-col gap-4 justify-center items-center md:flex-row md:w-full"
+                class="flex flex-col items-center justify-center gap-4 md:w-full md:flex-row"
               >
                 <select
-                  class="p-3 w-80 rounded cursor-pointer focus:outline-none cursor md:w-full lg:w-64"
+                  class="cursor w-80 cursor-pointer rounded p-3 focus:outline-none md:w-full lg:w-64"
                   id="cars"
                   name="cars"
                 >
                   <option value="year">Godište</option>
                 </select>
                 <select
-                  class="p-3 w-80 rounded cursor-pointer focus:outline-none md:w-full lg:w-64"
+                  class="w-80 cursor-pointer rounded p-3 focus:outline-none md:w-full lg:w-64"
                   id="cars"
                   name="cars"
                 >
                   <option value="make">Marka</option>
                 </select>
                 <select
-                  class="p-3 w-80 rounded cursor-pointer focus:outline-none md:w-full lg:w-64"
+                  class="w-80 cursor-pointer rounded p-3 focus:outline-none md:w-full lg:w-64"
                   id="cars"
                   name="cars"
                 >
                   <option value="model">Model</option>
                 </select>
                 <button
-                  class="bg-yellow-500 p-3 w-52 mt-2 rounded text-gray-900 flex items-center justify-center gap-1 md:mt-0 md:w-40"
+                  class="mt-2 flex w-52 items-center justify-center gap-1 rounded bg-yellow-500 p-3 text-gray-900 md:mt-0 md:w-40"
                 >
                   <span class="i-prime-search text-lg" />
                   Pretraži
@@ -60,8 +60,6 @@
   </div>
 </template>
 
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

@@ -2,7 +2,7 @@
   <!-- Sidenav -->
   <nav
     id="sidenav-6"
-    class="absolute top-0 left-0 z-[1035] h-screen w-60 -translate-x-full bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='false']:translate-x-0 dark:bg-zinc-800"
+    class="absolute left-0 top-0 z-[1035] h-screen w-60 -translate-x-full bg-white shadow-[0_4px_12px_0_rgba(0,0,0,0.07),_0_2px_4px_rgba(0,0,0,0.05)] data-[te-sidenav-hidden='false']:translate-x-0 dark:bg-zinc-800"
     data-te-sidenav-init
     data-te-sidenav-hidden="true"
     data-te-sidenav-accordion="true"
@@ -78,20 +78,20 @@
       </li>
     </ul>
     <hr class="my-4" />
-    <div class="px-4 py-2 flex flex-col justify-center items-start gap-1">
+    <div class="flex flex-col items-start justify-center gap-1 px-4 py-2">
       <button
-        class="bg-yellow-400 w-full h-12 rounded-lg text-white font-semibold"
+        class="h-12 w-full rounded-lg bg-yellow-400 font-semibold text-white"
       >
         Kontakt
       </button>
-      <p class="flex items-center gap-1 mt-5 text-sm text-gray-900 w-full py-2">
-        <span class="i-prime-box text-yellow-500 text-lg" />Politika povratka
+      <p class="mt-5 flex w-full items-center gap-1 py-2 text-sm text-gray-900">
+        <span class="i-prime-box text-lg text-yellow-500" />Politika povratka
       </p>
-      <p class="flex items-center gap-1 text-sm text-gray-900 w-full py-2">
-        <span class="i-prime-question-circle text-yellow-500 text-lg" />Pomoć
+      <p class="flex w-full items-center gap-1 py-2 text-sm text-gray-900">
+        <span class="i-prime-question-circle text-lg text-yellow-500" />Pomoć
       </p>
-      <p class="flex items-center gap-1 text-sm text-gray-900 w-full py-2">
-        <span class="i-prime-heart text-yellow-500 text-lg" />Omiljeni proizvodi
+      <p class="flex w-full items-center gap-1 py-2 text-sm text-gray-900">
+        <span class="i-prime-heart text-lg text-yellow-500" />Omiljeni proizvodi
       </p>
     </div>
   </nav>
@@ -123,8 +123,8 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted } from "vue";
-import { Sidenav, initTE } from "tw-elements";
+import { onMounted } from 'vue';
+import { Sidenav, initTE } from 'tw-elements';
 
 onMounted(() => {
   initTE({ Sidenav });
@@ -138,5 +138,4 @@ defineProps({
 });
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

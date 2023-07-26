@@ -1,10 +1,10 @@
 <template>
-  <div class="h-auto py-4 bg-footerBackground">
+  <div class="h-auto bg-footerBackground py-4">
     <div
-      class="h-full md:container mx-auto px-4 py-8 flex flex-col justify-center gap-8 items-center text-white"
+      class="mx-auto flex h-full flex-col items-center justify-center gap-8 px-4 py-8 text-white md:container"
     >
       <div
-        class="grid grid-cols-2 gap-12 items-start justify-items-start md:justify-items-center md:grid-cols-4 md:gap-2"
+        class="grid grid-cols-2 items-start justify-items-start gap-12 md:grid-cols-4 md:justify-items-center md:gap-2"
       >
         <div>
           <h1 class="text-2xl">Logo</h1>
@@ -12,7 +12,7 @@
             Naša platforma nudi korisnički prijateljsko iskustvo koje vam
             omogućava laku pretragu i pronalaženje željenih delova.
           </p>
-          <div class="flex items-center gap-1 text-3xl mt-4">
+          <div class="mt-4 flex items-center gap-1 text-3xl">
             <span class="i-prime-instagram" />
             <span class="i-prime-facebook" />
             <span class="i-prime-twitter" />
@@ -55,15 +55,13 @@
           </div>
         </div>
       </div>
-      <div class="border-t border-footerHr w-full text-center">
-        <p class="mt-8 text-md text-gray-300">© 2023. Sva prava zadržana.</p>
+      <div class="w-full border-t border-footerHr text-center">
+        <p class="text-md mt-8 text-gray-300">© 2023. Sva prava zadržana.</p>
       </div>
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

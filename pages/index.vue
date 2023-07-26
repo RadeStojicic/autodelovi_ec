@@ -11,10 +11,8 @@
 
 <script lang="ts" setup>
 definePageMeta({
-  layout: "page-layout",
+  layout: 'page-layout',
 });
 </script>
 
-
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

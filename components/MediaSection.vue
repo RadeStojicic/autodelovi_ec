@@ -1,54 +1,54 @@
 <template>
   <div class="relative mt-24 pb-96">
     <div
-      class="md:container w-full p-4 mx-auto flex flex-col justify-between items-center gap-4 h-104 lg:flex-row lg:h-80 lg:gap-8"
+      class="mx-auto flex h-104 w-full flex-col items-center justify-between gap-4 p-4 md:container lg:h-80 lg:flex-row lg:gap-8"
     >
-      <div class="w-full h-full">
+      <div class="h-full w-full">
         <NuxtLink
           to="/"
-          class="bg-gray-800 w-full h-full flex rounded-lg items-center relative"
+          class="relative flex h-full w-full items-center rounded-lg bg-gray-800"
         >
           <img
-            class="absolute w-full h-full rounded-lg brightness-50 object-cover z-0"
+            class="absolute z-0 h-full w-full rounded-lg object-cover brightness-50"
             src="/images/media_img_2.jpg"
             alt=""
           />
-          <div class="flex flex-col justify-center p-8 z-10">
+          <div class="z-10 flex flex-col justify-center p-8">
             <h1
-              class="text-white font-bold text-2xl w-full md:text-3xl md:w-2/3"
+              class="w-full text-2xl font-bold text-white md:w-2/3 md:text-3xl"
             >
               Letnje putovanje bez briga - 25% popusta na sve autodele za
               putnike!
             </h1>
-            <p class="text-gray-200 mt-2">
+            <p class="mt-2 text-gray-200">
               Pripremite vaš automobil za letnje avanture.
             </p>
-            <NuxtLink class="mt-3 text-white flex items-center gap-1" to="/"
+            <NuxtLink class="mt-3 flex items-center gap-1 text-white" to="/"
               >Kupi odmah <span class="i-prime-arrow-right"
             /></NuxtLink>
           </div>
         </NuxtLink>
       </div>
-      <div class="w-full h-full">
+      <div class="h-full w-full">
         <NuxtLink
           to="/"
-          class="bg-gray-800 w-full h-full rounded-lg flex items-center relative"
+          class="relative flex h-full w-full items-center rounded-lg bg-gray-800"
         >
           <img
-            class="absolute w-full h-full rounded-lg brightness-50 object-cover z-0"
+            class="absolute z-0 h-full w-full rounded-lg object-cover brightness-50"
             src="/images/media_img_1.jpg"
             alt=""
           />
-          <div class="flex flex-col justify-center p-8 z-10">
+          <div class="z-10 flex flex-col justify-center p-8">
             <h1
-              class="text-white font-bold text-2xl w-full md:text-3xl md:w-2/3"
+              class="w-full text-2xl font-bold text-white md:w-2/3 md:text-3xl"
             >
               Vikend ludilo - 30% popusta na sve autodelove!
             </h1>
-            <p class="text-gray-200 mt-2">
+            <p class="mt-2 text-gray-200">
               Posebni popusti na sve autodelove u našoj ponudi.
             </p>
-            <NuxtLink class="mt-3 text-white flex items-center gap-1" to="/"
+            <NuxtLink class="mt-3 flex items-center gap-1 text-white" to="/"
               >Kupi odmah <span class="i-prime-arrow-right"
             /></NuxtLink>
           </div>
@@ -58,8 +58,6 @@
   </div>
 </template>
 
-<script setup lang="ts">
-</script>
+<script setup lang="ts"></script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>
