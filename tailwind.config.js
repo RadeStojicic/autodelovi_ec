@@ -6,10 +6,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'primary': "#1d57dc",
-        'priceColor': "#fe7335"
+        'footerBackground':'#0e0d12',
+        'footerHr': '#1c1b22'
       },
-     
+      height: {
+        '104': '32rem',
+      },
+    
     },
   },
   plugins: [

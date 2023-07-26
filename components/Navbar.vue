@@ -91,7 +91,14 @@
               />
               <span
                 @click="navStatus = !navStatus"
+                v-if="!navStatus"
                 class="i-prime-bars flex text-4xl lg:hidden cursor-pointer"
+                aria-hidden="true"
+              ></span>
+              <span
+                @click="navStatus = !navStatus"
+                v-else
+                class="i-prime-times flex text-4xl lg:hidden cursor-pointer"
                 aria-hidden="true"
               ></span>
             </div>
@@ -101,7 +108,7 @@
       <!--  Mobile menu -->
       <div
         v-if="navStatus"
-        class="container mx-auto bg-gray-100 -screen lg:hidden"
+        class="container mx-auto bg-gray-100 overflow-y-auto lg:hidden"
       >
         <ul class="flex flex-col w-full">
           <li
@@ -148,7 +155,7 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script setup  lang="ts">
 import { ref } from "vue";
 
 const navStatus = ref(false);
@@ -200,7 +207,7 @@ const navLinks = [
         ],
       },
       {
-        title: "Pneumatici i Točkovi",
+        title: "Pneumatici",
         sublinks: [
           { names: "Zimske i letnje gume", to: "/category2" },
           { names: "Felne i ratkapne", to: "/category2" },

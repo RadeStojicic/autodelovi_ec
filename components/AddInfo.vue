@@ -1,14 +1,14 @@
 <template>
   <div class="container mx-auto relative mt-12 z-0 flex justify-center">
     <div
-      class="w-2/3 p-4 flex flex-wrap justify-center items-center relative m-auto gap-8 lg:flex-nowrap lg:w-full lg:px-6 lg:p-0 lg:max-w-screen-2xl"
+      class="w-96 p-4 flex flex-wrap justify-center items-center relative m-auto gap-8 md:grid md:grid-cols-2 md:w-full lg:grid-cols-3 lg:px-6 lg:p-0"
     >
       <div
-        class="flex w-full justify-center items-center gap-4 p-6 lg:p-8 rounded-lg"
-        v-for="(card, index) in cards"
+        class="flex w-full justify-center items-center gap-4 p-6 lg:p-8 rounded-lg bg-gray-100"
+        v-for="(card, index) in infoCards"
         :key="index"
       >
-        <div class="border bg-primary rounded-full flex p-3">
+        <div class="border bg-white rounded-full flex p-3 lg:p-1 xl:p-2">
           <span :class="card.class" />
         </div>
         <div class="flex flex-col">
@@ -20,22 +20,22 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-const cards = [
+<script setup lang="ts">
+const infoCards = [
   {
     name: "Preko 1000 autodelova",
     text: "od preko 200 razlicitih automobila",
-    class: "i-prime-cog  text-white text-2xl",
+    class: "i-prime-cog  text-gray-800 text-3xl",
   },
   {
     name: "Besplatna dostava",
     text: "za porudzbine preko 5000 dinara",
-    class: "i-prime-truck text-white text-2xl",
+    class: "i-prime-truck text-gray-800 text-3xl",
   },
   {
     name: "14-dnevna garancija",
     text: "povratak sa besplatnom dostavom",
-    class: "i-prime-undo text-white text-2xl",
+    class: "i-prime-undo text-gray-800 text-3xl",
   },
 ];
 </script>

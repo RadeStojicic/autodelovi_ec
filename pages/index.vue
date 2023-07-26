@@ -1,13 +1,18 @@
 <template>
   <div>
-    <Navbar />
     <Main />
-    <Shipping />
-    <MostPopular />
+    <AddInfo />
+    <PopularProducts />
+    <SaleProducts />
+    <MediaSection />
+    <Contact />
   </div>
 </template>
 
 <script lang="ts" setup>
+definePageMeta({
+  layout: "page-layout",
+});
 </script>
 
 
