@@ -1,5 +1,4 @@
 const { addDynamicIconSelectors } = require("@iconify/tailwind");
-
 /**@type {import('tailwindcss').Config} */
 
 module.exports = {
@@ -9,7 +8,6 @@ module.exports = {
     "./pages/**/*.vue",
     "./plugins/**/*.{js,ts}",
     "./nuxt.config.{js,ts}",
-    "./node_modules/tw-elements/dist/js/**/*.js",
     "./src/*.html",
   ],
   mode: "jit",
@@ -26,5 +24,5 @@ module.exports = {
       },
     },
   },
-  plugins: [addDynamicIconSelectors(), require("tw-elements/dist/plugin.cjs")],
+  plugins: [addDynamicIconSelectors()],
 };

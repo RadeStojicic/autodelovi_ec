@@ -29,9 +29,7 @@
         />
       </div>
 
-      <div
-        class="[&::-webkit-scrollbar-track-piece]: max-h-48 w-full overflow-y-auto [&::-webkit-scrollbar-button]:block [&::-webkit-scrollbar-button]:h-0 [&::-webkit-scrollbar-button]:bg-transparent [&::-webkit-scrollbar-thumb]:h-[50px] [&::-webkit-scrollbar-thumb]:rounded [&::-webkit-scrollbar-thumb]:bg-[#999] [&::-webkit-scrollbar-track-piece]:rounded-none [&::-webkit-scrollbar-track-piece]:rounded-l [&::-webkit-scrollbar-track-piece]:bg-transparent [&::-webkit-scrollbar]:h-1 [&::-webkit-scrollbar]:w-1"
-      >
+      <div class="scrollbar max-h-48 w-full overflow-y-auto">
         <div class="bg-whiteP flex w-full flex-col">
           <div
             v-if="multipleSel"
@@ -68,11 +66,11 @@
 import { ref } from "vue";
 import { onClickOutside } from "@vueuse/core";
 
-const showOptions = ref<boolean>(false);
-const selectAll = ref<boolean>(false);
+const showOptions = ref(false);
+const selectAll = ref(false);
 const isChecked = ref<boolean[]>([]);
-const selectedValue = ref<string>("");
-const searchText = ref<string>("");
+const selectedValue = ref("");
+const searchText = ref("");
 
 const dropdownRef = ref(null);
 onClickOutside(dropdownRef, () => (showOptions.value = false));

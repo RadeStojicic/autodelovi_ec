@@ -1,5 +1,5 @@
 <template>
-  <div class="relative z-0 justify-center">
+  <div class="relative z-0 mt-20 justify-center lg:mt-24">
     <main class="flex w-full items-center justify-center bg-gray-200">
       <div class="w-full">
         <div class="flex w-full items-center justify-center">
@@ -22,7 +22,7 @@
               </div>
 
               <div
-                class="flex flex-col items-center justify-center gap-4 md:w-full md:flex-row"
+                class="relative flex flex-col items-center justify-center gap-4 md:w-full md:flex-row"
               >
                 <selection-button
                   v-for="(selection, index) in multiSel"

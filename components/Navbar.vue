@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="fixed top-0 z-50 w-full">
     <!-- NavTop -->
     <div class="bg-black py-2 text-white">
       <div
@@ -92,9 +92,8 @@
                 class="icon-[prime--shopping-bag] text-3xl"
                 aria-hidden="true"
               />
-              <ClientOnly>
-                <responsive-nav :navLinks="navLinks" />
-              </ClientOnly>
+
+              <responsive-nav :navLinks="navLinks"></responsive-nav>
             </div>
           </div>
         </div>
