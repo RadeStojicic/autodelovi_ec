@@ -17,8 +17,8 @@
         <div>
           <ul>
             <li class="flex items-center gap-2 text-xs">
-              <NuxtLink to="/">Podrška</NuxtLink>
-              <NuxtLink to="/">Prodavnica</NuxtLink>
+              <NuxtLink to="/podrska">Podrška</NuxtLink>
+              <NuxtLink to="/prodavnica">Prodavnica</NuxtLink>
             </li>
           </ul>
         </div>
@@ -106,10 +106,10 @@
 import { ref } from "vue";
 
 const navLinks = [
-  { names: "Početna", to: "/home" },
+  { names: "Početna", to: "/" },
   {
     names: "Kategorije",
-    to: "/categories",
+    to: "/kategorije",
     categories: [
       {
         title: "Motor i Pogon",

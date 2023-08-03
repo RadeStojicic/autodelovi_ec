@@ -6,9 +6,24 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@nuxtjs/google-fonts",
     "@vueuse/nuxt",
+    "@vue-macros/nuxt",
   ],
   tailwindcss: {
     configPath: "~/tailwind.config.ts",
+  },
+  vue: {
+    defineModel: true,
+    propsDestructure: true,
+  },
+  macros: {
+    defineModels: {
+      unified: false,
+    },
+  },
+  router: {
+    options: {
+      linkActiveClass: "active",
+    },
   },
   devtools: { enabled: true },
   css: ["~/assets/css/main.css"],

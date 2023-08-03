@@ -1,12 +1,13 @@
 <template>
   <div ref="dropdownRef" class="relative z-50 w-72 select-none rounded-sm">
     <div
-      @click="showOptions = !showOptions"
+      @click="showOptions = !showOptions && !disabledInput"
       class="relative flex w-full cursor-pointer items-center justify-between rounded-sm bg-white focus:outline-none focus:ring-1 focus:ring-sky-200"
+      :class="{ 'opacity-90': disabledInput }"
     >
       <input
-        class="h-full w-4/5 cursor-pointer bg-white p-3 focus:outline-none"
-        :value="selectedValue"
+        class="h-full w-4/5 cursor-pointer p-3 focus:outline-none"
+        :value="model"
         :placeholder="placeholderName"
         type="text"
         readonly="true"
@@ -28,7 +29,6 @@
           v-model="searchText"
         />
       </div>
-
       <div class="scrollbar max-h-48 w-full overflow-y-auto">
         <div class="bg-whiteP flex w-full flex-col">
           <div
@@ -37,20 +37,20 @@
             @click="selectAllOptions"
           >
             <input
-              :checked="selectAll"
+              :checked="selection.selectAll"
               type="checkbox"
               class="h-4 w-4 accent-checkBoxColor"
             />
             <span>Označi sve</span>
           </div>
           <div
-            v-for="(option, index) in filteredOptions"
-            @click="toggleOption(option.text, index)"
+            v-for="(option, index) in getFilteredOptions"
+            @click="toggleOption(option.id)"
             :key="index"
             class="justify-left flex h-10 cursor-pointer items-center gap-2 px-3 hover:bg-gray-100"
           >
             <input
-              v-model="isChecked[index]"
+              v-model="option.checkboxChecked"
               type="checkbox"
               class="h-4 w-4 cursor-pointer accent-checkBoxColor"
             />
@@ -67,49 +67,68 @@ import { ref } from "vue";
 import { onClickOutside } from "@vueuse/core";
 
 const showOptions = ref(false);
-const selectAll = ref(false);
-const isChecked = ref<boolean[]>([]);
-const selectedValue = ref("");
-const searchText = ref("");
-
 const dropdownRef = ref(null);
+
 onClickOutside(dropdownRef, () => (showOptions.value = false));
 
-const { placeholderName, multipleSel, selection } = defineProps([
-  "placeholderName",
-  "multipleSel",
-  "selection",
-]);
+const {
+  placeholderName,
+  multipleSel,
+  selection,
+  inputIndex,
+  disabledInput,
+  checkboxChecked,
+  getFilteredOptions,
+} = defineProps<{
+  placeholderName: string;
+  disabledInput: boolean;
+  multipleSel: boolean;
+  inputIndex: number;
+  checkboxChecked?: boolean;
+  selection: any;
+  getFilteredOptions: any;
+}>();
+const { model, searchText } = defineModels<{
+  model: string;
+  searchText: string;
+}>();
 
+// Select All functionality
 const selectAllOptions = () => {
-  selectAll.value = !selectAll.value;
-  isChecked.value = selection.map(() => selectAll.value);
+  const filteredOptions = getFilteredOptions;
+  const allSelected = filteredOptions.every(
+    (option: { checkboxChecked: boolean }) => option.checkboxChecked,
+  );
+  selection.selectAll = !allSelected;
+
+  filteredOptions.forEach((option: { checkboxChecked: boolean }) => {
+    option.checkboxChecked = !allSelected;
+  });
   updateSelectedValue();
 };
 
-const toggleOption = (option: string, index: number) => {
+// Checkbox functionality
+const toggleOption = (index: number) => {
   if (multipleSel) {
-    isChecked.value[index] = !isChecked.value[index];
+    selection[index].checkboxChecked = !selection[index].checkboxChecked;
   } else {
-    isChecked.value.fill(false);
-    isChecked.value[index] = true;
+    selection.forEach((option: { checkboxChecked: boolean }) => {
+      option.checkboxChecked = false;
+    });
+    selection[index].checkboxChecked = !selection[index].checkboxChecked;
     showOptions.value = false;
   }
+
   updateSelectedValue();
 };
 
+// Checkbox value update
 const updateSelectedValue = () => {
-  selectedValue.value = selection
-    .filter((option: { text: string }, index: number) => isChecked.value[index])
+  model.value = selection
+    .filter((option: { checkboxChecked: boolean }) => option.checkboxChecked)
     .map((option: { text: string }) => option.text)
     .join(", ");
 };
-
-const filteredOptions = computed(() =>
-  selection.filter((option: { text: string }) =>
-    option.text.toLowerCase().includes(searchText.value.toLowerCase().trim()),
-  ),
-);
 </script>
 
 <style scoped></style>

@@ -5,7 +5,7 @@
     >
       <div class="h-full w-full">
         <NuxtLink
-          to="/"
+          to="/kategorije"
           class="relative flex h-full w-full items-center rounded-lg bg-gray-800"
         >
           <img
@@ -23,7 +23,9 @@
             <p class="mt-2 text-gray-200">
               Pripremite vaš automobil za letnje avanture.
             </p>
-            <NuxtLink class="mt-3 flex items-center gap-1 text-white" to="/"
+            <NuxtLink
+              class="mt-3 flex items-center gap-1 text-white"
+              to="/kategorije"
               >Kupi odmah <span class="icon-[prime--arrow-right]"
             /></NuxtLink>
           </div>
@@ -31,7 +33,7 @@
       </div>
       <div class="h-full w-full">
         <NuxtLink
-          to="/"
+          to="/kategorije"
           class="relative flex h-full w-full items-center rounded-lg bg-gray-800"
         >
           <img
@@ -48,7 +50,9 @@
             <p class="mt-2 text-gray-200">
               Posebni popusti na sve autodelove u našoj ponudi.
             </p>
-            <NuxtLink class="mt-3 flex items-center gap-1 text-white" to="/"
+            <NuxtLink
+              class="mt-3 flex items-center gap-1 text-white"
+              to="/kategorije"
               >Kupi odmah <span class="icon-[prime--arrow-right]"
             /></NuxtLink>
           </div>

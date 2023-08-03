@@ -19,6 +19,7 @@ module.exports = {
         checkBoxColor: "rgb(59 113 202 / 1)",
       },
       height: {
+        100: "28rem",
         104: "32rem",
         108: "36rem",
       },

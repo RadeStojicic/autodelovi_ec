@@ -1,5 +1,5 @@
 <template>
-  <div class="h-auto bg-footerBackground py-4">
+  <footer class="absolute h-auto w-full bg-footerBackground py-4">
     <div
       class="mx-auto flex h-full flex-col items-center justify-center gap-8 px-4 py-8 text-white md:container"
     >
@@ -23,10 +23,10 @@
           <h1 class="text-lg font-bold">Korisni Linkovi</h1>
           <div class="mt-3 text-sm">
             <ul class="flex flex-col gap-1 text-gray-400">
-              <li><NuxtLink to="/">Početna</NuxtLink></li>
-              <li><NuxtLink to="/">Kategorije</NuxtLink></li>
-              <li><NuxtLink to="/">Novosti</NuxtLink></li>
-              <li><NuxtLink to="/">Isporuka</NuxtLink></li>
+              <li><NuxtLink to="/pocetna">Početna</NuxtLink></li>
+              <li><NuxtLink to="/kategorije">Kategorije</NuxtLink></li>
+              <li><NuxtLink to="/novosti">Novosti</NuxtLink></li>
+              <li><NuxtLink to="/isporuka">Isporuka</NuxtLink></li>
             </ul>
           </div>
         </div>
@@ -34,12 +34,20 @@
           <h1 class="text-lg font-bold">Kategorije</h1>
           <div class="mt-3 text-sm">
             <ul class="flex flex-col gap-1 text-gray-400">
-              <li><NuxtLink to="/">Motor i pogon</NuxtLink></li>
-              <li><NuxtLink to="/">Elektrika i elektronika</NuxtLink></li>
-              <li><NuxtLink to="/">Osvetljenje</NuxtLink></li>
-              <li><NuxtLink to="/">Signalizacija</NuxtLink></li>
-              <li><NuxtLink to="/">Karoserija i enterijer</NuxtLink></li>
-              <li><NuxtLink to="/">Pneumatici</NuxtLink></li>
+              <li><NuxtLink to="/motor_pogon">Motor i pogon</NuxtLink></li>
+              <li>
+                <NuxtLink to="/elektrika_elektronika"
+                  >Elektrika i elektronika</NuxtLink
+                >
+              </li>
+              <li><NuxtLink to="/osvetljenje">Osvetljenje</NuxtLink></li>
+              <li><NuxtLink to="/signalizacija">Signalizacija</NuxtLink></li>
+              <li>
+                <NuxtLink to="/karoserija_enterijer"
+                  >Karoserija i enterijer</NuxtLink
+                >
+              </li>
+              <li><NuxtLink to="/pneumatici">Pneumatici</NuxtLink></li>
             </ul>
           </div>
         </div>
@@ -47,10 +55,14 @@
           <h1 class="text-lg font-bold">Korisnička podrška</h1>
           <div class="mt-3">
             <ul class="flex flex-col gap-1 text-gray-400">
-              <li><NuxtLink to="/">Pomoć</NuxtLink></li>
-              <li><NuxtLink to="/">Moja korpa</NuxtLink></li>
-              <li><NuxtLink to="/">Omiljeni proizvodi</NuxtLink></li>
-              <li><NuxtLink to="/">Politika povratka</NuxtLink></li>
+              <li><NuxtLink to="/pomoc">Pomoć</NuxtLink></li>
+              <li><NuxtLink to="/moja_korpa">Moja korpa</NuxtLink></li>
+              <li>
+                <NuxtLink to="/omiljeni_proizvodi">Omiljeni proizvodi</NuxtLink>
+              </li>
+              <li>
+                <NuxtLink to="/politika_povratka">Politika povratka</NuxtLink>
+              </li>
             </ul>
           </div>
         </div>
@@ -59,7 +71,7 @@
         <p class="text-md mt-8 text-gray-300">© 2023. Sva prava zadržana.</p>
       </div>
     </div>
-  </div>
+  </footer>
 </template>
 
 <script setup lang="ts"></script>
