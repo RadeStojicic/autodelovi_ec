@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="relative top-24 z-10 flex h-auto w-full justify-center">
+    <div class="relative z-10 flex h-auto w-full justify-center">
       <img
-        src="/images/shop_img.jpg"
+        src="/images/hero_img.jpg"
         class="relative h-108 w-screen object-cover brightness-50 md:h-100 lg:object-cover"
         alt=""
       />
@@ -39,7 +39,7 @@
             @update:model="applyFilters(index)"
           ></selection-button>
           <button
-            :class="{ 'opacity-80': buttonDisabled }"
+            :class="{ 'brightness-90': buttonDisabled }"
             @click.prevent="filterCards"
             class="mt-4 flex w-52 items-center justify-center gap-1 rounded bg-yellow-500 p-3 text-gray-900 md:mt-0 md:w-40"
           >
@@ -51,8 +51,8 @@
     </div>
     <div class="full mx-auto flex flex-col md:container md:flex-row">
       <Sidenav class="hidden md:block" />
-      <div class="w-full bg-white">
-        <div class="mt-32 flex md:mt-40">
+      <div class="w-full bg-gray-50">
+        <div class="mt-32 flex md:mt-16">
           <div
             class="mx-6 flex w-full items-center justify-between border-b border-gray-200 md:mx-10"
           >
@@ -64,34 +64,49 @@
           class="mx-6 mt-12 grid grid-cols-2 gap-x-2 gap-y-10 pb-24 pt-10 sm:grid-cols-2 md:mt-0 md:gap-12 lg:mx-10 lg:grid-cols-3 lg:gap-8"
         >
           <div
+            class="relative w-full rounded-lg border border-gray-200 bg-white"
             v-for="(card, index) in filteredCards"
             :key="index"
-            class="relative w-full bg-white"
           >
+            <div class="flex items-center justify-center rounded-lg p-12">
+              <img class="w-40" :src="card.image" alt="product_image" />
+            </div>
             <div
-              class="flex items-center justify-center rounded-lg border border-gray-200 p-12"
+              class="absolute top-0 flex w-full items-center justify-between p-4"
             >
-              <img class="w-40" :src="card.image" alt="" />
+              <span
+                v-if="card.discount"
+                class="rounded bg-black px-2 py-1 text-xs font-bold text-white"
+                >{{ card.discount }}%</span
+              >
+              <div
+                class="absolute right-2 top-2 flex cursor-pointer items-center justify-center rounded-full p-2 transition duration-300 hover:bg-gray-100"
+              >
+                <span class="icon-[prime--heart] p-3 text-gray-900" />
+              </div>
             </div>
 
-            <span
-              class="icon-[prime--heart] absolute right-4 top-4 cursor-pointer p-3 text-gray-900"
-            />
-
-            <div class="mt-4 flex flex-col items-start justify-start">
+            <div class="mt-4 flex flex-col items-start justify-start px-4 pb-4">
               <p class="mt-1 text-xs text-gray-400">{{ card.category }}</p>
-              <h1 class="font-bold">
+              <h1 class="text-sm font-bold">
                 {{ card.title }}
               </h1>
-              <div class="flex w-full items-end justify-between">
-                <div class="flex items-center gap-2">
+              <div class="mt-4 flex w-full items-center justify-between">
+                <div class="flex flex-col items-start">
                   <p
-                    class="mt-4 text-xs text-gray-400 line-through decoration-1"
+                    v-if="card.oldPrice"
+                    class="text-xs text-gray-400 line-through decoration-1"
                   >
-                    {{ card.oldPrice }}
+                    {{ card.oldPrice }} RSD
                   </p>
-                  <p class="mt-4 text-xl font-black text-gray-800">
-                    {{ card.newPrice }}
+                  <p class="ml-[-2px] text-2xl font-bold text-gray-800">
+                    {{ card.newPrice }} RSD
+                  </p>
+                  <p
+                    v-if="card.oldPrice"
+                    class="mt-1 text-xs font-semibold text-red-600"
+                  >
+                    Ušteda: {{ card.oldPrice - card.newPrice }} RSD
                   </p>
                 </div>
                 <div
@@ -291,53 +306,111 @@ interface CarPart {
   image: string;
   category: string;
   title: string;
-  oldPrice: string;
-  newPrice: string;
+  oldPrice: number;
+  newPrice: number;
   mark: string;
   model: string;
   year: string;
+  type: string;
+  discount: number;
 }
 
 const cards: CarPart[] = [
   {
     image: "/images/prod1.jpg",
-    category: "Motorno ulje",
+    category: "Motorne komponente",
     title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
-    oldPrice: "799.99 RSD",
-    newPrice: "499 RSD",
+    oldPrice: 2199,
+    newPrice: 1599,
     mark: "BMW",
     model: "X4",
     year: "2005",
+    type: "popular",
+    discount: 15,
   },
   {
     image: "/images/prod2.jpg",
-    category: "Motorno ulje",
+    category: "Motorne komponente",
     title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
-    oldPrice: "799.99 RSD",
-    newPrice: "499 RSD",
+    oldPrice: 2199,
+    newPrice: 1599,
     mark: "Audi",
     model: "Q7",
     year: "2008",
+    type: "popular",
+    discount: 0,
   },
   {
     image: "/images/prod3.jpg",
-    category: "Motorno ulje",
+    category: "Motorne komponente",
     title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
-    oldPrice: "799.99 RSD",
-    newPrice: "499 RSD",
+    oldPrice: 2199,
+    newPrice: 1599,
     mark: "BMW",
     model: "X4",
-    year: "2003",
+    year: "2005",
+    type: "popular",
+    discount: 20,
   },
   {
     image: "/images/prod4.jpg",
-    category: "Motorno ulje",
+    category: "Motorne komponente",
     title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
-    oldPrice: "799.99 RSD",
-    newPrice: "499 RSD",
-    mark: "Mercedes",
-    model: "Glc",
-    year: "2016",
+    oldPrice: 2199,
+    newPrice: 1599,
+    mark: "Audi",
+    model: "Q7",
+    year: "2008",
+    type: "popular",
+    discount: 0,
+  },
+  {
+    image: "/images/prod2.jpg",
+    category: "Motorne komponente",
+    title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
+    oldPrice: 2199,
+    newPrice: 1599,
+    mark: "BMW",
+    model: "X4",
+    year: "2005",
+    type: "feautured",
+    discount: 15,
+  },
+  {
+    image: "/images/prod1.jpg",
+    category: "Motorne komponente",
+    title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
+    oldPrice: 2199,
+    newPrice: 1599,
+    mark: "Audi",
+    model: "Q7",
+    year: "2008",
+    type: "new",
+    discount: 0,
+  },
+  {
+    image: "/images/prod4.jpg",
+    category: "Motorne komponente",
+    title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
+    oldPrice: 2199,
+    newPrice: 1599,
+    mark: "BMW",
+    model: "X4",
+    year: "2005",
+    type: "new",
+    discount: 0,
+  },
+  {
+    image: "/images/prod3.jpg",
+    category: "Motorne komponente",
+    title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
+    oldPrice: 0,
+    newPrice: 1599,
+    mark: "Audi",
+    model: "Q7",
+    year: "2008",
+    type: "feautured",
+    discount: 0,
   },
 ];
 

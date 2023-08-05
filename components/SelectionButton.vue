@@ -1,9 +1,9 @@
 <template>
-  <div ref="dropdownRef" class="relative z-50 w-72 select-none rounded-sm">
+  <div ref="dropdownRef" class="relative w-72 select-none rounded-sm">
     <div
       @click="showOptions = !showOptions && !disabledInput"
       class="relative flex w-full cursor-pointer items-center justify-between rounded-sm bg-white focus:outline-none focus:ring-1 focus:ring-sky-200"
-      :class="{ 'opacity-90': disabledInput }"
+      :class="{ 'brightness-90': disabledInput }"
     >
       <input
         class="h-full w-4/5 cursor-pointer p-3 focus:outline-none"
@@ -19,7 +19,7 @@
     </div>
     <div
       v-if="showOptions"
-      class="absolute mt-1 w-full bg-white py-2 shadow-[0_2px_5px_0_rgba(0,0,0,0.16),_0_2px_10px_0_rgba(0,0,0,0.12)] transition duration-200"
+      class="absolute z-50 mt-1 w-full bg-white py-2 shadow-[0_2px_5px_0_rgba(0,0,0,0.16),_0_2px_10px_0_rgba(0,0,0,0.12)] transition duration-200"
     >
       <div class="flex w-full items-center justify-center p-2">
         <input

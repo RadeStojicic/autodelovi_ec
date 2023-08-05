@@ -1,8 +1,15 @@
 <template>
   <div
-    class="relative mt-24 h-auto w-96 select-none border border-gray-200 bg-white text-black"
+    class="relative h-auto w-96 select-none border border-gray-200 bg-white text-black"
   >
     <div class="flex w-full flex-col">
+      <div
+        class="flex items-center border-b border-gray-200 bg-gray-50 px-4 py-4 text-sm text-gray-500"
+      >
+        <NuxtLink to="/pocetna">Početna</NuxtLink>
+        <span class="icon-[prime--chevron-right] text-lg text-gray-500" />
+        <NuxtLink to="/prodavnica">Prodavnica</NuxtLink>
+      </div>
       <div class="border-b border-gray-200">
         <h1 class="px-4 py-6 text-xl font-semibold">Filteri</h1>
       </div>
@@ -41,6 +48,23 @@
             </NuxtLink>
           </li>
         </ul>
+      </div>
+      <div class="">
+        <div
+          @click="showMore = !showMore"
+          :class="{ 'border-b border-gray-200': showMore }"
+          class="flex cursor-pointer items-center justify-between px-4 py-4"
+        >
+          <p class="text-sm font-semibold">Cena</p>
+          <span
+            class="text-2xl text-gray-400"
+            :class="{
+              'icon-[prime--chevron-up]': showMore,
+              'icon-[prime--chevron-down]': !showMore,
+            }"
+          />
+        </div>
+        <ul v-if="showMore" class="relative list-none text-sm"></ul>
       </div>
     </div>
   </div>

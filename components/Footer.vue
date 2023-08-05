@@ -1,5 +1,5 @@
 <template>
-  <footer class="absolute h-auto w-full bg-footerBackground py-4">
+  <footer class="absolute h-auto w-full bg-footerBackground pb-2 pt-4">
     <div
       class="mx-auto flex h-full flex-col items-center justify-center gap-8 px-4 py-8 text-white md:container"
     >
@@ -7,7 +7,9 @@
         class="grid grid-cols-2 items-start justify-items-start gap-12 md:grid-cols-4 md:justify-items-center md:gap-2"
       >
         <div>
-          <h1 class="text-2xl">Logo</h1>
+          <h1 class="flex items-center text-2xl font-bold text-white">
+            CarGear.
+          </h1>
           <p class="mt-3 text-gray-400">
             Naša platforma nudi korisnički prijateljsko iskustvo koje vam
             omogućava laku pretragu i pronalaženje željenih delova.
@@ -26,7 +28,7 @@
               <li><NuxtLink to="/pocetna">Početna</NuxtLink></li>
               <li><NuxtLink to="/kategorije">Kategorije</NuxtLink></li>
               <li><NuxtLink to="/novosti">Novosti</NuxtLink></li>
-              <li><NuxtLink to="/isporuka">Isporuka</NuxtLink></li>
+              <li><NuxtLink to="/kontakt">Kontakt</NuxtLink></li>
             </ul>
           </div>
         </div>
@@ -56,19 +58,27 @@
           <div class="mt-3">
             <ul class="flex flex-col gap-1 text-gray-400">
               <li><NuxtLink to="/pomoc">Pomoć</NuxtLink></li>
-              <li><NuxtLink to="/moja_korpa">Moja korpa</NuxtLink></li>
+              <li><NuxtLink to="/moja_korpa">Isporuka</NuxtLink></li>
               <li>
                 <NuxtLink to="/omiljeni_proizvodi">Omiljeni proizvodi</NuxtLink>
               </li>
               <li>
-                <NuxtLink to="/politika_povratka">Politika povratka</NuxtLink>
+                <NuxtLink to="/politika_povratka">Reklamacije</NuxtLink>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="w-full border-t border-footerHr text-center">
-        <p class="text-md mt-8 text-gray-300">© 2023. Sva prava zadržana.</p>
+      <div class="w-full border-t border-footerHr text-center text-sm">
+        <div class="mt-8 flex items-center justify-between">
+          <p class="text-gray-300">© 2023. Sva prava zadržana.</p>
+
+          <div class="flex items-center gap-3 text-gray-300">
+            <p>Lična prava</p>
+            <p>Uslovi</p>
+            <p>Politika povratka</p>
+          </div>
+        </div>
       </div>
     </div>
   </footer>

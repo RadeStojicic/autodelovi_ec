@@ -17,8 +17,10 @@ module.exports = {
         footerBackground: "#0e0d12",
         footerHr: "#1c1b22",
         checkBoxColor: "rgb(59 113 202 / 1)",
+        navbarText: "#878787;",
       },
       height: {
+        18: "4.5rem",
         100: "28rem",
         104: "32rem",
         108: "36rem",

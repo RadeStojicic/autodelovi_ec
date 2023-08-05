@@ -1,5 +1,5 @@
 <template>
-  <div class="relative mt-24 pb-96">
+  <div class="relative pb-96">
     <div
       class="mx-auto flex h-104 w-full flex-col items-center justify-between gap-4 p-4 md:container lg:h-80 lg:flex-row lg:gap-8"
     >

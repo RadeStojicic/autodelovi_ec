@@ -1,42 +1,42 @@
 <template>
-  <div class="fixed top-0 z-50 w-full">
-    <!-- NavTop -->
-    <div class="bg-black py-2 text-white">
-      <div
-        class="mx-auto flex items-center justify-between bg-black px-6 md:container"
-      >
-        <div class="flex items-center justify-start">
-          <span class="icon-[prime--phone]" />
-          <p class="text-xs">+381 6442786</p>
-        </div>
-        <div>
-          <p class="hidden text-xs md:block">
-            50% Popusta Na Odredjene Artikle
-          </p>
-        </div>
-        <div>
-          <ul>
-            <li class="flex items-center gap-2 text-xs">
-              <NuxtLink to="/podrska">Podrška</NuxtLink>
-              <NuxtLink to="/prodavnica">Prodavnica</NuxtLink>
-            </li>
-          </ul>
-        </div>
+  <!-- NavTop -->
+  <div class="bg-yellow-400 py-2 text-black">
+    <div
+      class="mx-auto flex items-center justify-between bg-yellow-400 px-6 md:container"
+    >
+      <div class="flex items-center justify-start">
+        <span class="icon-[prime--phone]" />
+        <p class="text-xs">+381 6442786</p>
+      </div>
+      <div>
+        <p class="hidden text-xs md:block">50% Popusta Na Odredjene Artikle</p>
+      </div>
+      <div>
+        <ul>
+          <li class="flex items-center gap-2 text-xs">
+            <NuxtLink to="/podrska">Podrška</NuxtLink>
+            <NuxtLink to="/prodavnica">Prodavnica</NuxtLink>
+          </li>
+        </ul>
       </div>
     </div>
-    <!-- NavBottom -->
-    <div class="relative z-50 border-b border-gray-100 bg-white">
+  </div>
+  <!-- NavBottom -->
+  <div class="sticky top-0 z-50 w-full">
+    <div class="border-b border-gray-200 bg-white">
       <nav class="mx-auto px-6 md:container">
         <div class="flex items-center justify-between py-2 lg:py-0">
           <div class="flex items-center">
-            <h1>Logo</h1>
-            <ul class="ml-28 hidden gap-6 lg:flex">
+            <h1 class="flex items-center text-xl font-bold text-black">
+              Car<span class="text-yellow-400">Gear.</span>
+            </h1>
+            <ul class="ml-24 hidden h-18 gap-2 lg:flex">
               <li
                 v-for="(link, index) in navLinks"
                 :key="index"
-                class="group py-0 text-sm text-gray-900 lg:py-6"
+                class="group flex items-center py-0 text-sm text-navbarText hover:border-b-2 hover:border-yellow-400 lg:py-6"
               >
-                <NuxtLink :to="link.to">
+                <NuxtLink class="p-2" :to="link.to">
                   {{ link.names }}
                 </NuxtLink>
                 <div
@@ -48,7 +48,7 @@
                       v-for="(category, subIndex) in link.categories"
                       :key="subIndex"
                     >
-                      <p class="mb-4 font-semibold">
+                      <p class="mb-4 font-semibold text-gray-700">
                         {{ category.title }}
                       </p>
                       <ul>
@@ -58,7 +58,7 @@
                         >
                           <NuxtLink
                             :to="sublink.to"
-                            class="block py-1 text-sm text-gray-600 hover:text-gray-800"
+                            class="block py-1 text-sm text-gray-600 hover:bg-gray-50"
                           >
                             {{ sublink.names }}
                           </NuxtLink>
@@ -72,22 +72,33 @@
           </div>
 
           <div class="z-50 flex items-center justify-end">
-            <label class="flex rounded-full p-2 sm:bg-gray-100" for="search">
-              <span
-                class="icon-[prime--search] text-3xl sm:text-2xl"
-                aria-hidden="true"
-              />
+            <label class="flex rounded-full sm:bg-gray-100" for="search">
               <input
-                class="ml-2 hidden bg-gray-100 text-sm focus:outline-none sm:block"
+                class="ml-2 hidden w-64 rounded-full bg-gray-100 px-2 text-sm focus:outline-none sm:block"
                 type="text"
                 placeholder="Pretraži..."
               />
+              <div
+                class="flex cursor-pointer items-center justify-center rounded-full p-2 transition duration-150 hover:bg-gray-200"
+              >
+                <span
+                  class="icon-[prime--search] text-3xl sm:text-3xl"
+                  aria-hidden="true"
+                />
+              </div>
             </label>
             <div class="flex items-center justify-between gap-2 lg:ml-4">
-              <span
-                class="icon-[prime--heart] hidden text-3xl lg:block"
-                aria-hidden="true"
-              />
+              <div class="relative p-1">
+                <span
+                  class="icon-[prime--heart] relative hidden text-3xl lg:block"
+                  aria-hidden="true"
+                />
+                <span
+                  class="absolute right-0 top-0 hidden h-4 w-4 items-center justify-center rounded-full bg-yellow-400 p-2 text-xs lg:flex"
+                  >0</span
+                >
+              </div>
+
               <span
                 class="icon-[prime--shopping-bag] text-3xl"
                 aria-hidden="true"
@@ -175,8 +186,8 @@ const navLinks = [
       },
     ],
   },
-  { names: "Novosti", to: "/news" },
-  { names: "Isporuka", to: "/delivery" },
+  { names: "Novosti", to: "/novosti" },
+  { names: "Kontakt", to: "/kontakt" },
 ];
 </script>
 

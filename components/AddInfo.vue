@@ -1,18 +1,18 @@
 <template>
-  <div class="z-0 mx-auto mt-12 flex justify-center md:container">
+  <div class="z-0 mx-auto mt-12 flex justify-center px-6 md:container">
     <div
-      class="m-auto flex w-96 flex-wrap items-center justify-center gap-8 p-4 md:grid md:w-full md:grid-cols-2 lg:grid lg:grid-cols-3 lg:p-0 lg:px-6"
+      class="grid w-full grid-cols-1 content-center gap-10 rounded-lg bg-white p-4 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4"
     >
       <div
-        class="flex w-full items-center justify-center gap-4 rounded-lg bg-gray-100 p-6 lg:p-8"
+        class="flex w-full items-center justify-center gap-4 rounded-lg py-6 lg:py-6"
         v-for="(card, index) in infoCards"
         :key="index"
       >
-        <div class="flex rounded-full border bg-white p-3 lg:p-1 xl:p-2">
+        <div class="flex rounded-full bg-white">
           <span :class="card.class" />
         </div>
-        <div class="flex flex-col">
-          <p class="text-md font-bold">{{ card.name }}</p>
+        <div class="text-md flex flex-col">
+          <p class="font-bold">{{ card.name }}</p>
           <p class="text-sm text-gray-400">{{ card.text }}</p>
         </div>
       </div>
@@ -25,17 +25,22 @@ const infoCards = [
   {
     name: "Preko 1000 autodelova",
     text: "od preko 200 razlicitih automobila",
-    class: "icon-[prime--cog]  text-gray-800 text-3xl",
+    class: "icon-[prime--cog]  text-yellow-400 text-4xl lg:text-5xl",
   },
   {
     name: "Besplatna dostava",
     text: "za porudzbine preko 5000 dinara",
-    class: "icon-[prime--truck] text-gray-800 text-3xl",
+    class: "icon-[prime--truck] text-yellow-400 text-4xl lg:text-5xl",
   },
   {
     name: "14-dnevna garancija",
     text: "povratak sa besplatnom dostavom",
-    class: "icon-[prime--undo] text-gray-800 text-3xl",
+    class: "icon-[prime--sync] text-yellow-400 text-4xl lg:text-5xl",
+  },
+  {
+    name: "14-dnevna garancija",
+    text: "povratak sa besplatnom dostavom",
+    class: "icon-[prime--credit-card] text-yellow-400 text-4xl lg:text-5xl",
   },
 ];
 </script>

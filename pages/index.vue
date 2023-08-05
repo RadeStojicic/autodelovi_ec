@@ -1,9 +1,8 @@
 <template>
-  <div>
+  <div class="bg-gray-100">
     <Main />
     <AddInfo />
-    <PopularProducts />
-    <SaleProducts />
+    <Products />
     <MediaSection />
     <Contact />
   </div>
