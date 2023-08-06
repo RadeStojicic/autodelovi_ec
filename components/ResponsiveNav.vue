@@ -3,7 +3,7 @@
   <div ref="sidenavRef">
     <nav
       v-if="toggleSideNav"
-      class="scrollbar absolute left-0 top-[62px] h-screen max-h-screen w-72 select-none overflow-y-auto border-r border-t border-gray-200 bg-white pb-28 sm:top-14 lg:hidden"
+      class="scrollbar absolute left-0 top-[62px] z-50 h-screen max-h-screen w-80 select-none overflow-y-auto border-r border-t border-gray-200 bg-white pb-28 sm:top-14 md:top-[62px] lg:hidden"
     >
       <ul class="relative m-0 list-none">
         <li class="relative">
@@ -88,17 +88,21 @@
         </p>
       </div>
     </nav>
+
     <!-- Sidenav -->
 
     <!-- Toggler -->
     <button
-      @click="toggleSideNav = !toggleSideNav"
+      @click="openSidenav"
       class="flex items-center justify-center lg:hidden"
     >
       <span class="icon-[prime--bars] text-4xl" />
     </button>
   </div>
-  <!-- Toggler -->
+  <div
+    v-if="toggleSideNav"
+    class="absolute left-0 top-[62px] z-10 h-screen w-full bg-black/10 backdrop-blur-sm"
+  ></div>
 </template>
 
 <script setup lang="ts">
@@ -110,6 +114,10 @@ const showMore = ref(false);
 const sidenavRef = ref(null);
 onClickOutside(sidenavRef, () => (toggleSideNav.value = false));
 
+const openSidenav = () => {
+  toggleSideNav.value = !toggleSideNav.value;
+  document.body.style.overflow = toggleSideNav.value ? "hidden" : "";
+};
 defineProps({
   navLinks: {
     type: Array,

@@ -77,8 +77,12 @@
                 class="ml-2 hidden w-64 rounded-full bg-gray-100 px-2 text-sm focus:outline-none sm:block"
                 type="text"
                 placeholder="Pretraži..."
+                v-model="searchInput"
+                @input="handleInput"
+                :disabled="searchArea"
               />
               <div
+                @click="handleInput"
                 class="flex cursor-pointer items-center justify-center rounded-full p-2 transition duration-150 hover:bg-gray-200"
               >
                 <span
@@ -103,7 +107,6 @@
                 class="icon-[prime--shopping-bag] text-3xl"
                 aria-hidden="true"
               />
-
               <responsive-nav :navLinks="navLinks"></responsive-nav>
             </div>
           </div>
@@ -111,10 +114,126 @@
       </nav>
     </div>
   </div>
+  <!-- Search Section -->
+  <div
+    ref="searchRef"
+    class="scrollbar fixed top-0 z-[100] h-screen w-full overflow-y-auto bg-white lg:h-auto"
+    v-if="searchArea"
+  >
+    <div
+      class="container mx-auto flex w-full items-center justify-between gap-10 border-b border-gray-200 bg-white px-6 py-3"
+    >
+      <h1 class="hidden items-center text-xl font-bold text-black lg:flex">
+        Car<span class="text-yellow-400">Gear.</span>
+      </h1>
+      <label
+        class="4 relative flex w-full rounded-full bg-gray-100 lg:w-1/2"
+        for="search"
+      >
+        <input
+          class="text-md ml-2 w-full rounded-full bg-gray-100 p-3 px-2 focus:outline-none sm:block"
+          type="text"
+          v-model="searchInput"
+          @input="filterLinksByText"
+          placeholder="Pretraži po imenu ili kategoriji..."
+          v-focus
+        />
+        <NuxtLink
+          class="rounded-full p-2 transition duration-150 hover:bg-gray-200"
+          :to="'/prodavnica' + '/' + searchInput"
+        >
+          <div class="flex cursor-pointer items-center justify-center">
+            <span
+              class="icon-[prime--search] text-3xl sm:text-3xl"
+              aria-hidden="true"
+            />
+          </div>
+        </NuxtLink>
+      </label>
+      <p
+        @click="handleExit"
+        class="text-md cursor-pointer py-1 hover:text-gray-600"
+      >
+        Izadji
+      </p>
+    </div>
+    <div
+      v-if="searchInput.length < 1"
+      class="container mx-auto flex w-full justify-center px-6 py-12"
+    >
+      <ul class="flex w-full flex-col items-start lg:w-1/2 lg:px-6">
+        <h1 class="mb-3 text-sm text-gray-600">Popularna Pretraživanja</h1>
+        <li
+          class="flex text-lg"
+          v-for="(link, index) in popularSearches"
+          :key="index"
+        >
+          <NuxtLink class="hover:text-gray-600" :to="link.to"
+            >{{ link.names }}
+          </NuxtLink>
+          <hr />
+        </li>
+      </ul>
+    </div>
+    <div
+      v-else
+      class="container mx-auto flex w-full flex-col gap-14 px-6 py-12 lg:flex-row lg:gap-0"
+    >
+      <ul class="w-full lg:w-1/3">
+        <h1 class="mb-3 text-sm text-gray-600">Predlozi</h1>
+        <li
+          class="flex text-lg"
+          v-for="(link, index) in filteredLinks"
+          :key="index"
+        >
+          <NuxtLink
+            class="cursor-pointer hover:text-gray-600"
+            :to="link.to"
+            @mouseover="filterCardsByText(link.names)"
+            >{{ link.names }}
+          </NuxtLink>
+          <hr />
+        </li>
+      </ul>
+      <div class="w-full">
+        <h1 class="mb-3 text-sm text-gray-600">Proizvodi</h1>
+        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <NuxtLink v-for="(card, index) in filteredCards" :key="index" to="/">
+            <div
+              class="relative w-full rounded-lg border border-gray-200 bg-white"
+            >
+              <div class="flex items-center justify-center rounded-lg">
+                <img class="w-32" :src="card.image" alt="product_image" />
+              </div>
+
+              <div
+                class="mt-4 flex flex-col items-start justify-start px-4 pb-4"
+              >
+                <p class="mt-1 text-xs text-gray-400">{{ card.category }}</p>
+                <h1 class="text-xs font-bold text-gray-900">
+                  {{ card.title }}
+                </h1>
+                <div class="mt-2">
+                  <p class="ml-[-2px] text-lg font-bold text-gray-800">
+                    {{ card.newPrice }} RSD
+                  </p>
+                </div>
+              </div>
+            </div>
+          </NuxtLink>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    v-if="searchArea"
+    class="h-gray fixed z-[99] h-screen w-full bg-black/10 backdrop-blur-sm"
+  ></div>
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { onClickOutside } from "@vueuse/core";
 
 const navLinks = [
   { names: "Početna", to: "/" },
@@ -189,6 +308,189 @@ const navLinks = [
   { names: "Novosti", to: "/novosti" },
   { names: "Kontakt", to: "/kontakt" },
 ];
+
+// input settings
+const popularSearches = [
+  { names: "Akumulatori", to: "/category2" },
+  { names: "Svećice i kablovi", to: "/category2" },
+  { names: "Alnaseri i paljenje", to: "/category2" },
+  { names: "Senzori i regulatori", to: "/category2" },
+  { names: "Elektronske kontrole", to: "/category2" },
+];
+
+const suggestedLinks = [
+  { names: "Motorne komponente", to: "/category2" },
+  { names: "Kuleri i hladnjaci", to: "/category2" },
+  { names: "Filteri za motor", to: "/category2" },
+  { names: "Kaiševi i remeni", to: "/category2" },
+  { names: "Pumpa za gorivo", to: "/category2" },
+  { names: "Akumulator", to: "/category2" },
+  { names: "Svećice i kablovi", to: "/category2" },
+  { names: "Alnaseri i paljenje", to: "/category2" },
+  { names: "Senzori i regulatori", to: "/category2" },
+  { names: "Elektronske kontrole", to: "/category2" },
+  { names: "Farovi i sijalice", to: "/category2" },
+  { names: "Migavci i svetla za maglu", to: "/category2" },
+  { names: "Stop svetla i reflektori", to: "/category2" },
+  {
+    names: "Svetla za regulisanje saobraćaja",
+    to: "/category2",
+  },
+  { names: "Svetla unutar vozila", to: "/category2" },
+];
+
+const searchArea = ref(false);
+const searchInput = ref("");
+const searchRef = ref(null);
+onClickOutside(searchRef, () => handleExit());
+const vFocus = {
+  mounted: (el: any) => el.focus(),
+};
+
+const handleInput = () => {
+  searchArea.value = true;
+  document.body.style.overflow = searchArea.value ? "hidden" : "";
+};
+
+const handleExit = () => {
+  searchArea.value = false;
+  searchInput.value = "";
+  document.body.style.overflow = searchArea.value ? "hidden" : "";
+};
+
+// filtered links
+interface Link {
+  names: string;
+  to: string;
+}
+const filteredLinks = ref<Link[]>([]);
+const linkRef = ref();
+filteredLinks.value = suggestedLinks.slice(0, 5);
+const filterLinksByText = () => {
+  const searchText = searchInput.value.toLowerCase();
+
+  filteredLinks.value = suggestedLinks
+    .filter((link) => {
+      return link.names.toLowerCase().includes(searchText);
+    })
+    .slice(0, 5);
+
+  if (filteredLinks.value.length < 1) {
+    filteredLinks.value = suggestedLinks?.slice(0, 5);
+  }
+};
+
+// filtered cards
+interface CarPart {
+  image: string;
+  category: string;
+  title: string;
+  oldPrice: number;
+  newPrice: number;
+  mark: string;
+  model: string;
+  year: string;
+  type: string;
+  discount: number;
+}
+
+const cards: CarPart[] = [
+  {
+    image: "/images/prod1.jpg",
+    category: "Akumulator",
+    title: "Akumulator VARTA Promotive Silver 12 V 225 Ah",
+    oldPrice: 2199,
+    newPrice: 1599,
+    mark: "BMW",
+    model: "X4",
+    year: "2005",
+    type: "popular",
+    discount: 15,
+  },
+  {
+    image: "/images/prod2.jpg",
+    category: "Motorne komponente",
+    title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
+    oldPrice: 2199,
+    newPrice: 1599,
+    mark: "Audi",
+    model: "Q7",
+    year: "2008",
+    type: "popular",
+    discount: 0,
+  },
+  {
+    image: "/images/prod3.jpg",
+    category: "Motorne komponente",
+    title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
+    oldPrice: 2199,
+    newPrice: 1599,
+    mark: "BMW",
+    model: "X4",
+    year: "2005",
+    type: "popular",
+    discount: 20,
+  },
+  {
+    image: "/images/prod4.jpg",
+    category: "Filteri za motor",
+    title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
+    oldPrice: 2199,
+    newPrice: 1599,
+    mark: "Audi",
+    model: "Q7",
+    year: "2008",
+    type: "popular",
+    discount: 0,
+  },
+  {
+    image: "/images/prod4.jpg",
+    category: "Filteri za motor",
+    title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
+    oldPrice: 2199,
+    newPrice: 1599,
+    mark: "Audi",
+    model: "Q7",
+    year: "2008",
+    type: "popular",
+    discount: 0,
+  },
+  {
+    image: "/images/prod4.jpg",
+    category: "Pumpa za gorivo",
+    title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
+    oldPrice: 2199,
+    newPrice: 1599,
+    mark: "Audi",
+    model: "Q7",
+    year: "2008",
+    type: "popular",
+    discount: 0,
+  },
+];
+
+const filteredCards = ref(cards.slice(0, 4));
+watch(filteredLinks, (newFilteredLinks) => {
+  if (newFilteredLinks.length > 0) {
+    filterCardsByText(newFilteredLinks[0].names);
+  }
+});
+
+const filterCardsByText = (text: string) => {
+  const searchText = text.toLowerCase();
+
+  filteredCards.value = cards
+    .filter((card) => {
+      return (
+        card.title.toLowerCase().includes(searchText) ||
+        card.category.toLowerCase().includes(searchText)
+      );
+    })
+    .slice(0, 4);
+  if (filteredCards.value.length < 1) {
+    filteredCards.value = cards.slice(0, 4);
+  }
+};
 </script>
 
 <style scoped></style>
