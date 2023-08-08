@@ -112,7 +112,10 @@ import { onClickOutside } from "@vueuse/core";
 const toggleSideNav = ref(false);
 const showMore = ref(false);
 const sidenavRef = ref(null);
-onClickOutside(sidenavRef, () => (toggleSideNav.value = false));
+onClickOutside(sidenavRef, () => {
+  document.body.style.overflow = "";
+  toggleSideNav.value = false;
+});
 
 const openSidenav = () => {
   toggleSideNav.value = !toggleSideNav.value;
