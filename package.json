@@ -13,7 +13,6 @@
     "@nuxt/devtools": "latest",
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@types/node": "^18.16.19",
-    "@vue-macros/nuxt": "^1.4.1",
     "@vueuse/core": "^10.2.1",
     "@vueuse/nuxt": "^10.2.1",
     "autoprefixer": "^10.4.14",

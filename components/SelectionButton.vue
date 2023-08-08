@@ -88,10 +88,9 @@ const {
   selection: any;
   getFilteredOptions: any;
 }>();
-const { model, searchText } = defineModels<{
-  model: string;
-  searchText: string;
-}>();
+
+const model = defineModel<string>("model");
+const searchText = defineModel<string>("searchText");
 
 // Select All functionality
 const selectAllOptions = () => {

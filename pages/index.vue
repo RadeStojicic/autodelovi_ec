@@ -1,6 +1,8 @@
 <template>
   <div class="bg-gray-100">
     <Main />
+    <pre>{{ data }}</pre>
+
     <AddInfo />
     <Products />
     <MediaSection />
@@ -12,6 +14,8 @@
 definePageMeta({
   layout: "page-layout",
 });
+
+const { data } = await useFetch("/api/mail");
 </script>
 
 <style lang="scss" scoped></style>

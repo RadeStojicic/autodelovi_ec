@@ -6,19 +6,16 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@nuxtjs/google-fonts",
     "@vueuse/nuxt",
-    "@vue-macros/nuxt",
   ],
+  nitro: {
+    preset: "vercel-edge",
+  },
   tailwindcss: {
     configPath: "~/tailwind.config.ts",
   },
   vue: {
     defineModel: true,
     propsDestructure: true,
-  },
-  macros: {
-    defineModels: {
-      unified: false,
-    },
   },
   router: {
     options: {
