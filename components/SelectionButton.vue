@@ -71,15 +71,7 @@ const dropdownRef = ref(null);
 
 onClickOutside(dropdownRef, () => (showOptions.value = false));
 
-const {
-  placeholderName,
-  multipleSel,
-  selection,
-  inputIndex,
-  disabledInput,
-  checkboxChecked,
-  getFilteredOptions,
-} = defineProps<{
+const props = defineProps<{
   placeholderName: string;
   disabledInput: boolean;
   multipleSel: boolean;
@@ -94,11 +86,11 @@ const searchText = defineModel<string>("searchText");
 
 // Select All functionality
 const selectAllOptions = () => {
-  const filteredOptions = getFilteredOptions;
+  const filteredOptions = props.getFilteredOptions;
   const allSelected = filteredOptions.every(
     (option: { checkboxChecked: boolean }) => option.checkboxChecked,
   );
-  selection.selectAll = !allSelected;
+  props.selection.selectAll = !allSelected;
 
   filteredOptions.forEach((option: { checkboxChecked: boolean }) => {
     option.checkboxChecked = !allSelected;
@@ -108,13 +100,15 @@ const selectAllOptions = () => {
 
 // Checkbox functionality
 const toggleOption = (index: number) => {
-  if (multipleSel) {
-    selection[index].checkboxChecked = !selection[index].checkboxChecked;
+  if (props.multipleSel) {
+    props.selection[index].checkboxChecked =
+      !props.selection[index].checkboxChecked;
   } else {
-    selection.forEach((option: { checkboxChecked: boolean }) => {
+    props.selection.forEach((option: { checkboxChecked: boolean }) => {
       option.checkboxChecked = false;
     });
-    selection[index].checkboxChecked = !selection[index].checkboxChecked;
+    props.selection[index].checkboxChecked =
+      !props.selection[index].checkboxChecked;
     showOptions.value = false;
   }
 
@@ -123,7 +117,7 @@ const toggleOption = (index: number) => {
 
 // Checkbox value update
 const updateSelectedValue = () => {
-  model.value = selection
+  model.value = props.selection
     .filter((option: { checkboxChecked: boolean }) => option.checkboxChecked)
     .map((option: { text: string }) => option.text)
     .join(", ");
