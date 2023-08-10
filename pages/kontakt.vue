@@ -70,6 +70,8 @@
                   type="text"
                   name="ime"
                   placeholder="Unesite..."
+                  v-model="formData.name"
+                  required
                 />
               </div>
               <div class="flex w-full flex-col">
@@ -81,18 +83,22 @@
                   type="text"
                   name="prezime"
                   placeholder="Unesite..."
+                  v-model="formData.surname"
+                  required
                 />
               </div>
             </div>
             <div class="flex w-full flex-col">
-              <label class="font-medium text-gray-800" for="Eail"
+              <label class="font-medium text-gray-800" for="Email"
                 >Vaš Email <span class="text-red-500">*</span></label
               >
               <input
                 class="mt-2 rounded-sm border px-3 py-2 focus:border focus:border-gray-300 focus:outline-none"
                 type="email"
-                name="ime"
+                name="email"
+                v-model="formData.email"
                 placeholder="Unesite..."
+                required
               />
             </div>
 
@@ -106,9 +112,14 @@
                 cols="30"
                 rows="8"
                 placeholder="Unesite..."
+                v-model="formData.message"
+                required
               ></textarea>
             </div>
-            <button class="focus mt-3 w-1/3 rounded-md bg-yellow-400 py-2">
+            <button
+              @click.prevent="sendMail"
+              class="focus mt-3 w-1/3 cursor-pointer rounded-md bg-yellow-400 py-2"
+            >
               <p class="flex w-full items-center justify-center text-white">
                 Posalji
                 <span
@@ -116,6 +127,22 @@
                 />
               </p>
             </button>
+            <div
+              v-if="postMessage != ''"
+              class="sm fixed bottom-0 left-0 z-50 w-full p-2 text-white sm:left-auto sm:right-0 sm:w-auto"
+            >
+              <div
+                class="flex w-full items-center justify-between rounded-md bg-popupBackground p-3 sm:w-auto"
+              >
+                <p class="px-2 text-sm">
+                  {{ postMessage }}
+                </p>
+                <span
+                  @click="postMessage = ''"
+                  class="icon-[prime--times] mt-[2px] cursor-pointer text-lg"
+                />
+              </div>
+            </div>
           </div>
         </form>
       </div>
@@ -127,6 +154,63 @@
 definePageMeta({
   layout: "page-layout",
 });
+
+interface FormData {
+  name: string;
+  surname: string;
+  email: string;
+  message: string;
+}
+const formData: FormData = reactive({
+  name: "",
+  surname: "",
+  email: "",
+  message: "",
+});
+const postMessage = ref("");
+
+const isFormValid = computed(() => {
+  return (
+    formData.name !== "" &&
+    formData.surname !== "" &&
+    formData.email !== "" &&
+    formData.message !== ""
+  );
+});
+
+const sendMail = async () => {
+  if (!isFormValid.value) return;
+  try {
+    const { data: resData }: { data: any } = await useFetch("/api/send/", {
+      method: "post",
+      body: JSON.stringify({
+        from:
+          formData.name + " " + formData.surname + " <" + formData.email + ">",
+        to: "radestojicicsd@gmail.com",
+        subject: "Autodelovi-ec",
+        text: formData.message,
+      }),
+    });
+    if (toRaw(resData.value.error)) {
+      displayPostMessage("Došlo je do greške, pokušajte ponovo...");
+    }
+    if (toRaw(resData.value.id)) {
+      displayPostMessage("Poruka je uspešno poslata...");
+      for (const key in formData) {
+        formData[key as keyof FormData] = "";
+      }
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+function displayPostMessage(message: string) {
+  postMessage.value = message;
+  setTimeout(() => {
+    postMessage.value = "";
+  }, 1900);
+}
 </script>
 
 <style scoped></style>

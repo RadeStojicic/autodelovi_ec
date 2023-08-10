@@ -16,7 +16,7 @@
     "@vueuse/core": "^10.2.1",
     "@vueuse/nuxt": "^10.2.1",
     "autoprefixer": "^10.4.14",
-    "nuxt": "^3.6.3",
+    "nuxt": "^3.6.5",
     "postcss": "^8.4.26",
     "prettier": "^3.0.0",
     "prettier-plugin-tailwindcss": "^0.4.1",
@@ -29,6 +29,7 @@
     "@pinia/nuxt": "^0.4.11",
     "@prisma/client": "^5.0.0",
     "cross-fetch": "^4.0.0",
-    "pinia": "^2.1.4"
+    "pinia": "^2.1.4",
+    "resend": "^0.17.2"
   }
 }
