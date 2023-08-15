@@ -66,7 +66,7 @@
           </div>
         </div>
         <div
-          class="mx-6 mt-12 grid grid-cols-2 gap-x-2 gap-y-10 pb-24 pt-10 sm:grid-cols-2 md:mt-0 md:gap-12 lg:mx-10 lg:grid-cols-3 lg:gap-8"
+          class="mx-6 mt-12 grid grid-cols-1 gap-x-2 gap-y-10 pb-24 pt-10 sm:grid-cols-2 md:mt-0 md:gap-12 lg:mx-10 lg:grid-cols-3 lg:gap-8"
         >
           <div
             class="relative w-full rounded-lg border border-gray-200 bg-white hover:border-gray-300"

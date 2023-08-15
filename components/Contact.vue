@@ -2,7 +2,7 @@
   <div class="relative">
     <div class="mx-auto h-auto px-4 md:container md:h-72">
       <div
-        class="flex h-full w-full flex-col items-center justify-between gap-14 rounded-lg rounded-b-none bg-yellow-400 px-4 py-10 md:gap-0 lg:flex-row lg:gap-12 lg:px-12 lg:py-4"
+        class="flex h-full w-full flex-col items-center justify-between gap-14 rounded-lg rounded-b-none bg-yellow-400 px-10 py-10 sm:px-4 md:gap-0 lg:flex-row lg:gap-12 lg:px-12 lg:py-4"
       >
         <div class="flex h-full w-full flex-col items-start justify-center">
           <h1 class="text-5xl font-bold text-white">

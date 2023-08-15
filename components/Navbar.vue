@@ -168,7 +168,7 @@
     </div>
     <div
       v-if="searchInput.length < 1"
-      class="container mx-auto flex w-full justify-center px-6 py-12"
+      class="container mx-auto flex w-full justify-center px-6 py-14 sm:py-12"
     >
       <ul class="flex w-full flex-col items-start lg:w-1/2 lg:px-6">
         <h1 class="mb-3 text-sm text-gray-600">Popularna Pretraživanja</h1>

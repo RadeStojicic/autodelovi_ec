@@ -118,7 +118,7 @@
             </div>
             <button
               @click.prevent="sendMail"
-              class="focus mt-3 w-1/3 cursor-pointer rounded-md bg-yellow-400 py-2"
+              class="focus mt-3 w-1/2 cursor-pointer rounded-md bg-yellow-400 py-2 sm:w-1/3"
             >
               <p class="flex w-full items-center justify-center text-white">
                 Posalji
