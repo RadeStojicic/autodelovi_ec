@@ -5,7 +5,7 @@
     >
       <div class="h-full w-full">
         <NuxtLink
-          to="/kategorije"
+          to="/prodavnica"
           class="relative flex h-full w-full items-center rounded-lg bg-gray-800"
         >
           <img
@@ -25,7 +25,7 @@
             </p>
             <NuxtLink
               class="mt-3 flex items-center gap-1 text-white"
-              to="/kategorije"
+              to="/prodavnica"
               >Kupi odmah <span class="icon-[prime--arrow-right]"
             /></NuxtLink>
           </div>
@@ -33,7 +33,7 @@
       </div>
       <div class="h-full w-full">
         <NuxtLink
-          to="/kategorije"
+          to="/prodavnica"
           class="relative flex h-full w-full items-center rounded-lg bg-gray-800"
         >
           <img
@@ -52,7 +52,7 @@
             </p>
             <NuxtLink
               class="mt-3 flex items-center gap-1 text-white"
-              to="/kategorije"
+              to="/prodavnica"
               >Kupi odmah <span class="icon-[prime--arrow-right]"
             /></NuxtLink>
           </div>

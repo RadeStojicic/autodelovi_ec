@@ -27,16 +27,18 @@
       <nav class="mx-auto px-6 md:container">
         <div class="flex items-center justify-between py-2 lg:py-0">
           <div class="flex items-center">
-            <h1 class="flex items-center text-xl font-bold text-black">
-              Car<span class="text-yellow-400">Gear.</span>
-            </h1>
+            <NuxtLink to="/">
+              <h1 class="flex items-center text-xl font-bold text-black">
+                Car<span class="text-yellow-400">Gear.</span>
+              </h1>
+            </NuxtLink>
             <ul class="ml-24 hidden h-18 gap-2 lg:flex">
               <li
                 v-for="(link, index) in navLinks"
                 :key="index"
                 class="group flex items-center py-0 text-sm text-navbarText hover:border-b-2 hover:border-yellow-400 lg:py-6"
               >
-                <NuxtLink class="p-2" :to="link.to">
+                <NuxtLink class="p-2 lg:py-6" :to="link.to">
                   {{ link.names }}
                 </NuxtLink>
                 <div
@@ -48,16 +50,20 @@
                       v-for="(category, subIndex) in link.categories"
                       :key="subIndex"
                     >
-                      <p class="mb-4 font-semibold text-gray-700">
-                        {{ category.title }}
-                      </p>
+                      <NuxtLink>
+                        <p
+                          class="mb-4 py-1 font-semibold text-gray-700 hover:bg-gray-50"
+                        >
+                          {{ category.title }}
+                        </p>
+                      </NuxtLink>
                       <ul>
                         <li
                           v-for="(sublink, subLinkIndex) in category.sublinks"
                           :key="subLinkIndex"
                         >
                           <NuxtLink
-                            :to="sublink.to"
+                            :to="'/prodavnica' + sublink.to"
                             class="block py-1 text-sm text-gray-600 hover:bg-gray-50"
                           >
                             {{ sublink.names }}
@@ -92,16 +98,19 @@
               </div>
             </label>
             <div class="flex items-center justify-between gap-2 lg:ml-4">
-              <div class="relative p-1">
-                <span
-                  class="icon-[prime--heart] relative hidden text-3xl lg:block"
-                  aria-hidden="true"
-                />
-                <span
-                  class="absolute right-0 top-0 hidden h-4 w-4 items-center justify-center rounded-full bg-yellow-400 p-2 text-xs lg:flex"
-                  >0</span
-                >
-              </div>
+              <NuxtLink to="/lista-zelja">
+                <div class="relative p-1">
+                  <span
+                    class="icon-[prime--heart] relative hidden text-3xl lg:block"
+                    aria-hidden="true"
+                  />
+                  <span
+                    class="absolute right-0 top-0 hidden h-4 w-4 items-center justify-center rounded-full bg-yellow-400 p-2 text-xs lg:flex"
+                  >
+                    {{ wishList.length }}
+                  </span>
+                </div>
+              </NuxtLink>
 
               <span
                 class="icon-[prime--shopping-bag] text-3xl"
@@ -188,7 +197,7 @@
         >
           <NuxtLink
             class="cursor-pointer hover:text-gray-600"
-            :to="link.to"
+            :to="'/prodavnica' + link.to"
             @mouseover="filterCardsByText(link.names)"
             >{{ link.names }}
           </NuxtLink>
@@ -198,7 +207,12 @@
       <div class="w-full">
         <h1 class="mb-3 text-sm text-gray-600">Proizvodi</h1>
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          <NuxtLink v-for="(card, index) in filteredCards" :key="index" to="/">
+          <NuxtLink
+            @click="handleExit"
+            v-for="(card, index) in filteredCards"
+            :key="index"
+            :to="'/' + card.to + '/' + card.id"
+          >
             <div
               class="relative w-full rounded-lg border border-gray-200 bg-white"
             >
@@ -232,111 +246,44 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import { onClickOutside } from "@vueuse/core";
+import { CarPart } from "../types/cardType";
+import { useProductStore } from "../store/product";
+import { useLinkStore } from "../store/navlinks";
+import { storeToRefs } from "pinia";
 
-const navLinks = [
-  { names: "Početna", to: "/" },
-  {
-    names: "Kategorije",
-    to: "/kategorije",
-    categories: [
-      {
-        title: "Motor i Pogon",
-        to: "/motor-i-pogon",
-        sublinks: [
-          { names: "Motorne komponente", to: "/category2" },
-          { names: "Kuleri i hladnjaci", to: "/category2" },
-          { names: "Filteri za motor", to: "/category2" },
-          { names: "Kaiševi i remeni", to: "/category2" },
-          { names: "Pumpa za gorivo", to: "/category2" },
-        ],
-      },
-      {
-        title: "Elektrika i Elektronika",
-        to: "/elektrika-i-elektronika",
-        sublinks: [
-          { names: "Akumulatori", to: "/category2" },
-          { names: "Svećice i kablovi", to: "/category2" },
-          { names: "Alnaseri i paljenje", to: "/category2" },
-          { names: "Senzori i regulatori", to: "/category2" },
-          { names: "Elektronske kontrole", to: "/category2" },
-        ],
-      },
-
-      {
-        title: "Osvetljenje i Signalizacija",
-        to: "/osvetljenje-i-signalizacija",
-        sublinks: [
-          { names: "Farovi i sijalice", to: "/category2" },
-          { names: "Migavci i svetla za maglu", to: "/category2" },
-          { names: "Stop svetla i reflektori", to: "/category2" },
-          {
-            names: "Svetla za regulisanje saobraćaja",
-            to: "/category2",
-          },
-          { names: "Svetla unutar vozila", to: "/category2" },
-        ],
-      },
-      {
-        title: "Karoserija i Enterijer",
-        to: "/karoserija-i-enterijer",
-        sublinks: [
-          { names: "Spoljna ogledala", to: "/category2" },
-          { names: "Branici i amortizeri", to: "/category2" },
-          { names: "Stakla i vetrobrani", to: "/category2" },
-          {
-            names: "Enterijerni delovi i tapacirung",
-            to: "/category2",
-          },
-          { names: "Vrata i zaključavanje", to: "/category2" },
-        ],
-      },
-      {
-        title: "Pneumatici",
-        to: "/pneumatici",
-        sublinks: [
-          { names: "Zimske i letnje gume", to: "/category2" },
-          { names: "Felne i ratkapne", to: "/category2" },
-          { names: "Rezervni točkovi", to: "/category2" },
-          { names: "Ventili za gume", to: "/category2" },
-          { names: "Pneumatski sistemi", to: "/category2" },
-        ],
-      },
-    ],
-  },
-  { names: "Novosti", to: "/novosti" },
-  { names: "Kontakt", to: "/kontakt" },
-];
+const { wishList } = addToWishList();
+const { cards } = storeToRefs(useProductStore());
+const { navLinks } = storeToRefs(useLinkStore());
 
 // input settings
 const popularSearches = [
-  { names: "Akumulatori", to: "/category2" },
-  { names: "Svećice i kablovi", to: "/category2" },
-  { names: "Alnaseri i paljenje", to: "/category2" },
-  { names: "Senzori i regulatori", to: "/category2" },
-  { names: "Elektronske kontrole", to: "/category2" },
+  { names: "Akumulatori", to: "/akumulatori" },
+  { names: "Svećice i kablovi", to: "/svecice-i-kablovi" },
+  { names: "Alnaseri i paljenje", to: "/alnaseri-i-paljenje" },
+  { names: "Senzori i regulatori", to: "/senzori-i-regulatori" },
+  { names: "Elektronske kontrole", to: "/elektronske-kontrole" },
 ];
 
 const suggestedLinks = [
-  { names: "Motorne komponente", to: "/category2" },
-  { names: "Kuleri i hladnjaci", to: "/category2" },
-  { names: "Filteri za motor", to: "/category2" },
-  { names: "Kaiševi i remeni", to: "/category2" },
-  { names: "Pumpa za gorivo", to: "/category2" },
-  { names: "Akumulator", to: "/category2" },
-  { names: "Svećice i kablovi", to: "/category2" },
-  { names: "Alnaseri i paljenje", to: "/category2" },
-  { names: "Senzori i regulatori", to: "/category2" },
-  { names: "Elektronske kontrole", to: "/category2" },
-  { names: "Farovi i sijalice", to: "/category2" },
-  { names: "Migavci i svetla za maglu", to: "/category2" },
-  { names: "Stop svetla i reflektori", to: "/category2" },
+  { names: "Motorne komponente", to: "/motorne-komponente" },
+  { names: "Kuleri i hladnjaci", to: "/kuleri-i-hladnjaci" },
+  { names: "Filteri za motor", to: "/filteri-za-motor" },
+  { names: "Kaiševi i remeni", to: "/kaisevi-i-remeni" },
+  { names: "Pumpa za gorivo", to: "/pumpa-za-gorivo" },
+  { names: "Akumulatori", to: "/akumulatori" },
+  { names: "Svećice i kablovi", to: "/svecice-i-kablovi" },
+  { names: "Alnaseri i paljenje", to: "/alnaseri-i-paljenje" },
+  { names: "Senzori i regulatori", to: "/senzori-i-regulatori" },
+  { names: "Elektronske kontrole", to: "/elektronske-kontrole" },
+  { names: "Farovi i sijalice", to: "/farovi-i-sijalice" },
+  { names: "Migavci i svetla za maglu", to: "/migavci-i-svetla-za-maglu" },
+  { names: "Stop svetla i reflektori", to: "/stop-svetla-i-reflektori" },
   {
     names: "Svetla za regulisanje saobraćaja",
-    to: "/category2",
+    to: "/svetla-za-regulisanje-saobracaja",
   },
-  { names: "Svetla unutar vozila", to: "/category2" },
+  { names: "Svetla unutar vozila", to: "/svetla-unutar-vozila" },
 ];
 
 const searchArea = ref(false);
@@ -380,96 +327,7 @@ const filterLinksByText = () => {
   }
 };
 
-// filtered cards
-interface CarPart {
-  image: string;
-  category: string;
-  title: string;
-  oldPrice: number;
-  newPrice: number;
-  mark: string;
-  model: string;
-  year: string;
-  type: string;
-  discount: number;
-}
-
-const cards: CarPart[] = [
-  {
-    image: "/images/prod1.jpg",
-    category: "Akumulator",
-    title: "Akumulator VARTA Promotive Silver 12 V 225 Ah",
-    oldPrice: 2199,
-    newPrice: 1599,
-    mark: "BMW",
-    model: "X4",
-    year: "2005",
-    type: "popular",
-    discount: 15,
-  },
-  {
-    image: "/images/prod2.jpg",
-    category: "Motorne komponente",
-    title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
-    oldPrice: 2199,
-    newPrice: 1599,
-    mark: "Audi",
-    model: "Q7",
-    year: "2008",
-    type: "popular",
-    discount: 0,
-  },
-  {
-    image: "/images/prod3.jpg",
-    category: "Motorne komponente",
-    title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
-    oldPrice: 2199,
-    newPrice: 1599,
-    mark: "BMW",
-    model: "X4",
-    year: "2005",
-    type: "popular",
-    discount: 20,
-  },
-  {
-    image: "/images/prod4.jpg",
-    category: "Filteri za motor",
-    title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
-    oldPrice: 2199,
-    newPrice: 1599,
-    mark: "Audi",
-    model: "Q7",
-    year: "2008",
-    type: "popular",
-    discount: 0,
-  },
-  {
-    image: "/images/prod4.jpg",
-    category: "Filteri za motor",
-    title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
-    oldPrice: 2199,
-    newPrice: 1599,
-    mark: "Audi",
-    model: "Q7",
-    year: "2008",
-    type: "popular",
-    discount: 0,
-  },
-  {
-    image: "/images/prod4.jpg",
-    category: "Pumpa za gorivo",
-    title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
-    oldPrice: 2199,
-    newPrice: 1599,
-    mark: "Audi",
-    model: "Q7",
-    year: "2008",
-    type: "popular",
-    discount: 0,
-  },
-];
-
-const filteredCards = ref(cards.slice(0, 4));
+const filteredCards = ref(cards.value.slice(0, 4));
 watch(filteredLinks, (newFilteredLinks) => {
   if (newFilteredLinks.length > 0) {
     filterCardsByText(newFilteredLinks[0].names);
@@ -479,7 +337,7 @@ watch(filteredLinks, (newFilteredLinks) => {
 const filterCardsByText = (text: string) => {
   const searchText = text.toLowerCase();
 
-  filteredCards.value = cards
+  filteredCards.value = cards.value
     .filter((card) => {
       return (
         card.title.toLowerCase().includes(searchText) ||
@@ -488,7 +346,7 @@ const filterCardsByText = (text: string) => {
     })
     .slice(0, 4);
   if (filteredCards.value.length < 1) {
-    filteredCards.value = cards.slice(0, 4);
+    filteredCards.value = cards.value.slice(0, 4);
   }
 };
 </script>

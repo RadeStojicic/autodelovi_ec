@@ -37,13 +37,15 @@
         class="mt-16 grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-6 2xl:gap-8"
       >
         <div
-          class="relative w-full rounded-lg border border-gray-200 bg-white"
+          class="relative w-full rounded-lg border border-gray-200 bg-white hover:border-gray-300"
           v-for="(card, index) in filteredCards"
           :key="index"
         >
-          <div class="flex items-center justify-center rounded-lg p-12">
-            <img class="w-40" :src="card.image" alt="product_image" />
-          </div>
+          <NuxtLink :to="'/' + card.to + '/' + card.id">
+            <div class="flex items-center justify-center rounded-lg p-12">
+              <img class="w-40" :src="card.image" alt="product_image" />
+            </div>
+          </NuxtLink>
           <div
             class="absolute top-0 flex w-full items-center justify-between p-4"
           >
@@ -53,9 +55,18 @@
               >{{ card.discount }}%</span
             >
             <div
+              @click="toggleWishList(card)"
               class="absolute right-2 top-2 flex cursor-pointer items-center justify-center rounded-full p-2 transition duration-300 hover:bg-gray-100"
+              :class="card.showFilledHeart ? ' bg-gray-100' : ''"
             >
-              <span class="icon-[prime--heart] p-3 text-gray-900" />
+              <span
+                :class="
+                  card.showFilledHeart
+                    ? 'icon-[prime--heart-fill] '
+                    : 'icon-[prime--heart] '
+                "
+                class="p-3 text-gray-900"
+              />
             </div>
           </div>
 
@@ -82,11 +93,15 @@
                   Ušteda: {{ card.oldPrice - card.newPrice }} RSD
                 </p>
               </div>
-              <div
-                class="flex items-center justify-center rounded-full bg-yellow-400 p-2"
-              >
-                <span class="icon-[prime--shopping-cart] text-3xl text-white" />
-              </div>
+              <NuxtLink to="/kontakt">
+                <div
+                  class="flex items-center justify-center rounded-full bg-yellow-400 p-2"
+                >
+                  <span
+                    class="icon-[prime--shopping-cart] text-3xl text-white"
+                  />
+                </div>
+              </NuxtLink>
             </div>
           </div>
         </div>
@@ -96,116 +111,11 @@
 </template>
 
 <script setup lang="ts">
-interface CarPart {
-  image: string;
-  category: string;
-  title: string;
-  oldPrice: number;
-  newPrice: number;
-  mark: string;
-  model: string;
-  year: string;
-  type: string;
-  discount: number;
-}
-const cards: CarPart[] = [
-  {
-    image: "/images/prod1.jpg",
-    category: "Motorno ulje",
-    title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
-    oldPrice: 2199,
-    newPrice: 1599,
-    mark: "BMW",
-    model: "X4",
-    year: "2005",
-    type: "popular",
-    discount: 15,
-  },
-  {
-    image: "/images/prod2.jpg",
-    category: "Motorno ulje",
-    title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
-    oldPrice: 2199,
-    newPrice: 1599,
-    mark: "Audi",
-    model: "Q7",
-    year: "2008",
-    type: "popular",
-    discount: 0,
-  },
-  {
-    image: "/images/prod3.jpg",
-    category: "Motorno ulje",
-    title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
-    oldPrice: 2199,
-    newPrice: 1599,
-    mark: "BMW",
-    model: "X4",
-    year: "2005",
-    type: "popular",
-    discount: 20,
-  },
-  {
-    image: "/images/prod4.jpg",
-    category: "Motorno ulje",
-    title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
-    oldPrice: 2199,
-    newPrice: 1599,
-    mark: "Audi",
-    model: "Q7",
-    year: "2008",
-    type: "popular",
-    discount: 0,
-  },
-  {
-    image: "/images/prod2.jpg",
-    category: "Motorno ulje",
-    title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
-    oldPrice: 2199,
-    newPrice: 1599,
-    mark: "BMW",
-    model: "X4",
-    year: "2005",
-    type: "feautured",
-    discount: 15,
-  },
-  {
-    image: "/images/prod1.jpg",
-    category: "Motorno ulje",
-    title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
-    oldPrice: 2199,
-    newPrice: 1599,
-    mark: "Audi",
-    model: "Q7",
-    year: "2008",
-    type: "new",
-    discount: 0,
-  },
-  {
-    image: "/images/prod4.jpg",
-    category: "Motorno ulje",
-    title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
-    oldPrice: 2199,
-    newPrice: 1599,
-    mark: "BMW",
-    model: "X4",
-    year: "2005",
-    type: "new",
-    discount: 0,
-  },
-  {
-    image: "/images/prod3.jpg",
-    category: "Motorno ulje",
-    title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
-    oldPrice: 0,
-    newPrice: 1599,
-    mark: "Audi",
-    model: "Q7",
-    year: "2008",
-    type: "feautured",
-    discount: 0,
-  },
-];
+import { useProductStore } from "../store/product";
+import { storeToRefs } from "pinia";
+
+const { toggleWishList } = addToWishList();
+const { cards } = storeToRefs(useProductStore());
 
 const selectedType = ref("popular");
 
@@ -214,7 +124,7 @@ const handleFilter = (type: string) => {
 };
 
 const filteredCards = computed(() => {
-  return cards.filter((card) => card.type === selectedType.value);
+  return cards.value.filter((card) => card.type === selectedType.value);
 });
 </script>
 

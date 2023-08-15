@@ -17,7 +17,7 @@
               <p class="mt-6 text-center text-lg text-gray-700">
                 Širok izbor kvalitetnih auto-delova po najpovoljnijim cenama
               </p>
-              <NuxtLink to="/kategorije">
+              <NuxtLink to="/prodavnica">
                 <button
                   class="mt-6 flex w-52 items-center justify-center gap-1 rounded bg-yellow-400 p-3 text-gray-900 md:mt-8 md:w-40"
                 >

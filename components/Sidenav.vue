@@ -6,131 +6,80 @@
       <div
         class="flex items-center border-b border-gray-200 bg-gray-50 px-4 py-4 text-sm text-gray-500"
       >
-        <NuxtLink to="/pocetna">Početna</NuxtLink>
-        <span class="icon-[prime--chevron-right] text-lg text-gray-500" />
+        <NuxtLink class="text-black/80" to="/">Početna</NuxtLink>
+        <span
+          class="icon-[prime--chevron-right] mt-[3px] text-lg text-gray-500"
+        />
         <NuxtLink to="/prodavnica">Prodavnica</NuxtLink>
       </div>
       <div class="border-b border-gray-200">
-        <h1 class="px-4 py-6 text-xl font-semibold">Filteri</h1>
+        <h1 class="px-4 py-6 text-xl font-semibold">Kategorije</h1>
       </div>
-      <div class="border-b border-gray-200">
-        <div
-          @click="showMore = !showMore"
-          :class="{ 'border-b border-gray-200': showMore }"
-          class="flex cursor-pointer items-center justify-between px-4 py-4"
-        >
-          <p class="text-sm font-semibold">Kategorije</p>
-          <span
-            class="text-2xl text-gray-400"
-            :class="{
-              'icon-[prime--chevron-up]': showMore,
-              'icon-[prime--chevron-down]': !showMore,
-            }"
-          />
-        </div>
-        <ul v-if="showMore" class="relative list-none pb-4 text-sm">
-          <li v-for="(link, index) in categories" :key="index" class="relative">
-            <NuxtLink
-              class="flex cursor-pointer flex-col items-start justify-between text-gray-600"
+      <div>
+        <ul class="relative list-none pb-4 text-sm">
+          <li
+            v-for="(link, index) in categories"
+            :key="index"
+            class="relative flex flex-col items-start justify-between border-b border-gray-200 text-gray-600"
+          >
+            <div
+              class="flex w-full items-center justify-between px-4 py-4"
+              :class="{ 'border-b border-gray-200': link.showMore }"
             >
-              <p class="px-6 pt-3 text-sm font-semibold text-black">
-                {{ link.title }}
-              </p>
-              <ul class="relative w-full list-none py-2">
-                <li
-                  class="relative w-full px-6 py-1 hover:bg-gray-50"
-                  v-for="(rowLink, rowIndex) in link.sublinks"
-                  :key="rowIndex"
-                >
-                  <p class="text-gray-500">{{ rowLink.names }}</p>
-                </li>
-              </ul>
-            </NuxtLink>
+              <NuxtLink
+                :to="'prodavnica' + link.to"
+                @click="$emit('filterByMainCategory', link.title)"
+                class="sidenav cursor-pointer text-sm font-semibold text-black"
+              >
+                {{ link.title }} ({{ productsMainCategory(link.title) }})
+              </NuxtLink>
+
+              <span
+                @click="link.showMore = !link.showMore"
+                class="cursor-pointer p-2 text-2xl"
+                :class="{
+                  'icon-[prime--chevron-up]': link.showMore,
+                  'icon-[prime--chevron-down]': !link.showMore,
+                }"
+              />
+            </div>
+            <ul
+              v-if="link.showMore"
+              class="relative w-full cursor-pointer list-none py-2"
+            >
+              <li
+                @click="$emit('filterBySubCategory', rowLink.names)"
+                class="relative w-full px-6 py-1 hover:bg-gray-50"
+                v-for="(rowLink, rowIndex) in link.sublinks"
+                :key="rowIndex"
+              >
+                <p class="text-gray-500">
+                  {{ rowLink.names }} ({{ productsSubCategory(rowLink.names) }})
+                </p>
+              </li>
+            </ul>
           </li>
         </ul>
-      </div>
-      <div class="">
-        <div
-          @click="showMore = !showMore"
-          :class="{ 'border-b border-gray-200': showMore }"
-          class="flex cursor-pointer items-center justify-between px-4 py-4"
-        >
-          <p class="text-sm font-semibold">Cena</p>
-          <span
-            class="text-2xl text-gray-400"
-            :class="{
-              'icon-[prime--chevron-up]': showMore,
-              'icon-[prime--chevron-down]': !showMore,
-            }"
-          />
-        </div>
-        <ul v-if="showMore" class="relative list-none text-sm"></ul>
       </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { useLinkStore } from "../store/navlinks";
+import { useProductStore } from "../store/product";
+import { storeToRefs } from "pinia";
+import { CarPart } from "../types/cardType";
+const { categories } = storeToRefs(useLinkStore());
 
-const showMore = ref(true);
-
-const categories = [
-  {
-    title: "Motor i Pogon",
-    sublinks: [
-      { names: "Motorne komponente" },
-      { names: "Kuleri i hladnjaci" },
-      { names: "Filteri za motor" },
-      { names: "Kaiševi i remeni" },
-      { names: "Pumpa za gorivo" },
-    ],
-  },
-  {
-    title: "Elektrika i Elektronika",
-    sublinks: [
-      { names: "Akumulatori" },
-      { names: "Svećice i kablovi" },
-      { names: "Alnaseri i paljenje" },
-      { names: "Senzori i regulatori" },
-      { names: "Elektronske kontrole" },
-    ],
-  },
-  {
-    title: "Osvetljenje i Signalizacija",
-    sublinks: [
-      { names: "Farovi i sijalice" },
-      { names: "Migavci i svetla za maglu" },
-      { names: "Stop svetla i reflektori" },
-      {
-        names: "Svetla za regulisanje saobraćaja",
-      },
-      { names: "Svetla unutar vozila" },
-    ],
-  },
-  {
-    title: "Karoserija i Enterijer",
-    sublinks: [
-      { names: "Spoljna ogledala" },
-      { names: "Branici i amortizeri" },
-      { names: "Stakla i vetrobrani" },
-      {
-        names: "Enterijerni delovi i tapacirung",
-      },
-      { names: "Vrata i zaključavanje" },
-    ],
-  },
-  {
-    title: "Pneumatici",
-    sublinks: [
-      { names: "Zimske i letnje gume" },
-      { names: "Felne i ratkapne" },
-      { names: "Rezervni točkovi" },
-      { names: "Ventili za gume" },
-      { names: "Pneumatski sistemi" },
-    ],
-  },
-];
+const { cards } = storeToRefs(useProductStore());
+const productsMainCategory = (name: string) => {
+  return cards.value.filter((card: CarPart) => card.main_category === name)
+    .length;
+};
+const productsSubCategory = (name: string) => {
+  return cards.value.filter((card: CarPart) => card.category === name).length;
+};
 </script>
 
 <style scoped></style>

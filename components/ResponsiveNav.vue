@@ -6,9 +6,9 @@
       class="scrollbar absolute left-0 top-[62px] z-50 h-screen max-h-screen w-80 select-none overflow-y-auto border-r border-t border-gray-200 bg-white pb-28 sm:top-14 md:top-[62px] lg:hidden"
     >
       <ul class="relative m-0 list-none">
-        <li class="relative">
+        <li @click="openSidenav" class="relative">
           <NuxtLink
-            to="/pocetna"
+            to="/"
             class="mt-4 flex h-12 cursor-pointer items-center px-6 py-4 text-sm text-gray-600"
           >
             <span>Početna</span>
@@ -18,8 +18,9 @@
           <NuxtLink
             @click="showMore = !showMore"
             class="flex h-12 cursor-pointer items-center px-6 py-4 text-sm text-gray-600"
+            to="/prodavnica"
           >
-            <span>Kategorije</span>
+            <span @click="openSidenav">Prodavnica</span>
             <span class="absolute right-0 ml-auto mr-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -36,7 +37,12 @@
             </span>
           </NuxtLink>
           <ul v-if="showMore" class="relative m-0 list-none p-0">
-            <li v-for="(link, index) in navLinks" :key="index" class="relative">
+            <li
+              @click="openSidenav"
+              v-for="(link, index) in navLinks"
+              :key="index"
+              class="relative"
+            >
               <NuxtLink
                 class="flex h-6 cursor-pointer items-center py-4 pl-6 pr-6 text-sm text-gray-600"
                 v-for="(sublink, subIndex) in link.categories"
@@ -47,7 +53,7 @@
             </li>
           </ul>
         </li>
-        <li class="relative">
+        <li @click="openSidenav" class="relative">
           <NuxtLink
             to="/novosti"
             class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600"
@@ -55,12 +61,12 @@
             <span>Novosti</span>
           </NuxtLink>
         </li>
-        <li class="relative">
+        <li @click="openSidenav" class="relative">
           <NuxtLink
-            to="/isporuka"
+            to="/kontakt"
             class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600"
           >
-            <span>Isporuka</span>
+            <span>Kontakt</span>
           </NuxtLink>
         </li>
       </ul>

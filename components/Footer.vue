@@ -26,7 +26,7 @@
           <div class="mt-3 text-sm">
             <ul class="flex flex-col gap-1 text-gray-400">
               <li><NuxtLink to="/pocetna">Početna</NuxtLink></li>
-              <li><NuxtLink to="/kategorije">Kategorije</NuxtLink></li>
+              <li><NuxtLink to="/prodavnica">Prodavnica</NuxtLink></li>
               <li><NuxtLink to="/novosti">Novosti</NuxtLink></li>
               <li><NuxtLink to="/kontakt">Kontakt</NuxtLink></li>
             </ul>
