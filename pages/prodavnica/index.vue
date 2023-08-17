@@ -73,7 +73,7 @@
             v-for="(card, index) in filteredCards"
             :key="index"
           >
-            <NuxtLink :to="card.to + '/' + card.id">
+            <NuxtLink :to="'/prodavnica/' + card.to + '/' + card.id">
               <div class="flex items-center justify-center rounded-lg p-12">
                 <img class="w-40" :src="card.image" alt="product_image" />
               </div>
@@ -144,7 +144,7 @@
 </template>
 
 <script setup lang="ts">
-import { useProductStore } from "../store/product";
+import { useProductStore } from "../../store/product";
 import { storeToRefs } from "pinia";
 
 const { toggleWishList } = addToWishList();

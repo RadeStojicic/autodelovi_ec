@@ -10,6 +10,10 @@ export interface CarPart {
   model: string;
   year: string;
   type: string;
+  aboutProduct: string;
+  description: string;
+  additionalInfo: string;
+  other_images: string[];
   discount: number;
   showFilledHeart: boolean;
   id: string;

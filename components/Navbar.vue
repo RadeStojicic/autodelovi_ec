@@ -211,7 +211,7 @@
             @click="handleExit"
             v-for="(card, index) in filteredCards"
             :key="index"
-            :to="'/' + card.to + '/' + card.id"
+            :to="'/prodavnica/' + +card.to + '/' + card.id"
           >
             <div
               class="relative w-full rounded-lg border border-gray-200 bg-white"

@@ -1,40 +1,13 @@
 <template>
-  <div class="z-0 mt-12 justify-center bg-gray-100 pb-14 pt-8">
-    <div class="mx-auto w-full p-4 md:container lg:p-6">
+  <div class="z-0 justify-center bg-white">
+    <div class="mx-auto w-full md:container">
       <div
         class="flex flex-col justify-between gap-4 border-b border-gray-200 pb-4 sm:flex-row sm:gap-0 sm:pb-3"
       >
-        <h1 class="text-2xl font-bold">Proizvodi u ponudi</h1>
-        <div class="flex items-center gap-2 pb-1 pt-3 sm:pb-0 sm:pt-0">
-          <button
-            @click="handleFilter('popular')"
-            class="rounded-lg px-6 py-3 text-sm text-gray-900"
-            :class="
-              selectedType === 'popular' ? 'bg-yellow-400 ' : ' bg-gray-50'
-            "
-          >
-            Popularni
-          </button>
-          <button
-            @click="handleFilter('feautured')"
-            class="rounded-lg border border-gray-200 bg-gray-50 px-6 py-3 text-sm transition duration-300 hover:bg-yellow-400"
-            :class="
-              selectedType === 'feautured' ? 'bg-yellow-400 ' : ' bg-gray-50'
-            "
-          >
-            Preporučeni
-          </button>
-          <button
-            @click="handleFilter('new')"
-            class="rounded-lg border border-gray-200 bg-gray-50 px-6 py-3 text-sm transition duration-300 hover:bg-yellow-400"
-            :class="selectedType === 'new' ? 'bg-yellow-400 ' : ' bg-gray-50'"
-          >
-            Novi
-          </button>
-        </div>
+        <h1 class="text-2xl font-bold">Popularni proizvodi</h1>
       </div>
       <div
-        class="mt-16 grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-6 2xl:gap-8"
+        class="mt-16 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-6 2xl:gap-8"
       >
         <div
           class="relative w-full rounded-lg border border-gray-200 bg-white hover:border-gray-300"
@@ -117,14 +90,8 @@ import { storeToRefs } from "pinia";
 const { toggleWishList } = addToWishList();
 const { cards } = storeToRefs(useProductStore());
 
-const selectedType = ref("popular");
-
-const handleFilter = (type: string) => {
-  selectedType.value = type;
-};
-
 const filteredCards = computed(() => {
-  return cards.value.filter((card) => card.type === selectedType.value);
+  return cards.value.filter((card) => card.type === "popular");
 });
 </script>
 
