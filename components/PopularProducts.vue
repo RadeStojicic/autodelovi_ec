@@ -7,7 +7,7 @@
         <h1 class="text-2xl font-bold">Popularni proizvodi</h1>
       </div>
       <div
-        class="mt-16 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-6 2xl:gap-8"
+        class="mt-16 grid grid-cols-1 gap-5 px-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-6 2xl:gap-8"
       >
         <div
           class="relative w-full rounded-lg border border-gray-200 bg-white hover:border-gray-300"

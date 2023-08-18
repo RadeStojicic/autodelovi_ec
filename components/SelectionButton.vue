@@ -1,12 +1,12 @@
 <template>
-  <div ref="dropdownRef" class="relative w-72 select-none rounded-sm">
+  <div ref="dropdownRef" class="relative w-full select-none rounded-sm sm:w-72">
     <div
       @click="showOptions = !showOptions && !disabledInput"
       class="relative flex w-full cursor-pointer items-center justify-between rounded-sm bg-white focus:outline-none focus:ring-1 focus:ring-sky-200"
       :class="{ 'brightness-90': disabledInput }"
     >
       <input
-        class="h-full w-4/5 cursor-pointer p-3 focus:outline-none"
+        class="h-full w-4/5 cursor-pointer rounded-sm p-[.9rem] focus:outline-none sm:p-3"
         :value="model"
         :placeholder="placeholderName"
         type="text"
@@ -19,7 +19,7 @@
     </div>
     <div
       v-if="showOptions"
-      class="absolute z-50 mt-1 w-full bg-white py-2 shadow-[0_2px_5px_0_rgba(0,0,0,0.16),_0_2px_10px_0_rgba(0,0,0,0.12)] transition duration-200"
+      class="absolute z-50 mt-[.5px] w-full bg-white py-2 shadow-[0_2px_5px_0_rgba(0,0,0,0.16),_0_2px_10px_0_rgba(0,0,0,0.12)] transition duration-200"
     >
       <div class="flex w-full items-center justify-center p-2">
         <input
@@ -47,7 +47,7 @@
             v-for="(option, index) in getFilteredOptions"
             @click="toggleOption(option.id)"
             :key="index"
-            class="justify-left flex h-10 cursor-pointer items-center gap-2 px-3 hover:bg-gray-100"
+            class="justify-left flex h-10 cursor-pointer items-center gap-2 px-3 py-6 hover:bg-gray-100"
           >
             <input
               v-model="option.checkboxChecked"

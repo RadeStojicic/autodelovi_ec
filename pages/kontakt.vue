@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full bg-gray-100 py-16">
+  <div class="w-full bg-gray-100 py-10 md:py-16">
     <div
-      class="container mx-auto flex w-full flex-col gap-8 px-6 md:grid md:grid-cols-2 md:gap-4 lg:gap-12"
+      class="container mx-auto flex w-full flex-col gap-8 md:grid md:grid-cols-2 md:gap-4 md:px-6 lg:gap-12"
     >
       <div
         class="flex w-full flex-col rounded-lg bg-white px-8 py-12 md:px-6 md:py-8 lg:px-8 lg:py-12"
@@ -52,7 +52,7 @@
         class="white flex w-full flex-col rounded-lg bg-white px-8 py-12 md:px-6 md:py-8 lg:px-8 lg:py-12"
       >
         <div class="mb-8 flex flex-col border-b-2 border-gray-100 pb-6">
-          <h1 class="text-2xl font-bold">Kontaktirajte nas</h1>
+          <h1 class="text-3xl font-bold">Kontaktirajte nas</h1>
           <p class="mt-3 text-gray-500">
             Pošaljite nam poruku sa svojim zahtevima i dobićete odgovore u
             najbržem mogućem roku.
@@ -118,7 +118,7 @@
             </div>
             <button
               @click.prevent="sendMail"
-              class="focus mt-3 w-1/2 cursor-pointer rounded-md bg-yellow-400 py-2 sm:w-1/3"
+              class="focus mt-3 w-1/2 cursor-pointer rounded-md bg-yellow-400 py-3 sm:w-1/3"
             >
               <p class="flex w-full items-center justify-center text-white">
                 Posalji

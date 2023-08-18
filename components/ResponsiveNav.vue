@@ -3,21 +3,21 @@
   <div ref="sidenavRef">
     <nav
       v-if="toggleSideNav"
-      class="scrollbar absolute left-0 top-[62px] z-50 h-screen max-h-screen w-80 select-none overflow-y-auto border-r border-t border-gray-200 bg-white pb-28 sm:top-14 md:top-[62px] lg:hidden"
+      class="scrollbar absolute left-0 top-[62px] z-50 h-screen max-h-screen w-80 select-none overflow-y-auto border-r border-t border-gray-200 bg-white pb-28 lg:hidden"
     >
-      <ul class="relative m-0 list-none">
-        <li @click="openSidenav" class="relative">
+      <ul class="relative m-0 mt-4 list-none">
+        <li @click="openSidenav" class="relative border-b">
           <NuxtLink
             to="/"
-            class="mt-4 flex h-12 cursor-pointer items-center px-6 py-4 text-sm text-gray-600"
+            class="flex h-12 cursor-pointer items-center px-6 py-4 text-gray-600"
           >
             <span>Početna</span>
           </NuxtLink>
         </li>
-        <li class="relative">
+        <li class="relative border-b">
           <NuxtLink
             @click="showMore = !showMore"
-            class="flex h-12 cursor-pointer items-center px-6 py-4 text-sm text-gray-600"
+            class="flex h-12 cursor-pointer items-center px-6 py-4 text-gray-600"
             to="/prodavnica"
           >
             <span @click="openSidenav">Prodavnica</span>
@@ -44,7 +44,7 @@
               class="relative"
             >
               <NuxtLink
-                class="flex h-6 cursor-pointer items-center py-4 pl-6 pr-6 text-sm text-gray-600"
+                class="flex h-6 cursor-pointer items-center border-t py-6 pl-8 pr-6 text-gray-600"
                 v-for="(sublink, subIndex) in link.categories"
                 :key="subIndex"
                 :to="sublink.to"
@@ -53,44 +53,46 @@
             </li>
           </ul>
         </li>
-        <li @click="openSidenav" class="relative">
+        <li @click="openSidenav" class="relative border-b">
           <NuxtLink
             to="/novosti"
-            class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600"
+            class="flex h-12 cursor-pointer items-center px-6 py-4 text-gray-600"
           >
             <span>Novosti</span>
           </NuxtLink>
         </li>
-        <li @click="openSidenav" class="relative">
+        <li @click="openSidenav" class="relative border-b">
           <NuxtLink
             to="/kontakt"
-            class="flex h-12 cursor-pointer items-center truncate rounded-[5px] px-6 py-4 text-[0.875rem] text-gray-600"
+            class="flex h-12 cursor-pointer items-center px-6 py-4 text-gray-600"
           >
             <span>Kontakt</span>
           </NuxtLink>
         </li>
       </ul>
-      <hr class="my-4" />
-      <div class="flex flex-col items-start justify-center gap-1 px-4 py-2">
+
+      <div
+        class="mt-6 flex flex-col items-start justify-center gap-1 px-4 py-2"
+      >
         <button
           class="h-12 w-full rounded-lg bg-yellow-400 font-semibold text-white"
         >
           Kontakt
         </button>
-        <p
-          class="mt-5 flex w-full items-center gap-1 py-2 text-sm text-gray-900"
-        >
-          <span class="icon-[prime--box] text-lg text-yellow-500" />Politika
-          povratka
-        </p>
-        <p class="flex w-full items-center gap-1 py-2 text-sm text-gray-900">
+        <p class="mt-5 flex w-full items-center gap-1 py-2 text-gray-900">
           <span
-            class="icon-[prime--question-circle] text-lg text-yellow-500"
+            class="icon-[prime--box] mt-[3px] text-xl text-yellow-500"
+          />Politika povratka
+        </p>
+        <p class="flex w-full items-center gap-1 py-2 text-gray-900">
+          <span
+            class="icon-[prime--question-circle] mt-[3px] text-xl text-yellow-500"
           />Pomoć
         </p>
-        <p class="flex w-full items-center gap-1 py-2 text-sm text-gray-900">
-          <span class="icon-[prime--heart] text-lg text-yellow-500" />Omiljeni
-          proizvodi
+        <p class="flex w-full items-center gap-1 py-2 text-gray-900">
+          <span
+            class="icon-[prime--heart] mt-[3px] text-xl text-yellow-500"
+          />Omiljeni proizvodi
         </p>
       </div>
     </nav>
@@ -100,9 +102,9 @@
     <!-- Toggler -->
     <button
       @click="openSidenav"
-      class="flex items-center justify-center lg:hidden"
+      class="ml-1 flex items-center justify-center lg:hidden"
     >
-      <span class="icon-[prime--bars] text-4xl" />
+      <span class="icon-[prime--bars] text-[2.5em]" />
     </button>
   </div>
   <div

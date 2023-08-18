@@ -1,7 +1,7 @@
 <template>
   <div class="relative z-0 justify-center">
     <main
-      class="mx-auto flex w-full items-center justify-center px-6 md:container"
+      class="mx-auto flex w-full items-center justify-center px-0 md:container md:px-6"
     >
       <div class="w-full bg-white">
         <div class="flex h-100 w-full items-center justify-center">
@@ -27,7 +27,7 @@
               </NuxtLink>
             </div>
             <div
-              class="hidden h-80 w-80 items-center justify-start rounded-full sm:flex"
+              class="hidden items-center justify-start rounded-full sm:flex sm:h-64 sm:w-64 md:h-80 md:w-80"
             >
               <img src="/images/shocks.png" class="flex w-full" alt="" />
             </div>

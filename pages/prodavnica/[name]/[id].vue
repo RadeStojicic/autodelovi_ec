@@ -1,5 +1,7 @@
 <template>
-  <div class="z-0 mx-auto flex flex-col justify-center px-6 py-14 md:container">
+  <div
+    class="z-0 mx-auto flex flex-col justify-center px-6 py-8 md:container lg:py-14"
+  >
     <div
       class="grid h-auto w-full grid-cols-1 content-center gap-10 rounded-lg py-10 sm:grid-cols-1 lg:grid-cols-2 lg:px-10"
     >
@@ -18,7 +20,7 @@
         </div>
         <div class="flex w-full lg:order-2">
           <img
-            class="h-96 w-full object-contain sm:h-100"
+            class="h-72 w-full object-contain sm:h-100"
             :src="hero_image"
             alt="product_image"
           />
@@ -27,13 +29,13 @@
       <div class="order-1 w-full lg:order-2 lg:pl-10">
         <div class="w-full">
           <div class="w-full border-b pb-3">
-            <h1 class="text-3xl font-semibold">{{ card.title }}</h1>
-            <p class="mt-4 flex items-center text-gray-500">
+            <p class="mb-4 mt-4 flex items-center text-gray-500">
               {{ card.main_category }}
               <span
                 class="icon-[prime--chevron-right] mt-[3px] text-lg text-gray-500"
               />{{ card.category }}
             </p>
+            <h1 class="text-3xl font-semibold">{{ card.title }}</h1>
             <p class="py-1">
               ({{ card.mark }}) ({{ card.model }}) ({{ card.year }})
             </p>

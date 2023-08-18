@@ -11,9 +11,9 @@
         <div class="flex rounded-full bg-white">
           <span :class="card.class" />
         </div>
-        <div class="text-md flex flex-col">
-          <p class="font-bold">{{ card.name }}</p>
-          <p class="text-sm text-gray-400">{{ card.text }}</p>
+        <div class="flex flex-col">
+          <p class="text-lg font-bold md:text-base">{{ card.name }}</p>
+          <p class="text-md text-gray-400 md:text-sm">{{ card.text }}</p>
         </div>
       </div>
     </div>
@@ -25,22 +25,22 @@ const infoCards = [
   {
     name: "Preko 1000 autodelova",
     text: "od preko 200 razlicitih automobila",
-    class: "icon-[prime--cog]  text-yellow-400 text-4xl lg:text-5xl",
+    class: "icon-[prime--cog]  text-yellow-400 text-5xl ",
   },
   {
     name: "Besplatna dostava",
     text: "za porudzbine preko 5000 dinara",
-    class: "icon-[prime--truck] text-yellow-400 text-4xl lg:text-5xl",
+    class: "icon-[prime--truck] text-yellow-400 text-5xl ",
   },
   {
     name: "14-dnevna garancija",
     text: "povratak sa besplatnom dostavom",
-    class: "icon-[prime--sync] text-yellow-400 text-4xl lg:text-5xl",
+    class: "icon-[prime--sync] text-yellow-400 text-5xl ",
   },
   {
     name: "14-dnevna garancija",
     text: "povratak sa besplatnom dostavom",
-    class: "icon-[prime--credit-card] text-yellow-400 text-4xl lg:text-5xl",
+    class: "icon-[prime--credit-card] text-yellow-400 text-5xl ",
   },
 ];
 </script>

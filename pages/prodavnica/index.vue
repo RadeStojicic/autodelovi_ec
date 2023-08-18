@@ -3,12 +3,12 @@
     <div class="relative z-10 flex h-auto w-full justify-center">
       <img
         src="/images/hero_img.jpg"
-        class="relative h-108 w-screen object-cover brightness-50 md:h-100 lg:object-cover"
+        class="relative h-112 w-screen object-cover brightness-50 sm:h-108 md:h-100 lg:object-cover"
         alt=""
       />
 
       <form
-        class="absolute top-8 mx-auto flex w-full flex-col items-center justify-center p-4 md:container md:top-20 md:p-8"
+        class="absolute top-12 mx-auto flex w-full flex-col items-center justify-center px-4 py-8 md:container sm:top-8 md:top-20 md:p-8"
       >
         <div class="mb-16 flex w-full flex-col items-center justify-center">
           <h1
@@ -22,7 +22,7 @@
         </div>
 
         <div
-          class="relative flex flex-col items-center justify-center gap-4 md:w-full md:flex-row"
+          class="relative flex w-full flex-col items-center justify-center gap-4 px-4 md:w-full md:flex-row"
         >
           <selection-button
             v-for="(selection, index) in multiSel"
@@ -57,16 +57,25 @@
       />
 
       <div class="w-full bg-gray-50">
-        <div class="mt-32 flex md:mt-16">
+        <div class="mt-10 flex flex-col px-6 lg:px-10">
           <div
-            class="mx-6 flex w-full items-center justify-between border-b border-gray-200 md:mx-10"
+            class="flex w-full items-center justify-between border-b border-gray-200"
           >
             <h1 class="py-4 text-2xl text-black md:text-3xl">Proizvodi</h1>
-            <span class="icon-[prime--sliders-h] text-4xl md:hidden" />
+          </div>
+          <div class="mt-4 w-full md:hidden">
+            <button
+              class="flex w-1/2 items-center justify-between rounded-lg bg-gray-200 px-4 py-2"
+            >
+              Filteri<span
+                class="icon-[prime--chevron-down] text-3xl text-gray-950"
+              />
+            </button>
           </div>
         </div>
+
         <div
-          class="mx-6 mt-12 grid grid-cols-1 gap-x-2 gap-y-10 pb-24 pt-10 sm:grid-cols-2 md:mt-0 md:gap-12 lg:mx-10 lg:grid-cols-3 lg:gap-8"
+          class="mx-6 mt-12 grid grid-cols-1 gap-x-2 gap-y-5 pb-20 pt-6 sm:grid-cols-2 md:mt-0 md:gap-12 lg:mx-10 lg:grid-cols-3 lg:gap-8"
         >
           <div
             class="relative w-full rounded-lg border border-gray-200 bg-white hover:border-gray-300"

@@ -4,11 +4,11 @@
       <div
         class="flex flex-col justify-between gap-4 border-b border-gray-200 pb-4 sm:flex-row sm:gap-0 sm:pb-3"
       >
-        <h1 class="text-2xl font-bold">Proizvodi u ponudi</h1>
+        <h1 class="text-3xl font-bold sm:text-2xl">Proizvodi u ponudi</h1>
         <div class="flex items-center gap-2 pb-1 pt-3 sm:pb-0 sm:pt-0">
           <button
             @click="handleFilter('popular')"
-            class="rounded-lg px-6 py-3 text-sm text-gray-900"
+            class="rounded-lg px-6 py-3 text-gray-900 sm:text-sm"
             :class="
               selectedType === 'popular' ? 'bg-yellow-400 ' : ' bg-gray-50'
             "
@@ -17,7 +17,7 @@
           </button>
           <button
             @click="handleFilter('feautured')"
-            class="rounded-lg border border-gray-200 bg-gray-50 px-6 py-3 text-sm transition duration-300 hover:bg-yellow-400"
+            class="rounded-lg border border-gray-200 bg-gray-50 px-6 py-3 transition duration-300 hover:bg-yellow-400 sm:text-sm"
             :class="
               selectedType === 'feautured' ? 'bg-yellow-400 ' : ' bg-gray-50'
             "
@@ -26,7 +26,7 @@
           </button>
           <button
             @click="handleFilter('new')"
-            class="rounded-lg border border-gray-200 bg-gray-50 px-6 py-3 text-sm transition duration-300 hover:bg-yellow-400"
+            class="rounded-lg border border-gray-200 bg-gray-50 px-6 py-3 transition duration-300 hover:bg-yellow-400 sm:text-sm"
             :class="selectedType === 'new' ? 'bg-yellow-400 ' : ' bg-gray-50'"
           >
             Novi
@@ -34,7 +34,7 @@
         </div>
       </div>
       <div
-        class="mt-16 grid grid-cols-1 gap-12 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-6 2xl:gap-8"
+        class="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 lg:gap-6 2xl:gap-8"
       >
         <div
           class="relative w-full rounded-lg border border-gray-200 bg-white hover:border-gray-300"

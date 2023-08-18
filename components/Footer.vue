@@ -69,11 +69,11 @@
           </div>
         </div>
       </div>
-      <div class="w-full border-t border-footerHr text-center text-sm">
-        <div class="mt-8 flex items-center justify-between">
+      <div class="w-full border-t border-footerHr text-sm">
+        <div class="mt-8 flex items-start justify-between">
           <p class="text-gray-300">© 2023. Sva prava zadržana.</p>
 
-          <div class="flex items-center gap-3 text-gray-300">
+          <div class="flex items-start gap-4 text-gray-300 sm:gap-3">
             <p>Lična prava</p>
             <p>Uslovi</p>
             <p>Politika povratka</p>

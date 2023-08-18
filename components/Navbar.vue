@@ -2,18 +2,20 @@
   <!-- NavTop -->
   <div class="bg-yellow-400 py-2 text-black">
     <div
-      class="mx-auto flex items-center justify-between bg-yellow-400 px-6 md:container"
+      class="mx-auto flex items-center justify-between bg-yellow-400 px-4 md:container"
     >
       <div class="flex items-center justify-start">
         <span class="icon-[prime--phone]" />
-        <p class="text-xs">+381 6442786</p>
+        <p class="text-sm md:text-xs">+381 6442786</p>
       </div>
       <div>
-        <p class="hidden text-xs md:block">50% Popusta Na Odredjene Artikle</p>
+        <p class="hidden text-sm md:block md:text-xs">
+          50% Popusta Na Odredjene Artikle
+        </p>
       </div>
       <div>
         <ul>
-          <li class="flex items-center gap-2 text-xs">
+          <li class="flex items-center gap-2 text-sm md:text-xs">
             <NuxtLink to="/podrska">Podrška</NuxtLink>
             <NuxtLink to="/prodavnica">Prodavnica</NuxtLink>
           </li>
@@ -24,11 +26,13 @@
   <!-- NavBottom -->
   <div class="sticky top-0 z-50 w-full">
     <div class="border-b border-gray-200 bg-white">
-      <nav class="mx-auto px-6 md:container">
-        <div class="flex items-center justify-between py-2 lg:py-0">
+      <nav class="mx-auto px-4 md:container">
+        <div class="flex items-center justify-between py-3 lg:py-0">
           <div class="flex items-center">
             <NuxtLink to="/">
-              <h1 class="flex items-center text-xl font-bold text-black">
+              <h1
+                class="flex items-center text-2xl font-bold text-black sm:text-xl"
+              >
                 Car<span class="text-yellow-400">Gear.</span>
               </h1>
             </NuxtLink>
@@ -89,23 +93,25 @@
               />
               <div
                 @click="handleInput"
-                class="flex cursor-pointer items-center justify-center rounded-full p-2 transition duration-150 hover:bg-gray-200"
+                class="flex cursor-pointer items-center justify-center rounded-full transition duration-150 sm:p-2 sm:hover:bg-gray-200"
               >
                 <span
-                  class="icon-[prime--search] text-3xl sm:text-3xl"
+                  class="icon-[prime--search] text-4xl sm:text-3xl"
                   aria-hidden="true"
                 />
               </div>
             </label>
-            <div class="flex items-center justify-between gap-2 lg:ml-4">
+            <div
+              class="flex items-center justify-between gap-0 sm:gap-1 lg:ml-1"
+            >
               <NuxtLink to="/lista-zelja">
-                <div class="relative p-1">
+                <div class="relative ml-1 p-1 sm:ml-0">
                   <span
-                    class="icon-[prime--heart] relative hidden text-3xl lg:block"
+                    class="icon-[prime--heart] relative block text-4xl sm:text-3xl lg:block"
                     aria-hidden="true"
                   />
                   <span
-                    class="absolute right-0 top-0 hidden h-4 w-4 items-center justify-center rounded-full bg-yellow-400 p-2 text-xs lg:flex"
+                    class="absolute right-[2px] top-[2px] flex h-4 w-4 items-center justify-center rounded-full bg-yellow-400 p-2 text-xs sm:right-0 sm:top-0"
                   >
                     {{ wishList.length }}
                   </span>
@@ -113,7 +119,7 @@
               </NuxtLink>
 
               <span
-                class="icon-[prime--shopping-bag] text-3xl"
+                class="icon-[prime--shopping-bag] hidden text-3xl lg:block"
                 aria-hidden="true"
               />
               <responsive-nav :navLinks="navLinks"></responsive-nav>
@@ -130,7 +136,7 @@
     v-if="searchArea"
   >
     <div
-      class="container mx-auto flex w-full items-center justify-between gap-10 border-b border-gray-200 bg-white px-6 py-3"
+      class="container mx-auto flex w-full items-center justify-between gap-10 border-b border-gray-200 bg-white px-4 py-3"
     >
       <h1 class="hidden items-center text-xl font-bold text-black lg:flex">
         Car<span class="text-yellow-400">Gear.</span>
@@ -144,7 +150,7 @@
           type="text"
           v-model="searchInput"
           @input="filterLinksByText"
-          placeholder="Pretraži po imenu ili kategoriji..."
+          placeholder="Pretraži..."
           v-focus
         />
         <NuxtLink
@@ -161,7 +167,7 @@
       </label>
       <p
         @click="handleExit"
-        class="text-md cursor-pointer py-1 hover:text-gray-600"
+        class="cursor-pointer py-1 text-lg hover:text-gray-600 lg:text-base"
       >
         Izadji
       </p>
@@ -171,9 +177,11 @@
       class="container mx-auto flex w-full justify-center px-6 py-14 sm:py-12"
     >
       <ul class="flex w-full flex-col items-start lg:w-1/2 lg:px-6">
-        <h1 class="mb-3 text-sm text-gray-600">Popularna Pretraživanja</h1>
+        <h1 class="text-md mb-3 text-gray-600 md:text-sm">
+          Popularna Pretraživanja
+        </h1>
         <li
-          class="flex text-lg"
+          class="flex text-xl md:text-lg"
           v-for="(link, index) in popularSearches"
           :key="index"
         >
@@ -189,7 +197,7 @@
       class="container mx-auto flex w-full flex-col gap-14 px-6 py-12 lg:flex-row lg:gap-0"
     >
       <ul class="w-full lg:w-1/3">
-        <h1 class="mb-3 text-sm text-gray-600">Predlozi</h1>
+        <h1 class="text-md mb-3 text-gray-600 md:text-sm">Predlozi</h1>
         <li
           class="flex text-lg"
           v-for="(link, index) in filteredLinks"
@@ -205,8 +213,10 @@
         </li>
       </ul>
       <div class="w-full">
-        <h1 class="mb-3 text-sm text-gray-600">Proizvodi</h1>
-        <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <h1 class="text-md mb-3 text-gray-600 md:text-sm">Proizvodi</h1>
+        <div
+          class="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-2 md:mt-0 lg:grid-cols-4"
+        >
           <NuxtLink
             @click="handleExit"
             v-for="(card, index) in filteredCards"
@@ -217,7 +227,11 @@
               class="relative w-full rounded-lg border border-gray-200 bg-white"
             >
               <div class="flex items-center justify-center rounded-lg">
-                <img class="w-32" :src="card.image" alt="product_image" />
+                <img
+                  class="w-32 p-2 md:p-0"
+                  :src="card.image"
+                  alt="product_image"
+                />
               </div>
 
               <div

@@ -1,5 +1,5 @@
 <template>
-  <div class="z-0 mx-auto flex justify-center px-6 md:container">
+  <div class="z-0 mx-auto flex justify-center px-4 md:container md:px-6">
     <div class="h-auto w-full bg-white px-4 py-16">
       <div class="flex w-full flex-col border-b border-gray-200">
         <div class="flex justify-between border-b border-gray-200 pb-4">
@@ -10,14 +10,16 @@
           v-if="wishList.length > 0"
           class="grid grid-cols-1 gap-6 py-10 sm:grid-cols-2 lg:grid-cols-4"
         >
-          <NuxtLink
-            class="relative w-full rounded-lg border border-gray-200 bg-white"
+          <div
+            class="relative w-full rounded-lg border border-gray-200 bg-white hover:border-gray-300"
             v-for="(card, index) in wishList"
             :key="index"
           >
-            <div class="flex items-center justify-center rounded-lg p-12">
-              <img class="w-40" :src="card.image" alt="product_image" />
-            </div>
+            <NuxtLink :to="'/prodavnica/' + card.to + '/' + card.id">
+              <div class="flex items-center justify-center rounded-lg p-12">
+                <img class="w-40" :src="card.image" alt="product_image" />
+              </div>
+            </NuxtLink>
             <div
               class="absolute top-0 flex w-full items-center justify-between p-4"
             >
@@ -28,8 +30,8 @@
               >
               <div
                 @click="toggleWishList(card)"
-                :class="card.showFilledHeart ? ' bg-gray-100' : ''"
                 class="absolute right-2 top-2 flex cursor-pointer items-center justify-center rounded-full p-2 transition duration-300 hover:bg-gray-100"
+                :class="card.showFilledHeart ? ' bg-gray-100' : ''"
               >
                 <span
                   :class="
@@ -65,16 +67,18 @@
                     Ušteda: {{ card.oldPrice - card.newPrice }} RSD
                   </p>
                 </div>
-                <div
-                  class="flex items-center justify-center rounded-full bg-yellow-400 p-2"
-                >
-                  <span
-                    class="icon-[prime--shopping-cart] text-3xl text-white"
-                  />
-                </div>
+                <NuxtLink to="/kontakt">
+                  <div
+                    class="flex items-center justify-center rounded-full bg-yellow-400 p-2"
+                  >
+                    <span
+                      class="icon-[prime--shopping-cart] text-3xl text-white"
+                    />
+                  </div>
+                </NuxtLink>
               </div>
             </div>
-          </NuxtLink>
+          </div>
         </div>
         <div v-else class="w-full py-20 text-center text-lg">
           Nema dodatih proizvoda u listi želja.
