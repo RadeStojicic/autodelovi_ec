@@ -1,13 +1,19 @@
 <template>
   <div
-    class="z-0 mx-auto flex flex-col justify-center px-6 py-8 md:container lg:py-14"
+    class="z-0 mx-auto flex flex-col justify-center px-4 pb-10 md:container lg:py-14"
   >
     <div
       class="grid h-auto w-full grid-cols-1 content-center gap-10 rounded-lg py-10 sm:grid-cols-1 lg:grid-cols-2 lg:px-10"
     >
       <div class="order-2 flex w-full flex-col gap-4 lg:order-1 lg:flex-row">
+        <p class="flex items-center text-gray-500 lg:hidden">
+          {{ card.main_category }}
+          <span
+            class="icon-[prime--chevron-right] mt-[3px] text-lg text-gray-500"
+          />{{ card.category }}
+        </p>
         <div
-          class="order-2 grid h-full w-full grid-cols-4 gap-1 p-1 lg:order-1 lg:flex lg:w-32 lg:flex-col"
+          class="order-2 grid h-full w-full grid-cols-4 gap-1 p-1 py-2 lg:order-1 lg:flex lg:w-32 lg:flex-col lg:py-0"
         >
           <img
             v-for="(other_image, index) in card.other_images"
@@ -15,21 +21,25 @@
             :src="other_image"
             alt="product_images"
             @mouseover="changeImage(other_image)"
-            class="cursor-pointer"
+            class="cursor-pointer sm:p-4"
           />
         </div>
         <div class="flex w-full lg:order-2">
           <img
-            class="h-72 w-full object-contain sm:h-100"
+            class="h-72 w-full object-contain sm:h-72"
             :src="hero_image"
             alt="product_image"
           />
         </div>
       </div>
-      <div class="order-1 w-full lg:order-2 lg:pl-10">
+      <div class="order-2 w-full lg:order-2 lg:pl-10">
         <div class="w-full">
           <div class="w-full border-b pb-3">
-            <p class="mb-4 mt-4 flex items-center text-gray-500">
+            <p class="mb-4 hidden items-center text-gray-500 lg:flex">
+              <span>Prodavnica </span
+              ><span
+                class="icon-[prime--chevron-right] mt-[3px] text-lg text-gray-500"
+              />
               {{ card.main_category }}
               <span
                 class="icon-[prime--chevron-right] mt-[3px] text-lg text-gray-500"

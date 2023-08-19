@@ -1,12 +1,11 @@
 <template>
-  <!-- Sidenav -->
   <div ref="sidenavRef">
     <nav
       v-if="toggleSideNav"
       class="scrollbar absolute left-0 top-[62px] z-50 h-screen max-h-screen w-80 select-none overflow-y-auto border-r border-t border-gray-200 bg-white pb-28 lg:hidden"
     >
       <ul class="relative m-0 mt-4 list-none">
-        <li @click="openSidenav" class="relative border-b">
+        <li @click="openSidenav" class="relative">
           <NuxtLink
             to="/"
             class="flex h-12 cursor-pointer items-center px-6 py-4 text-gray-600"
@@ -14,7 +13,7 @@
             <span>Početna</span>
           </NuxtLink>
         </li>
-        <li class="relative border-b">
+        <li class="relative">
           <NuxtLink
             @click="showMore = !showMore"
             class="flex h-12 cursor-pointer items-center px-6 py-4 text-gray-600"
@@ -44,7 +43,7 @@
               class="relative"
             >
               <NuxtLink
-                class="flex h-6 cursor-pointer items-center border-t py-6 pl-8 pr-6 text-gray-600"
+                class="flex h-6 cursor-pointer items-center py-6 pl-8 pr-6 text-gray-600"
                 v-for="(sublink, subIndex) in link.categories"
                 :key="subIndex"
                 :to="sublink.to"
@@ -53,7 +52,7 @@
             </li>
           </ul>
         </li>
-        <li @click="openSidenav" class="relative border-b">
+        <li @click="openSidenav" class="relative">
           <NuxtLink
             to="/novosti"
             class="flex h-12 cursor-pointer items-center px-6 py-4 text-gray-600"
@@ -61,7 +60,7 @@
             <span>Novosti</span>
           </NuxtLink>
         </li>
-        <li @click="openSidenav" class="relative border-b">
+        <li @click="openSidenav" class="relative">
           <NuxtLink
             to="/kontakt"
             class="flex h-12 cursor-pointer items-center px-6 py-4 text-gray-600"
@@ -70,7 +69,7 @@
           </NuxtLink>
         </li>
       </ul>
-
+      <hr class="mt-4" />
       <div
         class="mt-6 flex flex-col items-start justify-center gap-1 px-4 py-2"
       >
@@ -97,12 +96,9 @@
       </div>
     </nav>
 
-    <!-- Sidenav -->
-
-    <!-- Toggler -->
     <button
       @click="openSidenav"
-      class="ml-1 flex items-center justify-center lg:hidden"
+      class="ml-1 flex w-full items-center justify-center lg:hidden"
     >
       <span class="icon-[prime--bars] text-[2.5em]" />
     </button>
@@ -114,7 +110,6 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import { onClickOutside } from "@vueuse/core";
 
 const toggleSideNav = ref(false);

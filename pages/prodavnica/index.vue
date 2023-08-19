@@ -53,7 +53,8 @@
       <Sidenav
         @filter-by-main-category="filterByMainCategory"
         @filter-by-sub-category="filterBySubCategory"
-        class="hidden md:block"
+        :sideNavFilters="sideNavFilters"
+        @handleSideFilters="handleSideFilters"
       />
 
       <div class="w-full bg-gray-50">
@@ -63,12 +64,13 @@
           >
             <h1 class="py-4 text-2xl text-black md:text-3xl">Proizvodi</h1>
           </div>
-          <div class="mt-4 w-full md:hidden">
+          <div class="mt-4 w-full lg:hidden">
             <button
-              class="flex w-1/2 items-center justify-between rounded-lg bg-gray-200 px-4 py-2"
+              @click="handleSideFilters"
+              class="flex w-44 items-center justify-between rounded-lg border border-gray-200 bg-gray-100 px-4 py-3"
             >
               Filteri<span
-                class="icon-[prime--chevron-down] text-3xl text-gray-950"
+                class="icon-[prime--chevron-down] text-2xl text-gray-950/70"
               />
             </button>
           </div>
@@ -270,6 +272,13 @@ const multiSel: Selections[] = [
     ],
   },
 ];
+
+const sideNavFilters = ref(false);
+
+const handleSideFilters = () => {
+  sideNavFilters.value = !sideNavFilters.value;
+  document.body.style.overflow = sideNavFilters.value ? "hidden" : "";
+};
 const carFilters = ref<string[]>(["", "", ""]);
 const searchText = ref<string[]>(["", "", ""]);
 

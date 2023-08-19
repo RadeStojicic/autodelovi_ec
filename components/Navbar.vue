@@ -42,9 +42,9 @@
                 :key="index"
                 class="group flex items-center py-0 text-sm text-navbarText hover:border-b-2 hover:border-yellow-400 lg:py-6"
               >
-                <NuxtLink class="p-2 lg:py-6" :to="link.to">
+                <MyLink class="p-2 lg:py-6" :to="link.to">
                   {{ link.names }}
-                </NuxtLink>
+                </MyLink>
                 <div
                   v-if="link.categories"
                   class="absolute left-0 top-full hidden w-full border-b border-gray-200 bg-white shadow-sm group-hover:block"
@@ -66,12 +66,12 @@
                           v-for="(sublink, subLinkIndex) in category.sublinks"
                           :key="subLinkIndex"
                         >
-                          <NuxtLink
+                          <MyLink
                             :to="'/prodavnica' + sublink.to"
                             class="block py-1 text-sm text-gray-600 hover:bg-gray-50"
                           >
                             {{ sublink.names }}
-                          </NuxtLink>
+                          </MyLink>
                         </li>
                       </ul>
                     </li>

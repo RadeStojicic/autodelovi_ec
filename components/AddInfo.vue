@@ -1,5 +1,5 @@
 <template>
-  <div class="z-0 mx-auto mt-12 flex justify-center px-6 md:container">
+  <div class="z-0 mx-auto mt-12 flex justify-center px-4 md:container">
     <div
       class="grid w-full grid-cols-1 content-center gap-10 rounded-lg bg-white p-4 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4"
     >

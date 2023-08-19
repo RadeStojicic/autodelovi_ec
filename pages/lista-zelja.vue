@@ -1,9 +1,9 @@
 <template>
   <div class="z-0 mx-auto flex justify-center px-4 md:container md:px-6">
-    <div class="h-auto w-full bg-white px-4 py-16">
+    <div class="h-auto w-full bg-white py-16">
       <div class="flex w-full flex-col border-b border-gray-200">
         <div class="flex justify-between border-b border-gray-200 pb-4">
-          <h1 class="text-4xl font-bold">Moja lista želja</h1>
+          <h1 class="text-3xl font-bold sm:text-4xl">Moja lista želja</h1>
           <p class="mt-2 text-lg">{{ wishList.length || 0 }} proizvoda</p>
         </div>
         <div
