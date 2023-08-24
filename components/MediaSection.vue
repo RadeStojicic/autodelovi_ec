@@ -9,8 +9,8 @@
           class="relative flex h-full w-full items-center rounded-lg bg-gray-800 py-6"
         >
           <img
-            class="absolute z-0 h-full w-full rounded-lg object-cover"
-            src="/images/banner_1.jpg"
+            class="absolute z-0 h-full w-full rounded-lg object-cover brightness-50"
+            src="/images/media_img_2.jpg"
             alt=""
           />
           <div class="z-10 flex flex-col justify-center p-8">
@@ -35,8 +35,8 @@
           class="relative flex h-full w-full items-center rounded-lg bg-gray-800 py-6"
         >
           <img
-            class="absolute z-0 h-full w-full rounded-lg object-cover"
-            src="/images/banner_2.jpg"
+            class="absolute z-0 h-full w-full rounded-lg object-cover brightness-50"
+            src="/images/media_img_1.jpg"
             alt=""
           />
           <div class="z-10 flex flex-col justify-center p-8">
