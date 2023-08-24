@@ -51,12 +51,17 @@
     </div>
     <div class="full mx-auto flex flex-col md:container md:flex-row">
       <Sidenav
+        class="hidden lg:block"
+        @filter-by-main-category="filterByMainCategory"
+        @filter-by-sub-category="filterBySubCategory"
+      />
+      <ResponsiveSidenav
         @filter-by-main-category="filterByMainCategory"
         @filter-by-sub-category="filterBySubCategory"
         :sideNavFilters="sideNavFilters"
         @handleSideFilters="handleSideFilters"
-      />
-
+        class="fixed lg:hidden"
+      ></ResponsiveSidenav>
       <div class="w-full bg-gray-50">
         <div class="mt-10 flex flex-col px-6 lg:px-10">
           <div
@@ -277,7 +282,6 @@ const sideNavFilters = ref(false);
 
 const handleSideFilters = () => {
   sideNavFilters.value = !sideNavFilters.value;
-  document.body.style.overflow = sideNavFilters.value ? "hidden" : "";
 };
 const carFilters = ref<string[]>(["", "", ""]);
 const searchText = ref<string[]>(["", "", ""]);

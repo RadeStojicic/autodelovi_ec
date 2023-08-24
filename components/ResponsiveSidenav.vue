@@ -1,8 +1,17 @@
 <template>
   <div
-    class="top-0 hidden h-auto w-96 select-none overflow-y-auto border border-gray-200 bg-white text-black lg:relative lg:block"
+    ref="filtersRef"
+    class="fixed top-0 z-[80] h-screen w-96 select-none overflow-y-auto border border-gray-200 bg-white text-black lg:hidden"
+    v-if="sideNavFilters"
   >
-    <div class="bg-gray-200">
+    <div class="flex items-center justify-between border-b p-4 lg:hidden">
+      <h1 class="text-2xl font-semibold">Filteri</h1>
+      <span
+        @click="handleExit"
+        class="icon-[prime--times] cursor-pointer py-1 text-3xl text-gray-500"
+      />
+    </div>
+    <div class="w-full bg-gray-200">
       <div class="flex w-full flex-col bg-white">
         <div
           class="flex items-center border-b border-gray-200 bg-gray-50 px-4 py-4 text-sm text-gray-500"
@@ -67,9 +76,15 @@
       </div>
     </div>
   </div>
+
+  <div
+    v-if="sideNavFilters"
+    class="fixed top-0 z-[60] h-screen w-full bg-black/40 lg:hidden"
+  ></div>
 </template>
 
 <script setup lang="ts">
+import { onClickOutside } from "@vueuse/core";
 import { useLinkStore } from "../store/navlinks";
 import { useProductStore } from "../store/product";
 import { storeToRefs } from "pinia";
@@ -83,6 +98,19 @@ const productsMainCategory = (name: string) => {
 };
 const productsSubCategory = (name: string) => {
   return cards.value.filter((card: CarPart) => card.category === name).length;
+};
+
+defineProps({
+  sideNavFilters: Boolean,
+});
+
+const filtersRef = ref(null);
+const emit = defineEmits(["handleSideFilters"]);
+
+onClickOutside(filtersRef, () => emit("handleSideFilters"));
+
+const handleExit = () => {
+  emit("handleSideFilters");
 };
 </script>
 
