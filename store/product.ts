@@ -5,7 +5,7 @@ export const useProductStore = defineStore("product", () => {
   const cards: CarPart[] = reactive([
     {
       to: "mobili-150866-ulje-za-motor-hemijski-proizvodi",
-      image: "/images/prod1.jpg",
+      image: "/prod1.jpg",
       main_category: "Elektrika i Elektronika",
       category: "Akumulatori",
       title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
@@ -22,10 +22,10 @@ export const useProductStore = defineStore("product", () => {
       additionalInfo:
         "Formuliran je sa posebnom pažnjom prema najnovijim tehnološkim standardima, što omogućava da se postignu optimalne performanse motora. Njegova napredna hemijska formula obezbeđuje smanjenje trenja i habanja unutar motora, čime se produžava životni vek motora i smanjuju potrebe za redovnim održavanjem.",
       other_images: [
-        "/images/other_image1.jpg",
-        "/images/other_image2.jpg",
-        "/images/other_image3.jpg",
-        "/images/other_image4.jpg",
+        "/other_image1.jpg",
+        "/other_image2.jpg",
+        "/other_image3.jpg",
+        "/other_image4.jpg",
       ],
       discount: 15,
       showFilledHeart: false,
@@ -33,7 +33,7 @@ export const useProductStore = defineStore("product", () => {
     },
     {
       to: "mobili-150236-ulje-za-motor-hemijski-proizvodi",
-      image: "/images/prod2.jpg",
+      image: "/prod2.jpg",
       main_category: "Motor i Pogon",
       category: "Motorne komponente",
       title: "MOBIL - 150236 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
@@ -50,10 +50,10 @@ export const useProductStore = defineStore("product", () => {
       additionalInfo:
         "Formuliran je sa posebnom pažnjom prema najnovijim tehnološkim standardima, što omogućava da se postignu optimalne performanse motora. Njegova napredna hemijska formula obezbeđuje smanjenje trenja i habanja unutar motora, čime se produžava životni vek motora i smanjuju potrebe za redovnim održavanjem.",
       other_images: [
-        "/images/other_image1.jpg",
-        "/images/other_image2.jpg",
-        "/images/other_image3.jpg",
-        "/images/other_image4.jpg",
+        "/other_image1.jpg",
+        "/other_image2.jpg",
+        "/other_image3.jpg",
+        "/other_image4.jpg",
       ],
       discount: 0,
       showFilledHeart: false,
@@ -61,7 +61,7 @@ export const useProductStore = defineStore("product", () => {
     },
     {
       to: "mobili-150866-ulje-za-motor-hemijski-proizvodi",
-      image: "/images/prod3.jpg",
+      image: "/prod3.jpg",
       main_category: "Motor i Pogon",
       category: "Motorne komponente",
       title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
@@ -78,10 +78,10 @@ export const useProductStore = defineStore("product", () => {
       additionalInfo:
         "Formuliran je sa posebnom pažnjom prema najnovijim tehnološkim standardima, što omogućava da se postignu optimalne performanse motora. Njegova napredna hemijska formula obezbeđuje smanjenje trenja i habanja unutar motora, čime se produžava životni vek motora i smanjuju potrebe za redovnim održavanjem.",
       other_images: [
-        "/images/other_image1.jpg",
-        "/images/other_image2.jpg",
-        "/images/other_image3.jpg",
-        "/images/other_image4.jpg",
+        "/other_image1.jpg",
+        "/other_image2.jpg",
+        "/other_image3.jpg",
+        "/other_image4.jpg",
       ],
       discount: 20,
       showFilledHeart: false,
@@ -89,7 +89,7 @@ export const useProductStore = defineStore("product", () => {
     },
     {
       to: "mobili-150866-ulje-za-motor-hemijski-proizvodi",
-      image: "/images/prod4.jpg",
+      image: "/prod4.jpg",
       main_category: "Motor i Pogon",
       category: "Filteri za motor",
       title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
@@ -106,10 +106,10 @@ export const useProductStore = defineStore("product", () => {
       additionalInfo:
         "Formuliran je sa posebnom pažnjom prema najnovijim tehnološkim standardima, što omogućava da se postignu optimalne performanse motora. Njegova napredna hemijska formula obezbeđuje smanjenje trenja i habanja unutar motora, čime se produžava životni vek motora i smanjuju potrebe za redovnim održavanjem.",
       other_images: [
-        "/images/other_image1.jpg",
-        "/images/other_image2.jpg",
-        "/images/other_image3.jpg",
-        "/images/other_image4.jpg",
+        "/other_image1.jpg",
+        "/other_image2.jpg",
+        "/other_image3.jpg",
+        "/other_image4.jpg",
       ],
       discount: 0,
       showFilledHeart: false,
@@ -117,7 +117,7 @@ export const useProductStore = defineStore("product", () => {
     },
     {
       to: "mobili-150866-ulje-za-motor-hemijski-proizvodi",
-      image: "/images/prod2.jpg",
+      image: "/prod2.jpg",
       main_category: "Elektrika i Elektronika",
       category: "Akumulatori",
       title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
@@ -134,10 +134,10 @@ export const useProductStore = defineStore("product", () => {
       additionalInfo:
         "Formuliran je sa posebnom pažnjom prema najnovijim tehnološkim standardima, što omogućava da se postignu optimalne performanse motora. Njegova napredna hemijska formula obezbeđuje smanjenje trenja i habanja unutar motora, čime se produžava životni vek motora i smanjuju potrebe za redovnim održavanjem.",
       other_images: [
-        "/images/other_image1.jpg",
-        "/images/other_image2.jpg",
-        "/images/other_image3.jpg",
-        "/images/other_image4.jpg",
+        "/other_image1.jpg",
+        "/other_image2.jpg",
+        "/other_image3.jpg",
+        "/other_image4.jpg",
       ],
       discount: 15,
       showFilledHeart: false,
@@ -145,7 +145,7 @@ export const useProductStore = defineStore("product", () => {
     },
     {
       to: "mobili-150866-ulje-za-motor-hemijski-proizvodi",
-      image: "/images/prod1.jpg",
+      image: "/prod1.jpg",
       main_category: "Motor i Pogon",
       category: "Filteri za motor",
       title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
@@ -162,10 +162,10 @@ export const useProductStore = defineStore("product", () => {
       additionalInfo:
         "Formuliran je sa posebnom pažnjom prema najnovijim tehnološkim standardima, što omogućava da se postignu optimalne performanse motora. Njegova napredna hemijska formula obezbeđuje smanjenje trenja i habanja unutar motora, čime se produžava životni vek motora i smanjuju potrebe za redovnim održavanjem.",
       other_images: [
-        "/images/other_image1.jpg",
-        "/images/other_image2.jpg",
-        "/images/other_image3.jpg",
-        "/images/other_image4.jpg",
+        "/other_image1.jpg",
+        "/other_image2.jpg",
+        "/other_image3.jpg",
+        "/other_image4.jpg",
       ],
       discount: 0,
       showFilledHeart: false,
@@ -173,7 +173,7 @@ export const useProductStore = defineStore("product", () => {
     },
     {
       to: "mobili-150866-ulje-za-motor-hemijski-proizvodi",
-      image: "/images/prod4.jpg",
+      image: "/prod4.jpg",
       main_category: "Motor i Pogon",
       category: "Pumpa za gorivo",
       title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
@@ -190,10 +190,10 @@ export const useProductStore = defineStore("product", () => {
       additionalInfo:
         "Formuliran je sa posebnom pažnjom prema najnovijim tehnološkim standardima, što omogućava da se postignu optimalne performanse motora. Njegova napredna hemijska formula obezbeđuje smanjenje trenja i habanja unutar motora, čime se produžava životni vek motora i smanjuju potrebe za redovnim održavanjem.",
       other_images: [
-        "/images/other_image1.jpg",
-        "/images/other_image2.jpg",
-        "/images/other_image3.jpg",
-        "/images/other_image4.jpg",
+        "/other_image1.jpg",
+        "/other_image2.jpg",
+        "/other_image3.jpg",
+        "/other_image4.jpg",
       ],
       discount: 0,
       showFilledHeart: false,
@@ -201,7 +201,7 @@ export const useProductStore = defineStore("product", () => {
     },
     {
       to: "mobili-150866-ulje-za-motor-hemijski-proizvodi",
-      image: "/images/prod3.jpg",
+      image: "/prod3.jpg",
       main_category: "Motor i Pogon",
       category: "Pumpa za gorivo",
       title: "MOBIL - 150866 - ULJE ZA MOTOR (HEMIJSKI PROIZVODI)",
@@ -218,10 +218,10 @@ export const useProductStore = defineStore("product", () => {
       additionalInfo:
         "Formuliran je sa posebnom pažnjom prema najnovijim tehnološkim standardima, što omogućava da se postignu optimalne performanse motora. Njegova napredna hemijska formula obezbeđuje smanjenje trenja i habanja unutar motora, čime se produžava životni vek motora i smanjuju potrebe za redovnim održavanjem.",
       other_images: [
-        "/images/other_image1.jpg",
-        "/images/other_image2.jpg",
-        "/images/other_image3.jpg",
-        "/images/other_image4.jpg",
+        "/other_image1.jpg",
+        "/other_image2.jpg",
+        "/other_image3.jpg",
+        "/other_image4.jpg",
       ],
       discount: 0,
       showFilledHeart: false,
