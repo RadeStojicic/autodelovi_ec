@@ -18,7 +18,7 @@
           width="100%"
           height="100%"
           class="mt-6 w-full rounded-md"
-          src="/images/office_2.jpg"
+          src="/office_2.jpg"
           alt="office"
         />
         <div class="mb-2 mt-10">

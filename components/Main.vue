@@ -29,7 +29,7 @@
             <div class="hidden items-center justify-start rounded-full sm:flex">
               <NuxtImg
                 sizes="sm:256px md:320px"
-                src="/images/shocks.png"
+                src="/shocks.png"
                 format="webp"
                 class="flex w-full"
                 alt="main_image"

@@ -11,7 +11,7 @@
           <NuxtImg
             format="webp"
             class="absolute z-0 h-full w-full rounded-lg object-cover brightness-50"
-            src="/images/media_img_2.jpg"
+            src="/media_img_2.jpg"
             alt=""
           />
           <div class="z-10 flex flex-col justify-center p-8">
@@ -38,7 +38,7 @@
           <NuxtImg
             format="webp"
             class="absolute z-0 h-full w-full rounded-lg object-cover brightness-50"
-            src="/images/media_img_1.jpg"
+            src="/media_img_1.jpg"
             alt=""
           />
           <div class="z-10 flex flex-col justify-center p-8">
