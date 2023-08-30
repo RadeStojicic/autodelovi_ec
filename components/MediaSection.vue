@@ -8,7 +8,8 @@
           to="/prodavnica"
           class="relative flex h-full w-full items-center rounded-lg bg-gray-800 py-6"
         >
-          <img
+          <NuxtImg
+            format="webp"
             class="absolute z-0 h-full w-full rounded-lg object-cover brightness-50"
             src="/images/media_img_2.jpg"
             alt=""
@@ -34,7 +35,8 @@
           to="/prodavnica"
           class="relative flex h-full w-full items-center rounded-lg bg-gray-800 py-6"
         >
-          <img
+          <NuxtImg
+            format="webp"
             class="absolute z-0 h-full w-full rounded-lg object-cover brightness-50"
             src="/images/media_img_1.jpg"
             alt=""

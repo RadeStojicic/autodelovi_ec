@@ -17,19 +17,23 @@
               <p class="mt-6 text-center text-lg text-gray-700">
                 Širok izbor kvalitetnih auto-delova po najpovoljnijim cenama
               </p>
-              <NuxtLink to="/prodavnica">
+              <NuxtLink class="mt-6 md:mt-8" to="/prodavnica">
                 <button
-                  class="mt-6 flex w-52 items-center justify-center gap-1 rounded bg-secondary p-3 text-gray-900 md:mt-8 md:w-40"
+                  class="flex w-52 items-center justify-center gap-1 rounded bg-secondary p-3 text-gray-900 md:w-40"
                 >
                   Prodavnica
                   <span class="icon-[prime--arrow-right] mt-[3px] text-lg" />
                 </button>
               </NuxtLink>
             </div>
-            <div
-              class="hidden items-center justify-start rounded-full sm:flex sm:h-64 sm:w-64 md:h-80 md:w-80"
-            >
-              <img src="/images/shocks.png" class="flex w-full" alt="" />
+            <div class="hidden items-center justify-start rounded-full sm:flex">
+              <NuxtImg
+                sizes="sm:256px md:320px"
+                src="/images/shocks.png"
+                format="webp"
+                class="flex w-full"
+                alt="main_image"
+              />
             </div>
           </div>
         </div>

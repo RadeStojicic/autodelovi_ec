@@ -28,7 +28,6 @@
         <div>
           <ul class="relative list-none pb-4 text-sm">
             <li
-              @click="handleExit"
               v-for="(link, index) in categories"
               :key="index"
               class="relative flex flex-col items-start justify-between border-b border-gray-200 text-gray-600"

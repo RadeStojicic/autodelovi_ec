@@ -1,12 +1,8 @@
 <template>
   <div>
-    <div class="relative z-10 flex h-auto w-full justify-center">
-      <img
-        src="/images/hero_img.jpg"
-        class="relative h-112 w-screen object-cover brightness-50 sm:h-108 md:h-100 lg:object-cover"
-        alt=""
-      />
-
+    <div
+      class="relative z-10 flex h-108 w-full justify-center bg-[#183aa1] sm:h-100"
+    >
       <form
         class="absolute top-12 mx-auto flex w-full flex-col items-center justify-center px-4 py-8 md:container sm:top-8 md:top-20 md:p-8"
       >
@@ -91,7 +87,14 @@
           >
             <NuxtLink :to="'/prodavnica/' + card.to + '/' + card.id">
               <div class="flex items-center justify-center rounded-lg p-12">
-                <img class="w-40" :src="card.image" alt="product_image" />
+                <NuxtImg
+                  width="160"
+                  height="160"
+                  quality="100"
+                  format="webp"
+                  :src="card.image"
+                  alt="product_image"
+                />
               </div>
             </NuxtLink>
             <div
@@ -366,12 +369,14 @@ const filterCards = () => {
 
 const filterBySubCategory = (name: string) => {
   filteredCards.value = cards.value.filter((card) => card.category === name);
+  sideNavFilters.value = false;
 };
 
 const filterByMainCategory = (name: string) => {
   filteredCards.value = cards.value.filter(
     (card) => card.main_category === name,
   );
+  sideNavFilters.value = false;
 };
 </script>
 

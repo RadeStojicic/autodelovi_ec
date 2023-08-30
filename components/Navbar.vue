@@ -27,16 +27,19 @@
     </div>
   </div>
   <!-- NavBottom -->
-  <div class="sticky top-0 z-50 w-full bg-primary">
+  <div class="sticky top-0 z-[50] w-full bg-primary">
     <div>
       <nav class="mx-auto px-4 md:container">
         <div class="flex items-center justify-between py-3 lg:py-0">
           <div class="flex items-center">
             <NuxtLink to="/">
               <h1
-                class="flex items-center text-2xl font-bold text-secondary sm:text-2xl"
+                class="flex items-center text-2xl font-bold text-white sm:text-2xl"
               >
-                Auto<span class="text-white">Delovi.</span>
+                <span>AutoParts</span
+                ><span
+                  class="mb-[-12px] ml-[3px] h-2 w-2 rounded-full bg-secondary text-4xl text-secondary"
+                ></span>
               </h1>
             </NuxtLink>
             <ul class="ml-20 hidden h-18 gap-2 lg:flex">
@@ -96,7 +99,7 @@
               />
               <div
                 @click="handleInput"
-                class="flex cursor-pointer items-center justify-center rounded-full transition duration-150 sm:p-2 sm:hover:bg-gray-200"
+                class="flex cursor-pointer items-center justify-center rounded-full transition duration-150 sm:p-[7px] sm:hover:bg-gray-200"
               >
                 <span
                   class="icon-[prime--search] text-4xl text-white sm:text-3xl sm:text-black"
@@ -142,8 +145,11 @@
       class="mx-auto flex w-full items-center justify-between gap-10 border-b border-gray-200 bg-primary px-4 py-3 sm:gap-10"
     >
       <NuxtLink class="hidden sm:flex" to="/">
-        <h1 class="items-center text-2xl font-bold text-secondary sm:text-2xl">
-          Auto<span class="text-white">Delovi.</span>
+        <h1 class="flex items-center text-2xl font-bold text-white sm:text-2xl">
+          <span>AutoParts</span
+          ><span
+            class="mb-[-12px] ml-[3px] h-2 w-2 rounded-full bg-secondary text-4xl text-secondary"
+          ></span>
         </h1>
       </NuxtLink>
       <label
@@ -232,8 +238,11 @@
               class="relative w-full rounded-lg border border-gray-200 bg-white"
             >
               <div class="flex items-center justify-center rounded-lg">
-                <img
-                  class="w-28 p-2 sm:w-32 md:p-0"
+                <NuxtImg
+                  format="webp"
+                  quality="100"
+                  sizes="112px sm:128px"
+                  class="md:p-0"
                   :src="card.image"
                   alt="product_image"
                 />

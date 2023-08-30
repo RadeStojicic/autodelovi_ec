@@ -15,7 +15,9 @@
         <div
           class="order-2 grid h-full w-full grid-cols-4 gap-1 p-1 py-2 lg:order-1 lg:flex lg:w-32 lg:flex-col lg:py-0"
         >
-          <img
+          <NuxtImg
+            format="webp"
+            sizes="lg:128px"
             v-for="(other_image, index) in card.other_images"
             :key="index"
             :src="other_image"
@@ -30,7 +32,10 @@
           />
         </div>
         <div class="flex w-full lg:order-2">
-          <img
+          <NuxtImg
+            width="100%"
+            height="350"
+            format="webp"
             class="h-72 w-full object-contain sm:h-72"
             :src="hero_image"
             alt="product_image"

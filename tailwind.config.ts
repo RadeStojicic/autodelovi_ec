@@ -14,12 +14,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        footerBackground: "#0e0d12",
-        footerHr: "#1c1b22",
         checkBoxColor: "rgb(59 113 202 / 1)",
         navbarText: "#878787;",
         popupBackground: "#323232",
-        primary: "#011b33",
+        primary: "#031f39",
         secondary: "#f1c607",
       },
       height: {

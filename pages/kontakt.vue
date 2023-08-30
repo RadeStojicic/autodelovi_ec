@@ -13,7 +13,10 @@
           Potrebne su vam dodatne informacije ocenama ili dostupnosti autodelova
           ? Naš tim stoji vam na raspolaganju za sva pitanja i nedoumice.
         </p>
-        <img
+        <NuxtImg
+          format="webp"
+          width="100%"
+          height="100%"
           class="mt-6 w-full rounded-md"
           src="/images/office_2.jpg"
           alt="office"

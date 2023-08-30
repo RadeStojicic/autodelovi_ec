@@ -25,6 +25,7 @@
   },
   "dependencies": {
     "@iconify-json/prime": "^1.1.5",
+    "@nuxt/image": "1.0.0-rc.1",
     "@nuxtjs/google-fonts": "^3.0.2",
     "@pinia/nuxt": "^0.4.11",
     "@prisma/client": "^5.0.0",

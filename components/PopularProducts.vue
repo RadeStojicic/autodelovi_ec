@@ -16,7 +16,13 @@
         >
           <NuxtLink :to="'/prodavnica/' + card.to + '/' + card.id">
             <div class="flex items-center justify-center rounded-lg p-12">
-              <img class="w-40" :src="card.image" alt="product_image" />
+              <NuxtImg
+                format="webp"
+                width="170"
+                height="170"
+                :src="card.image"
+                alt="product_image"
+              />
             </div>
           </NuxtLink>
           <div
