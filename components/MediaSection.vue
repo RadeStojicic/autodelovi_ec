@@ -5,15 +5,10 @@
     >
       <div class="h-full w-full">
         <NuxtLink
+          aria-label="Snizenje"
           to="/prodavnica"
           class="relative flex h-full w-full items-center rounded-lg bg-gray-800 py-6"
         >
-          <NuxtImg
-            format="webp"
-            class="absolute z-0 h-full w-full rounded-lg object-cover brightness-50"
-            src="/media_img_2.jpg"
-            alt=""
-          />
           <div class="z-10 flex flex-col justify-center p-8">
             <h1 class="w-full text-3xl font-bold text-white md:w-2/3">
               Letnje putovanje bez briga - 25% popusta na sve autodele za
@@ -23,6 +18,7 @@
               Pripremite vaš automobil za letnje avanture.
             </p>
             <NuxtLink
+              aria-label="Kupi odmah"
               class="mt-3 flex items-center gap-1 text-lg text-white md:text-base"
               to="/prodavnica"
               >Kupi odmah <span class="icon-[prime--arrow-right]"
@@ -32,15 +28,10 @@
       </div>
       <div class="h-full w-full">
         <NuxtLink
+          aria-label="Snizenje"
           to="/prodavnica"
           class="relative flex h-full w-full items-center rounded-lg bg-gray-800 py-6"
         >
-          <NuxtImg
-            format="webp"
-            class="absolute z-0 h-full w-full rounded-lg object-cover brightness-50"
-            src="/media_img_1.jpg"
-            alt=""
-          />
           <div class="z-10 flex flex-col justify-center p-8">
             <h1 class="w-full text-3xl font-bold text-white md:w-2/3">
               Vikend ludilo - 30% popusta na sve autodelove!
@@ -49,6 +40,7 @@
               Posebni popusti na sve autodelove u našoj ponudi.
             </p>
             <NuxtLink
+              aria-label="Kupi odmah"
               class="mt-3 flex items-center gap-1 text-lg text-white md:text-base"
               to="/prodavnica"
               >Kupi odmah <span class="icon-[prime--arrow-right]"

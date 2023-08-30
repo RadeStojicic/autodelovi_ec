@@ -76,12 +76,14 @@
           </div>
           <div class="mt-8 flex w-full flex-col gap-5">
             <NuxtLink
+              aria-label="Kontakt"
               class="flex w-full justify-center rounded-full bg-yellow-400 p-4 font-normal"
               to="/kontakt"
             >
-              <button>Kupi odmah</button>
+              <button aria-label="Kupi odmah">Kupi odmah</button>
             </NuxtLink>
             <button
+              aria-label="Dodaj u listu zelja"
               @click="toggleWishList(card)"
               class="flex w-full items-center justify-center gap-1 rounded-full border border-gray-300 p-4 font-normal"
             >
@@ -92,22 +94,22 @@
           </div>
           <div class="mt-6 text-2xl text-gray-600">
             <div class="flex items-center gap-2">
-              <NuxtLink to="https://instagram.com">
+              <NuxtLink aria-label="Instagram" to="https://instagram.com">
                 <div class="flex rounded-full border border-gray-300 p-1">
                   <span class="icon-[prime--instagram]" />
                 </div>
               </NuxtLink>
-              <NuxtLink to="https://facebook.com">
+              <NuxtLink aria-label="Facebook" to="https://facebook.com">
                 <div class="flex rounded-full border border-gray-300 p-1">
                   <span class="icon-[prime--facebook]" />
                 </div>
               </NuxtLink>
-              <NuxtLink to="https://twitter.com">
+              <NuxtLink aria-label="Twitter" to="https://twitter.com">
                 <div class="flex rounded-full border border-gray-300 p-1">
                   <span class="icon-[prime--twitter]" />
                 </div>
               </NuxtLink>
-              <NuxtLink to="https://linkedin.com">
+              <NuxtLink aria-label="LinkedIn" to="https://linkedin.com">
                 <div class="flex rounded-full border border-gray-300 p-1">
                   <span class="icon-[prime--linkedin]" />
                 </div>
@@ -120,6 +122,7 @@
     <div class="mb-20 mt-10 w-full lg:px-10">
       <div class="flex w-full items-center gap-8 border-b pb-4">
         <button
+          aria-label="O proizvodu"
           @click="toggleDescription"
           :class="showDescription === true ? 'text-black ' : ' text-gray-400'"
           class="text-lg"
@@ -127,6 +130,7 @@
           O proizvodu
         </button>
         <button
+          aria-label="Dodatne informacije"
           @click="toggleAdditionalInfo"
           :class="showAdditionInfo === true ? 'text-black ' : ' text-gray-400'"
           class="text-lg"

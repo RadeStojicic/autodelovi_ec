@@ -7,6 +7,7 @@
         <h1 class="text-3xl font-bold sm:text-2xl">Proizvodi u ponudi</h1>
         <div class="flex items-center gap-2 pb-1 pt-3 sm:pb-0 sm:pt-0">
           <button
+            aria-label="Popularni"
             @click="handleFilter('popular')"
             class="rounded-lg px-6 py-3 text-gray-900 sm:text-sm"
             :class="
@@ -16,6 +17,7 @@
             Popularni
           </button>
           <button
+            aria-label="Preporuceni"
             @click="handleFilter('feautured')"
             class="rounded-lg border border-gray-200 bg-gray-50 px-6 py-3 transition duration-300 hover:bg-secondary sm:text-sm"
             :class="
@@ -25,6 +27,7 @@
             Preporučeni
           </button>
           <button
+            aria-label="Novi"
             @click="handleFilter('new')"
             class="rounded-lg border border-gray-200 bg-gray-50 px-6 py-3 transition duration-300 hover:bg-secondary sm:text-sm"
             :class="selectedType === 'new' ? 'bg-secondary ' : ' bg-gray-50'"
@@ -41,7 +44,10 @@
           v-for="(card, index) in filteredCards"
           :key="index"
         >
-          <NuxtLink :to="'/prodavnica/' + card.to + '/' + card.id">
+          <NuxtLink
+            aria-label="Proizvod"
+            :to="'/prodavnica/' + card.to + '/' + card.id"
+          >
             <div class="flex items-center justify-center rounded-lg p-12">
               <NuxtImg
                 :src="card.image"
@@ -100,7 +106,7 @@
                   Ušteda: {{ card.oldPrice - card.newPrice }} RSD
                 </p>
               </div>
-              <NuxtLink to="/kontakt">
+              <NuxtLink aria-label="Kontakt" to="/kontakt">
                 <div
                   class="flex items-center justify-center rounded-full bg-secondary p-[10px]"
                 >

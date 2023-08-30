@@ -18,15 +18,17 @@
         <div
           class="flex w-full flex-col justify-end gap-4 sm:flex-row sm:justify-center md:flex-row lg:justify-end lg:gap-4"
         >
-          <NuxtLink class="w-full md:w-auto" to="/kontakt">
+          <NuxtLink aria-label="Kontakt" class="w-full md:w-auto" to="/kontakt">
             <button
+              aria-label="Kontaktirajte nas"
               class="w-full rounded-lg border-2 border-white bg-transparent bg-white px-4 py-3 text-gray-800 hover:bg-transparent hover:text-white hover:duration-300 focus:select-none md:mt-6"
             >
               Kontaktirajte nas
             </button>
           </NuxtLink>
-          <NuxtLink class="w-full md:w-auto" to="/pitanja">
+          <NuxtLink aria-label="Pitanja" class="w-full md:w-auto" to="/pitanja">
             <button
+              aria-label="Najcesca pitanja"
               class="w-full rounded-lg border-2 border-white bg-transparent px-4 py-3 text-white hover:bg-white hover:text-gray-800 hover:duration-300 focus:select-none md:mt-6"
             >
               Najčešća pitanja

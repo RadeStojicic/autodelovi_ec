@@ -7,11 +7,15 @@
         <div
           class="flex items-center border-b border-gray-200 bg-gray-50 px-4 py-4 text-sm text-gray-500"
         >
-          <NuxtLink class="text-black/80" to="/">Početna</NuxtLink>
+          <NuxtLink aria-label="Pocetna" class="text-black/80" to="/"
+            >Početna</NuxtLink
+          >
           <span
             class="icon-[prime--chevron-right] mt-[3px] text-lg text-gray-500"
           />
-          <NuxtLink to="/prodavnica">Prodavnica</NuxtLink>
+          <NuxtLink aria-label="Prodavnica" to="/prodavnica"
+            >Prodavnica</NuxtLink
+          >
         </div>
         <div class="border-b border-gray-200">
           <h1 class="px-4 py-6 text-xl font-semibold">Kategorije</h1>
@@ -28,6 +32,7 @@
                 :class="{ 'border-b border-gray-200': link.showMore }"
               >
                 <NuxtLink
+                  aria-label="Link kategorije"
                   :to="'prodavnica' + link.to"
                   @click="$emit('filterByMainCategory', link.title)"
                   class="sidenav cursor-pointer text-sm font-semibold text-black"

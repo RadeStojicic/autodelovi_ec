@@ -120,6 +120,7 @@
               ></textarea>
             </div>
             <button
+              aria-label="Posalji"
               @click.prevent="sendMail"
               class="focus mt-3 w-1/2 cursor-pointer rounded-md bg-secondary py-3 sm:w-1/3"
             >

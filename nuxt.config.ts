@@ -8,7 +8,23 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "@nuxt/image",
   ],
-
+  app: {
+    head: {
+      title: "AutoParts - Prodaja autodelova",
+      charset: "utf-8",
+      viewport: "width=device-width, initial-scale=1",
+      htmlAttrs: {
+        lang: "en",
+      },
+      meta: [
+        {
+          name: "description",
+          content:
+            "Naša platforma nudi korisnički prijateljsko iskustvo koje vam omogućava laku pretragu i pronalaženje željenih delova..",
+        },
+      ],
+    },
+  },
   nitro: {
     preset: "vercel-edge",
   },

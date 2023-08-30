@@ -18,8 +18,10 @@
         <div>
           <ul>
             <li class="flex items-center gap-2 text-sm">
-              <NuxtLink to="/podrska">Podrška</NuxtLink>
-              <NuxtLink to="/prodavnica">Prodavnica</NuxtLink>
+              <NuxtLink aria-label="Podrska" to="/podrska">Podrška</NuxtLink>
+              <NuxtLink aria-label="Prodavnica" to="/prodavnica"
+                >Prodavnica</NuxtLink
+              >
             </li>
           </ul>
         </div>
@@ -32,7 +34,7 @@
       <nav class="mx-auto px-4 md:container">
         <div class="flex items-center justify-between py-3 lg:py-0">
           <div class="flex items-center">
-            <NuxtLink to="/">
+            <NuxtLink aria-label="Logo" to="/">
               <h1
                 class="flex items-center text-2xl font-bold text-white sm:text-2xl"
               >
@@ -60,7 +62,7 @@
                       v-for="(category, subIndex) in link.categories"
                       :key="subIndex"
                     >
-                      <NuxtLink>
+                      <NuxtLink aria-label="Navbar link">
                         <p
                           class="mb-4 py-1 font-semibold text-gray-700 hover:bg-gray-50"
                         >
@@ -110,7 +112,7 @@
             <div
               class="flex items-center justify-between gap-0 sm:gap-1 lg:ml-1"
             >
-              <NuxtLink to="/lista-zelja">
+              <NuxtLink aria-label="Lista zelja" to="/lista-zelja">
                 <div class="relative ml-1 p-1 sm:ml-0">
                   <span
                     class="icon-[prime--heart] relative block bg-white text-4xl sm:text-3xl lg:block"
@@ -144,7 +146,7 @@
     <div
       class="mx-auto flex w-full items-center justify-between gap-10 border-b border-gray-200 bg-primary px-4 py-3 sm:gap-10"
     >
-      <NuxtLink class="hidden sm:flex" to="/">
+      <NuxtLink aria-label="Logo" class="hidden sm:flex" to="/">
         <h1 class="flex items-center text-2xl font-bold text-white sm:text-2xl">
           <span>AutoParts</span
           ><span
@@ -165,6 +167,7 @@
           v-focus
         />
         <NuxtLink
+          aria-label="Pretraga"
           class="rounded-full p-2 transition duration-150 hover:bg-gray-200"
           :to="'/prodavnica' + '/' + searchInput"
         >
@@ -196,7 +199,7 @@
           v-for="(link, index) in popularSearches"
           :key="index"
         >
-          <NuxtLink class="hover:text-gray-600" :to="link.to"
+          <NuxtLink aria-label="Link" class="hover:text-gray-600" :to="link.to"
             >{{ link.names }}
           </NuxtLink>
           <hr />
@@ -215,6 +218,7 @@
           :key="index"
         >
           <NuxtLink
+            aria-label="Link"
             class="cursor-pointer hover:text-gray-600"
             :to="'/prodavnica' + link.to"
             @mouseover="filterCardsByText(link.names)"
@@ -229,6 +233,7 @@
           class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-2 md:mt-0 lg:grid-cols-4"
         >
           <NuxtLink
+            aria-label="Proizvod"
             @click="handleExit"
             v-for="(card, index) in filteredCards"
             :key="index"

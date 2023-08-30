@@ -17,8 +17,13 @@
               <p class="mt-6 text-center text-lg text-gray-700">
                 Širok izbor kvalitetnih auto-delova po najpovoljnijim cenama
               </p>
-              <NuxtLink class="mt-6 md:mt-8" to="/prodavnica">
+              <NuxtLink
+                aria-label="Prodavnica"
+                class="mt-6 md:mt-8"
+                to="/prodavnica"
+              >
                 <button
+                  aria-label="Prodavnica"
                   class="flex w-52 items-center justify-center gap-1 rounded bg-secondary p-3 text-gray-900 md:w-40"
                 >
                   Prodavnica

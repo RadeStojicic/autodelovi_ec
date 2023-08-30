@@ -35,6 +35,7 @@
             @update:model="applyFilters(index)"
           ></selection-button>
           <button
+            aria-label="Pretrazi"
             :class="{ 'brightness-90': buttonDisabled }"
             @click.prevent="filterCards"
             class="mt-4 flex w-52 items-center justify-center gap-1 rounded bg-secondary p-3 text-gray-900 md:mt-0 md:w-40"
@@ -67,6 +68,7 @@
           </div>
           <div class="mt-4 w-full lg:hidden">
             <button
+              aria-label="Filteri"
               @click="handleSideFilters"
               class="flex w-44 items-center justify-between rounded-lg border border-gray-200 bg-gray-100 px-4 py-3"
             >
@@ -85,7 +87,10 @@
             v-for="(card, index) in filteredCards"
             :key="index"
           >
-            <NuxtLink :to="'/prodavnica/' + card.to + '/' + card.id">
+            <NuxtLink
+              aria-label="Proizvod"
+              :to="'/prodavnica/' + card.to + '/' + card.id"
+            >
               <div class="flex items-center justify-center rounded-lg p-12">
                 <NuxtImg
                   width="160"
@@ -144,7 +149,7 @@
                     Ušteda: {{ card.oldPrice - card.newPrice }} RSD
                   </p>
                 </div>
-                <NuxtLink to="/kontakt">
+                <NuxtLink aria-label="Kontakt" to="/kontakt">
                   <div
                     class="flex items-center justify-center rounded-full bg-secondary p-[10px]"
                   >

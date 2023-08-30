@@ -7,6 +7,7 @@
       <ul class="relative m-0 mt-4 list-none">
         <li @click="openSidenav" class="relative">
           <NuxtLink
+            aria-label="Pocetna"
             to="/"
             class="flex h-12 cursor-pointer items-center px-6 py-4 text-gray-600"
           >
@@ -16,6 +17,7 @@
         <li class="relative">
           <NuxtLink
             @click="showMore = !showMore"
+            aria-label="Prodavnica"
             class="flex h-12 cursor-pointer items-center px-6 py-4 text-gray-600"
             to="/prodavnica"
           >
@@ -43,6 +45,7 @@
               class="relative"
             >
               <NuxtLink
+                aria-label="Link"
                 class="flex h-6 cursor-pointer items-center py-6 pl-8 pr-6 text-gray-600"
                 v-for="(sublink, subIndex) in link.categories"
                 :key="subIndex"
@@ -54,6 +57,7 @@
         </li>
         <li @click="openSidenav" class="relative">
           <NuxtLink
+            aria-label="Novosti"
             to="/novosti"
             class="flex h-12 cursor-pointer items-center px-6 py-4 text-gray-600"
           >
@@ -62,6 +66,7 @@
         </li>
         <li @click="openSidenav" class="relative">
           <NuxtLink
+            aria-label="Kontakt"
             to="/kontakt"
             class="flex h-12 cursor-pointer items-center px-6 py-4 text-gray-600"
           >
@@ -74,6 +79,7 @@
         class="mt-6 flex flex-col items-start justify-center gap-1 px-4 py-2"
       >
         <button
+          aria-label="Kontakt"
           class="h-12 w-full rounded-lg bg-secondary font-semibold text-white"
         >
           Kontakt
@@ -97,6 +103,7 @@
     </nav>
 
     <button
+      aria-label="Navbar"
       @click="openSidenav"
       class="ml-1 flex w-full items-center justify-center lg:hidden"
     >

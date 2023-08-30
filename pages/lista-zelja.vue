@@ -15,7 +15,10 @@
             v-for="(card, index) in wishList"
             :key="index"
           >
-            <NuxtLink :to="'/prodavnica/' + card.to + '/' + card.id">
+            <NuxtLink
+              aria-label="Proizvod"
+              :to="'/prodavnica/' + card.to + '/' + card.id"
+            >
               <div class="flex items-center justify-center rounded-lg p-12">
                 <NuxtImg
                   :src="card.image"
@@ -74,7 +77,7 @@
                     Ušteda: {{ card.oldPrice - card.newPrice }} RSD
                   </p>
                 </div>
-                <NuxtLink to="/kontakt">
+                <NuxtLink aria-label="Kontakt" to="/kontakt">
                   <div
                     class="flex items-center justify-center rounded-full bg-secondary p-2"
                   >
