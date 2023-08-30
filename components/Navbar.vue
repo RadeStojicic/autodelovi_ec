@@ -1,46 +1,49 @@
 <template>
   <!-- NavTop -->
-  <div class="bg-yellow-400 py-2 text-black">
-    <div
-      class="mx-auto flex items-center justify-between bg-yellow-400 px-4 md:container"
-    >
-      <div class="flex items-center justify-start">
-        <span class="icon-[prime--phone]" />
-        <p class="text-sm md:text-xs">+381 6442786</p>
-      </div>
-      <div>
-        <p class="hidden text-sm md:block md:text-xs">
-          50% Popusta Na Odredjene Artikle
-        </p>
-      </div>
-      <div>
-        <ul>
-          <li class="flex items-center gap-2 text-sm md:text-xs">
-            <NuxtLink to="/podrska">Podrška</NuxtLink>
-            <NuxtLink to="/prodavnica">Prodavnica</NuxtLink>
-          </li>
-        </ul>
+  <div class="bg-primary pt-4 text-white">
+    <div class="mx-auto px-4 md:container">
+      <div
+        class="flex items-center justify-between border-b border-gray-700 pb-3"
+      >
+        <div class="flex items-center gap-4 text-sm md:text-xs">
+          <div class="flex items-center justify-start gap-[2px]">
+            <span class="icon-[prime--phone] text-lg" />
+            <p class="text-sm">+381 6442786</p>
+          </div>
+          <div class="hidden items-center justify-start gap-[2px] md:flex">
+            <span class="icon-[prime--envelope] text-lg" />
+            <p class="text-sm">radestojicicsd@gmail.com</p>
+          </div>
+        </div>
+        <div>
+          <ul>
+            <li class="flex items-center gap-2 text-sm">
+              <NuxtLink to="/podrska">Podrška</NuxtLink>
+              <NuxtLink to="/prodavnica">Prodavnica</NuxtLink>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
   <!-- NavBottom -->
-  <div class="sticky top-0 z-50 w-full">
-    <div class="border-b border-gray-200 bg-white">
+  <div class="sticky top-0 z-50 w-full bg-primary">
+    <div>
       <nav class="mx-auto px-4 md:container">
         <div class="flex items-center justify-between py-3 lg:py-0">
           <div class="flex items-center">
             <NuxtLink to="/">
               <h1
-                class="flex items-center text-2xl font-bold text-black sm:text-xl"
+                class="flex items-center text-2xl font-bold text-secondary sm:text-2xl"
               >
-                Car<span class="text-yellow-400">Gear.</span>
+                Auto<span class="text-white">Delovi.</span>
               </h1>
             </NuxtLink>
-            <ul class="ml-24 hidden h-18 gap-2 lg:flex">
+            <ul class="ml-20 hidden h-18 gap-2 lg:flex">
               <li
                 v-for="(link, index) in navLinks"
                 :key="index"
-                class="group flex items-center py-0 text-sm text-navbarText hover:border-b-2 hover:border-yellow-400 lg:py-6"
+                class="group flex items-center py-0 text-sm text-gray-300 hover:border-b-2 hover:border-secondary lg:py-6"
               >
                 <MyLink class="p-2 lg:py-6" :to="link.to">
                   {{ link.names }}
@@ -96,7 +99,7 @@
                 class="flex cursor-pointer items-center justify-center rounded-full transition duration-150 sm:p-2 sm:hover:bg-gray-200"
               >
                 <span
-                  class="icon-[prime--search] text-4xl sm:text-3xl"
+                  class="icon-[prime--search] text-4xl text-white sm:text-3xl sm:text-black"
                   aria-hidden="true"
                 />
               </div>
@@ -107,11 +110,11 @@
               <NuxtLink to="/lista-zelja">
                 <div class="relative ml-1 p-1 sm:ml-0">
                   <span
-                    class="icon-[prime--heart] relative block text-4xl sm:text-3xl lg:block"
+                    class="icon-[prime--heart] relative block bg-white text-4xl sm:text-3xl lg:block"
                     aria-hidden="true"
                   />
                   <span
-                    class="absolute right-[2px] top-[2px] flex h-4 w-4 items-center justify-center rounded-full bg-yellow-400 p-2 text-xs sm:right-0 sm:top-0"
+                    class="absolute right-[2px] top-[2px] flex h-4 w-4 items-center justify-center rounded-full bg-secondary p-2 text-xs sm:right-0 sm:top-0"
                   >
                     {{ wishList.length }}
                   </span>
@@ -119,7 +122,7 @@
               </NuxtLink>
 
               <span
-                class="icon-[prime--shopping-bag] hidden text-3xl lg:block"
+                class="icon-[prime--shopping-bag] hidden bg-white text-3xl lg:block"
                 aria-hidden="true"
               />
               <responsive-nav :navLinks="navLinks"></responsive-nav>
@@ -136,13 +139,15 @@
     v-if="searchArea"
   >
     <div
-      class="container mx-auto flex w-full items-center justify-between gap-10 border-b border-gray-200 bg-white px-4 py-3"
+      class="mx-auto flex w-full items-center justify-between gap-10 border-b border-gray-200 bg-primary px-4 py-3 sm:gap-10"
     >
-      <h1 class="hidden items-center text-xl font-bold text-black lg:flex">
-        Car<span class="text-yellow-400">Gear.</span>
-      </h1>
+      <NuxtLink class="hidden sm:flex" to="/">
+        <h1 class="items-center text-2xl font-bold text-secondary sm:text-2xl">
+          Auto<span class="text-white">Delovi.</span>
+        </h1>
+      </NuxtLink>
       <label
-        class="4 relative flex w-full rounded-full bg-gray-100 lg:w-1/2"
+        class="relative flex w-full rounded-full bg-gray-100 lg:w-1/2"
         for="search"
       >
         <input
@@ -167,7 +172,7 @@
       </label>
       <p
         @click="handleExit"
-        class="cursor-pointer py-1 text-lg hover:text-gray-600 lg:text-base"
+        class="cursor-pointer py-1 text-lg text-white hover:text-gray-200 lg:text-base"
       >
         Izadji
       </p>
@@ -212,10 +217,10 @@
           <hr />
         </li>
       </ul>
-      <div class="w-full">
+      <div class="w-full pb-6">
         <h1 class="text-md mb-3 text-gray-600 md:text-sm">Proizvodi</h1>
         <div
-          class="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-2 md:mt-0 lg:grid-cols-4"
+          class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-2 md:mt-0 lg:grid-cols-4"
         >
           <NuxtLink
             @click="handleExit"
@@ -228,7 +233,7 @@
             >
               <div class="flex items-center justify-center rounded-lg">
                 <img
-                  class="w-32 p-2 md:p-0"
+                  class="w-28 p-2 sm:w-32 md:p-0"
                   :src="card.image"
                   alt="product_image"
                 />
@@ -238,7 +243,7 @@
                 class="mt-4 flex flex-col items-start justify-start px-4 pb-4"
               >
                 <p class="mt-1 text-xs text-gray-400">{{ card.category }}</p>
-                <h1 class="text-xs font-bold text-gray-900">
+                <h1 class="mt-[2px] text-xs font-bold text-gray-900">
                   {{ card.title }}
                 </h1>
                 <div class="mt-2">
@@ -255,7 +260,7 @@
   </div>
   <div
     v-if="searchArea"
-    class="h-gray fixed z-[99] h-screen w-full bg-black/10 backdrop-blur-sm"
+    class="h-gray fixed z-[99] h-screen w-full bg-black/30 backdrop-blur-sm"
   ></div>
 </template>
 

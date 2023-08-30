@@ -19,6 +19,8 @@ module.exports = {
         checkBoxColor: "rgb(59 113 202 / 1)",
         navbarText: "#878787;",
         popupBackground: "#323232",
+        primary: "#011b33",
+        secondary: "#f1c607",
       },
       height: {
         18: "4.5rem",

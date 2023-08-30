@@ -1,7 +1,7 @@
 <template>
   <div
     ref="filtersRef"
-    class="fixed top-0 z-[80] h-screen w-96 select-none overflow-y-auto border border-gray-200 bg-white text-black lg:hidden"
+    class="scrollbar fixed top-0 z-[80] h-screen w-5/6 select-none overflow-y-auto border border-gray-200 bg-white text-black lg:hidden"
     v-if="sideNavFilters"
   >
     <div class="flex items-center justify-between border-b p-4 lg:hidden">
@@ -28,6 +28,7 @@
         <div>
           <ul class="relative list-none pb-4 text-sm">
             <li
+              @click="handleExit"
               v-for="(link, index) in categories"
               :key="index"
               class="relative flex flex-col items-start justify-between border-b border-gray-200 text-gray-600"

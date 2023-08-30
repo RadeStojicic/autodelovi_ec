@@ -19,7 +19,7 @@
               </p>
               <NuxtLink to="/prodavnica">
                 <button
-                  class="mt-6 flex w-52 items-center justify-center gap-1 rounded bg-yellow-400 p-3 text-gray-900 md:mt-8 md:w-40"
+                  class="mt-6 flex w-52 items-center justify-center gap-1 rounded bg-secondary p-3 text-gray-900 md:mt-8 md:w-40"
                 >
                   Prodavnica
                   <span class="icon-[prime--arrow-right] mt-[3px] text-lg" />

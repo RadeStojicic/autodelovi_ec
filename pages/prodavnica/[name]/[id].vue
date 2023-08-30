@@ -21,7 +21,12 @@
             :src="other_image"
             alt="product_images"
             @mouseover="changeImage(other_image)"
-            class="cursor-pointer sm:p-4"
+            class="cursor-pointer sm:p-1"
+            :class="
+              hero_image === other_image
+                ? 'border-b-2 border-secondary sm:border-b-0 sm:border-l-2'
+                : ''
+            "
           />
         </div>
         <div class="flex w-full lg:order-2">

@@ -69,7 +69,7 @@
                 </div>
                 <NuxtLink to="/kontakt">
                   <div
-                    class="flex items-center justify-center rounded-full bg-yellow-400 p-2"
+                    class="flex items-center justify-center rounded-full bg-secondary p-2"
                   >
                     <span
                       class="icon-[prime--shopping-cart] text-3xl text-white"

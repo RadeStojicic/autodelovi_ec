@@ -10,24 +10,24 @@
             @click="handleFilter('popular')"
             class="rounded-lg px-6 py-3 text-gray-900 sm:text-sm"
             :class="
-              selectedType === 'popular' ? 'bg-yellow-400 ' : ' bg-gray-50'
+              selectedType === 'popular' ? 'bg-secondary ' : ' bg-gray-50'
             "
           >
             Popularni
           </button>
           <button
             @click="handleFilter('feautured')"
-            class="rounded-lg border border-gray-200 bg-gray-50 px-6 py-3 transition duration-300 hover:bg-yellow-400 sm:text-sm"
+            class="rounded-lg border border-gray-200 bg-gray-50 px-6 py-3 transition duration-300 hover:bg-secondary sm:text-sm"
             :class="
-              selectedType === 'feautured' ? 'bg-yellow-400 ' : ' bg-gray-50'
+              selectedType === 'feautured' ? 'bg-secondary ' : ' bg-gray-50'
             "
           >
             Preporučeni
           </button>
           <button
             @click="handleFilter('new')"
-            class="rounded-lg border border-gray-200 bg-gray-50 px-6 py-3 transition duration-300 hover:bg-yellow-400 sm:text-sm"
-            :class="selectedType === 'new' ? 'bg-yellow-400 ' : ' bg-gray-50'"
+            class="rounded-lg border border-gray-200 bg-gray-50 px-6 py-3 transition duration-300 hover:bg-secondary sm:text-sm"
+            :class="selectedType === 'new' ? 'bg-secondary ' : ' bg-gray-50'"
           >
             Novi
           </button>
@@ -95,10 +95,10 @@
               </div>
               <NuxtLink to="/kontakt">
                 <div
-                  class="flex items-center justify-center rounded-full bg-yellow-400 p-2"
+                  class="flex items-center justify-center rounded-full bg-secondary p-[10px]"
                 >
                   <span
-                    class="icon-[prime--shopping-cart] text-3xl text-white"
+                    class="icon-[prime--shopping-cart] text-3xl text-gray-900"
                   />
                 </div>
               </NuxtLink>

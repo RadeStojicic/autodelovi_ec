@@ -2,7 +2,7 @@
   <div ref="sidenavRef">
     <nav
       v-if="toggleSideNav"
-      class="scrollbar absolute left-0 top-[62px] z-50 h-screen max-h-screen w-80 select-none overflow-y-auto border-r border-t border-gray-200 bg-white pb-28 lg:hidden"
+      class="scrollbar absolute right-0 top-[68px] z-50 h-screen max-h-screen w-5/6 select-none overflow-y-auto border-r border-t border-gray-200 bg-white pb-28 lg:hidden"
     >
       <ul class="relative m-0 mt-4 list-none">
         <li @click="openSidenav" class="relative">
@@ -74,7 +74,7 @@
         class="mt-6 flex flex-col items-start justify-center gap-1 px-4 py-2"
       >
         <button
-          class="h-12 w-full rounded-lg bg-yellow-400 font-semibold text-white"
+          class="h-12 w-full rounded-lg bg-secondary font-semibold text-white"
         >
           Kontakt
         </button>
@@ -100,12 +100,12 @@
       @click="openSidenav"
       class="ml-1 flex w-full items-center justify-center lg:hidden"
     >
-      <span class="icon-[prime--bars] text-[2.5em]" />
+      <span class="icon-[prime--bars] text-[2.5em] text-white" />
     </button>
   </div>
   <div
     v-if="toggleSideNav"
-    class="absolute left-0 top-[62px] z-10 h-screen w-full bg-black/10 backdrop-blur-sm"
+    class="absolute left-0 top-[68px] z-10 h-screen w-full bg-black/50"
   ></div>
 </template>
 

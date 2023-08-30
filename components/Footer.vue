@@ -1,5 +1,5 @@
 <template>
-  <footer class="absolute h-auto w-full bg-footerBackground pb-2 pt-4">
+  <footer class="absolute h-auto w-full bg-primary pb-2 pt-4">
     <div
       class="mx-auto flex h-full flex-col items-center justify-center gap-8 px-4 py-8 text-white md:container"
     >
@@ -69,7 +69,7 @@
           </div>
         </div>
       </div>
-      <div class="w-full border-t border-footerHr text-sm">
+      <div class="w-full border-t border-gray-700 text-sm">
         <div class="mt-8 flex items-start justify-between">
           <p class="text-gray-300">© 2023. Sva prava zadržana.</p>
 

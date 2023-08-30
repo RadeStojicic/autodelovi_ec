@@ -41,7 +41,7 @@
           <button
             :class="{ 'brightness-90': buttonDisabled }"
             @click.prevent="filterCards"
-            class="mt-4 flex w-52 items-center justify-center gap-1 rounded bg-yellow-500 p-3 text-gray-900 md:mt-0 md:w-40"
+            class="mt-4 flex w-52 items-center justify-center gap-1 rounded bg-secondary p-3 text-gray-900 md:mt-0 md:w-40"
           >
             <span class="icon-[prime--search] text-lg" />
             Pretraži
@@ -143,10 +143,10 @@
                 </div>
                 <NuxtLink to="/kontakt">
                   <div
-                    class="flex items-center justify-center rounded-full bg-yellow-400 p-2"
+                    class="flex items-center justify-center rounded-full bg-secondary p-[10px]"
                   >
                     <span
-                      class="icon-[prime--shopping-cart] text-3xl text-white"
+                      class="icon-[prime--shopping-cart] text-3xl text-gray-900"
                     />
                   </div>
                 </NuxtLink>
@@ -282,6 +282,7 @@ const sideNavFilters = ref(false);
 
 const handleSideFilters = () => {
   sideNavFilters.value = !sideNavFilters.value;
+  document.body.style.overflow = sideNavFilters.value ? "hidden" : "";
 };
 const carFilters = ref<string[]>(["", "", ""]);
 const searchText = ref<string[]>(["", "", ""]);
