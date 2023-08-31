@@ -90,9 +90,9 @@
           </div>
 
           <div class="z-50 flex items-center justify-end">
-            <label class="flex rounded-full sm:bg-gray-100" for="search">
+            <label class="flex rounded-full sm:bg-[#294b6b]" for="search">
               <input
-                class="ml-2 hidden w-64 rounded-full bg-gray-100 px-2 text-sm focus:outline-none sm:block"
+                class="placeholder:line ml-2 hidden w-64 rounded-full bg-[#294b6b] px-2 text-sm text-white placeholder:text-white focus:outline-none sm:block"
                 type="text"
                 placeholder="Pretraži..."
                 v-model="searchInput"
@@ -104,7 +104,7 @@
                 class="flex cursor-pointer items-center justify-center rounded-full transition duration-150 sm:p-[7px] sm:hover:bg-gray-200"
               >
                 <span
-                  class="icon-[prime--search] text-4xl text-white sm:text-3xl sm:text-black"
+                  class="icon-[prime--search] text-4xl text-white sm:text-3xl"
                   aria-hidden="true"
                 />
               </div>
@@ -274,12 +274,12 @@
   </div>
   <div
     v-if="searchArea"
+    @click="handleExit"
     class="h-gray fixed z-[99] h-screen w-full bg-black/30 backdrop-blur-sm"
   ></div>
 </template>
 
 <script setup lang="ts">
-import { onClickOutside } from "@vueuse/core";
 import { CarPart } from "../types/cardType";
 import { useProductStore } from "../store/product";
 import { useLinkStore } from "../store/navlinks";
@@ -322,7 +322,6 @@ const suggestedLinks = [
 const searchArea = ref(false);
 const searchInput = ref("");
 const searchRef = ref(null);
-onClickOutside(searchRef, () => handleExit());
 const vFocus = {
   mounted: (el: any) => el.focus(),
 };

@@ -112,20 +112,15 @@
   </div>
   <div
     v-if="toggleSideNav"
+    @click="openSidenav"
     class="absolute left-0 top-[68px] z-10 h-screen w-full bg-black/50"
   ></div>
 </template>
 
 <script setup lang="ts">
-import { onClickOutside } from "@vueuse/core";
-
 const toggleSideNav = ref(false);
 const showMore = ref(false);
 const sidenavRef = ref(null);
-onClickOutside(sidenavRef, () => {
-  document.body.style.overflow = "";
-  toggleSideNav.value = false;
-});
 
 const openSidenav = () => {
   toggleSideNav.value = !toggleSideNav.value;

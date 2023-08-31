@@ -12,8 +12,8 @@ export const useProductStore = defineStore("product", () => {
       oldPrice: 2199,
       newPrice: 1599,
       mark: "BMW",
-      model: "X4",
-      year: "2005",
+      model: "X4, i8",
+      year: "2004",
       type: "popular",
       aboutProduct:
         "Mobil - 150236 - Ulje za motor (hemijski proizvodi) je visokokvalitetno ulje namijenjeno za podmazivanje i zaštitu motora vozila. Ovaj hemijski proizvod je posebno formuliran da pruži optimalnu zaštitu i performans.",

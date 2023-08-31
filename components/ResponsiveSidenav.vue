@@ -1,6 +1,5 @@
 <template>
   <div
-    ref="filtersRef"
     class="scrollbar fixed top-0 z-[80] h-screen w-5/6 select-none overflow-y-auto border border-gray-200 bg-white text-black lg:hidden"
     v-if="sideNavFilters"
   >
@@ -82,12 +81,12 @@
 
   <div
     v-if="sideNavFilters"
+    @click="handleExit"
     class="fixed top-0 z-[60] h-screen w-full bg-black/40 lg:hidden"
   ></div>
 </template>
 
 <script setup lang="ts">
-import { onClickOutside } from "@vueuse/core";
 import { useLinkStore } from "../store/navlinks";
 import { useProductStore } from "../store/product";
 import { storeToRefs } from "pinia";
@@ -109,8 +108,6 @@ defineProps({
 
 const filtersRef = ref(null);
 const emit = defineEmits(["handleSideFilters"]);
-
-onClickOutside(filtersRef, () => emit("handleSideFilters"));
 
 const handleExit = () => {
   emit("handleSideFilters");

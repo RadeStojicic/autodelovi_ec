@@ -124,7 +124,7 @@
               @click.prevent="sendMail"
               class="focus mt-3 w-1/2 cursor-pointer rounded-md bg-secondary py-3 sm:w-1/3"
             >
-              <p class="flex w-full items-center justify-center text-white">
+              <p class="flex w-full items-center justify-center text-gray-900">
                 Posalji
                 <span
                   class="icon-[prime--arrow-up-right] ml-[2px] mt-[3px] text-lg"

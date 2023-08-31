@@ -1,6 +1,7 @@
 <template>
   <div class="bg-gray-100">
     <Main />
+    <Kategorije class="hidden sm:flex" />
     <AddInfo />
     <Products />
     <MediaSection />

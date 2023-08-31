@@ -86,7 +86,7 @@
         <div>
           <h1 class="text-lg font-bold">Korisnička podrška</h1>
           <div class="mt-3">
-            <ul class="flex flex-col gap-1 text-gray-400">
+            <ul class="flex flex-col gap-1 text-sm text-gray-400">
               <li><NuxtLink to="/pomoc" aria-label="Pomoc">Pomoć</NuxtLink></li>
               <li>
                 <NuxtLink to="/isporuka" aria-label="Isporuka"

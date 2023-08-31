@@ -10,6 +10,7 @@ export const useLinkStore = defineStore("links", () => {
         {
           title: "Motor i Pogon",
           to: "/motor-i-pogon",
+          category_image: "/shocks.png",
           showMore: true,
           sublinks: [
             { names: "Motorne komponente", to: "/motorne-komponente" },
@@ -22,6 +23,7 @@ export const useLinkStore = defineStore("links", () => {
         {
           title: "Elektrika i Elektronika",
           to: "/elektrika-i-elektronika",
+          category_image: "/shocks.png",
           showMore: false,
           sublinks: [
             { names: "Akumulatori", to: "/akumulatori" },
@@ -35,6 +37,7 @@ export const useLinkStore = defineStore("links", () => {
         {
           title: "Osvetljenje i Signalizacija",
           to: "/osvetljenje-i-signalizacija",
+          category_image: "/shocks.png",
           showMore: false,
           sublinks: [
             { names: "Farovi i sijalice", to: "/farovi-i-sijalice" },
@@ -56,6 +59,7 @@ export const useLinkStore = defineStore("links", () => {
         {
           title: "Karoserija i Enterijer",
           to: "/karoserija-i-enterijer",
+          category_image: "/shocks.png",
           showMore: false,
           sublinks: [
             { names: "Spoljna ogledala", to: "/spoljna-ogledala" },
@@ -71,6 +75,7 @@ export const useLinkStore = defineStore("links", () => {
         {
           title: "Pneumatici",
           to: "/pneumatici",
+          category_image: "/shocks.png",
           showMore: false,
           sublinks: [
             { names: "Zimske i letnje gume", to: "/zimske-i-letnje-gume" },
