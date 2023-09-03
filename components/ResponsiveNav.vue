@@ -6,7 +6,7 @@
         class="scrollbar fixed right-0 top-[0] z-50 h-full w-[85%] select-none overflow-y-auto border-r border-t border-gray-200 bg-white sm:w-4/5 lg:hidden"
       >
         <div class="relative h-auto">
-          <div class="mx-6 flex items-start justify-between border-b pb-2 pt-3">
+          <div class="mx-5 flex items-start justify-between border-b pb-4 pt-5">
             <h1 class="text-2xl font-[700]">Meni</h1>
             <span
               @click="openSidenav"
@@ -18,14 +18,14 @@
               <NuxtLink
                 aria-label="Pocetna"
                 to="/"
-                class="flex h-12 cursor-pointer items-center px-6 py-4 text-gray-600"
+                class="flex h-12 cursor-pointer items-center px-5 py-4 text-gray-600"
               >
                 <span>Početna</span>
               </NuxtLink>
             </li>
             <li class="relative">
               <div
-                class="flex h-12 cursor-pointer items-center justify-between px-6 py-4 text-gray-600"
+                class="flex h-12 cursor-pointer items-center justify-between px-5 py-4 text-gray-600"
               >
                 <NuxtLink @click="openSidenav" to="/prodavnica"
                   >Prodavnica</NuxtLink
@@ -67,7 +67,7 @@
               <NuxtLink
                 aria-label="Novosti"
                 to="/novosti"
-                class="flex h-12 cursor-pointer items-center px-6 py-4 text-gray-600"
+                class="flex h-12 cursor-pointer items-center px-5 py-4 text-gray-600"
               >
                 <span>Novosti</span>
               </NuxtLink>
@@ -76,7 +76,7 @@
               <NuxtLink
                 aria-label="Kontakt"
                 to="/kontakt"
-                class="flex h-12 cursor-pointer items-center px-6 py-4 text-gray-600"
+                class="flex h-12 cursor-pointer items-center px-5 py-4 text-gray-600"
               >
                 <span>Kontakt</span>
               </NuxtLink>

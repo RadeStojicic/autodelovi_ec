@@ -14,7 +14,7 @@
         </div>
         <div class="mt-2 flex flex-col pb-3">
           <div
-            class="mt-4 flex justify-between text-sm font-thin text-gray-400"
+            class="mt-4 flex justify-between text-sm font-light text-gray-600"
           >
             <p>Proizvod</p>
             <p>Ukupno</p>
@@ -29,26 +29,30 @@
             :key="index"
             class="flex flex-col items-center"
           >
-            <div class="flex w-full items-center justify-between sm:gap-4">
-              <NuxtLink
-                @click="$emit('toggleAddToCart')"
-                :to="'/prodavnica/' + product.to + '/' + product.id"
-              >
-                <NuxtImg
-                  sizes="xs:60px sm:85px md:90px lg:95px "
-                  format="webp"
-                  :src="product.image"
-                  alt="Proizvod"
-                />
-              </NuxtLink>
-              <div class="flex w-40 flex-col gap-1 sm:w-60">
-                <p class="text-sm font-semibold sm:text-base">
-                  {{ product.title }}
-                </p>
-                <p class="text-sm">{{ product.newPrice || 0 }} RSD</p>
+            <div
+              class="flex w-full items-center justify-between gap-4 sm:gap-0"
+            >
+              <div class="flex w-full items-center gap-2">
+                <NuxtLink
+                  @click="$emit('toggleAddToCart')"
+                  :to="'/prodavnica/' + product.to + '/' + product.id"
+                >
+                  <NuxtImg
+                    format="webp"
+                    sizes="xs:60px sm:85px md:90px lg:95px "
+                    :src="product.image"
+                    alt="Proizvod"
+                  />
+                </NuxtLink>
+                <div class="flex flex-col items-start sm:w-3/5">
+                  <p class="text-sm font-semibold sm:text-base">
+                    {{ product.title }}
+                  </p>
+                  <p class="text-sm">{{ product.newPrice || 0 }} RSD</p>
+                </div>
               </div>
               <div>
-                <p class="w-full font-bold">
+                <p class="whitespace-nowrap text-sm font-semibold sm:text-lg">
                   {{ product.newPrice * product.quantity || 0 }} RSD
                 </p>
               </div>
@@ -63,7 +67,7 @@
                   }"
                   :disabled="product.quantity == 1"
                   @click="product.quantity--"
-                  class="w-full text-lg"
+                  class="w-full rounded-full text-lg"
                 >
                   -</button
                 ><input
@@ -72,14 +76,17 @@
                   :placeholder="product.quantity"
                   disabled
                 />
-                <button @click="product.quantity++" class="w-full text-lg">
+                <button
+                  @click="product.quantity++"
+                  class="w-full rounded-full text-lg"
+                >
                   +
                 </button>
               </div>
               <div>
                 <span
                   @click="removeFromCart(product.id)"
-                  class="icon-[prime--trash] mt-2 cursor-pointer text-xl"
+                  class="icon-[prime--trash] mt-2 cursor-pointer text-[1.4em]"
                 />
               </div>
             </div>
@@ -89,7 +96,7 @@
         <div class="flex flex-col border-t pt-4">
           <div class="flex items-start justify-between">
             <h1 class="text-lg font-bold text-gray-800">Ukupno</h1>
-            <p class="text-lg">{{ totalPrice || 0 }} RSD</p>
+            <p class="text-lg font-semibold">{{ totalPrice || 0 }} RSD</p>
           </div>
           <p class="py-5 text-sm text-gray-500">
             Sve cene su prikazane sa PDV-om i nema dodatnih troškova.
