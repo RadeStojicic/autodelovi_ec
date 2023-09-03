@@ -289,7 +289,7 @@
   <div
     v-if="searchArea"
     @click="handleExit"
-    class="h-gray fixed z-[99] h-screen w-full bg-black/30 backdrop-blur-sm"
+    class="h-gray fixed z-[99] h-screen w-full bg-black/40 backdrop-blur-sm"
   ></div>
   <!--Moja Korpa-->
   <div>
