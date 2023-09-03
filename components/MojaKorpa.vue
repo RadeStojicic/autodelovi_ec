@@ -39,7 +39,7 @@
                 >
                   <NuxtImg
                     format="webp"
-                    sizes="xs:140 sm:90 md:85"
+                    sizes="xs:140 sm:80 md:70"
                     :src="product.image"
                     alt="Proizvod"
                   />
@@ -57,7 +57,7 @@
                 </p>
               </div>
             </div>
-            <div class="mt-2 flex items-center gap-8 sm:mt-1">
+            <div class="mt-2 flex items-center gap-8 md:mt-1">
               <div
                 class="flex w-32 justify-between rounded-full border border-gray-800"
               >
