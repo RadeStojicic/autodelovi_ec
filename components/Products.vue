@@ -52,8 +52,7 @@
               <NuxtImg
                 :src="card.image"
                 alt="product_image"
-                width="170"
-                height="170"
+                width="130"
                 quality="100"
                 format="webp"
               />
@@ -64,12 +63,12 @@
           >
             <span
               v-if="card.discount"
-              class="rounded bg-black px-2 py-1 text-xs font-bold text-white"
+              class="rounded bg-black px-3 py-[0.4rem] text-xs font-bold text-white sm:px-2 sm:py-1"
               >{{ card.discount }}%</span
             >
             <div
               @click="toggleWishList(card)"
-              class="absolute right-2 top-2 flex cursor-pointer items-center justify-center rounded-full p-2 transition duration-300 hover:bg-gray-100"
+              class="absolute right-2 top-2 flex cursor-pointer items-center justify-center rounded-full bg-gray-100 p-2 transition duration-300 hover:bg-gray-100"
               :class="card.showFilledHeart ? ' bg-gray-100' : ''"
             >
               <span
@@ -78,14 +77,14 @@
                     ? 'icon-[prime--heart-fill] '
                     : 'icon-[prime--heart] '
                 "
-                class="p-3 text-gray-900"
+                class="p-[14px] text-gray-900 sm:p-3"
               />
             </div>
           </div>
 
           <div class="mt-4 flex flex-col items-start justify-start px-4 pb-4">
             <p class="mt-1 text-xs text-gray-400">{{ card.category }}</p>
-            <h1 class="text-sm font-bold">
+            <h1 class="text-base font-bold sm:text-sm">
               {{ card.title }}
             </h1>
             <div class="mt-4 flex w-full items-center justify-between">
@@ -111,7 +110,7 @@
                   class="flex items-center justify-center rounded-full bg-secondary p-[10px]"
                 >
                   <span
-                    class="icon-[prime--shopping-cart] text-3xl text-gray-900"
+                    class="icon-[prime--shopping-cart] text-[2rem] text-gray-900"
                   />
                 </div>
               </button>

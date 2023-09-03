@@ -256,11 +256,11 @@
             <div
               class="relative w-full rounded-lg border border-gray-200 bg-white"
             >
-              <div class="flex items-center justify-center rounded-lg">
+              <div class="flex items-center justify-center rounded-lg pt-2">
                 <NuxtImg
                   format="webp"
                   quality="100"
-                  sizes="112px sm:128px"
+                  width="90"
                   class="md:p-0"
                   :src="card.image"
                   alt="product_image"
@@ -268,7 +268,7 @@
               </div>
 
               <div
-                class="mt-4 flex flex-col items-start justify-start px-4 pb-4"
+                class="mt-3 flex flex-col items-start justify-start px-4 pb-4"
               >
                 <p class="mt-1 text-xs text-gray-400">{{ card.category }}</p>
                 <h1 class="mt-[2px] text-xs font-bold text-gray-900">
@@ -289,7 +289,7 @@
   <div
     v-if="searchArea"
     @click="handleExit"
-    class="h-gray fixed z-[99] h-screen w-full bg-black/40 backdrop-blur-sm"
+    class="h-gray fixed z-[99] h-full w-full bg-black/40 backdrop-blur-sm"
   ></div>
   <!--Moja Korpa-->
   <div>
@@ -297,7 +297,7 @@
     <div
       v-if="showCart"
       @click="toggleAddToCart"
-      class="fixed top-0 z-[1100] h-screen w-full bg-black/40"
+      class="fixed top-0 z-[1100] h-full w-full bg-black/40"
     ></div>
   </div>
 </template>

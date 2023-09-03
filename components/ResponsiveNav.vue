@@ -3,14 +3,14 @@
     <transition name="slide" mode="out-in">
       <nav
         v-if="toggleSideNav"
-        class="scrollbar fixed right-0 top-[0] z-50 h-full w-[85%] select-none overflow-y-auto border-r border-t border-gray-200 bg-white sm:w-4/5 lg:hidden"
+        class="scrollbar fixed right-0 top-[0] z-50 h-full w-[90%] select-none overflow-y-auto border-r border-t border-gray-200 bg-white sm:w-1/2 lg:hidden"
       >
         <div class="relative h-auto">
           <div class="mx-5 flex items-start justify-between border-b pb-4 pt-5">
             <h1 class="text-2xl font-[700]">Meni</h1>
             <span
               @click="openSidenav"
-              class="cursor pointer icon-[prime--times] relative left-3 cursor-pointer text-[42px] hover:bg-gray-700"
+              class="cursor pointer icon-[prime--times] relative bottom-1 left-3 cursor-pointer text-[42px] hover:bg-gray-700"
             />
           </div>
           <ul class="relative m-0 mt-4 list-none">
@@ -100,24 +100,24 @@
               <NuxtLink
                 to="/kontakt"
                 aria-label="Kontakt"
-                class="flex h-12 w-full items-center justify-center rounded-lg border-[1.5px] border-primary bg-transparent font-semibold text-primary"
+                class="flex h-12 w-full items-center justify-center rounded-lg border border-primary bg-transparent font-semibold text-primary"
               >
                 Kontakt
               </NuxtLink>
             </div>
             <p class="mt-5 flex w-full items-center gap-1 py-2 text-gray-900">
               <span
-                class="icon-[prime--box] mt-[3px] text-xl text-yellow-500"
+                class="icon-[prime--box] mt-[3px] text-xl text-primary"
               />Politika povratka
             </p>
             <p class="flex w-full items-center gap-1 py-2 text-gray-900">
               <span
-                class="icon-[prime--question-circle] mt-[3px] text-xl text-yellow-500"
+                class="icon-[prime--question-circle] mt-[3px] text-xl text-primary"
               />Pomoć
             </p>
             <p class="flex w-full items-center gap-1 py-2 text-gray-900">
               <span
-                class="icon-[prime--heart] mt-[3px] text-xl text-yellow-500"
+                class="icon-[prime--heart] mt-[3px] text-xl text-primary"
               />Omiljeni proizvodi
             </p>
           </div>
