@@ -75,13 +75,13 @@
             </p>
           </div>
           <div class="mt-8 flex w-full flex-col gap-5">
-            <NuxtLink
-              aria-label="Kontakt"
+            <button
+              @click="insertCard(card.id)"
               class="flex w-full justify-center rounded-full bg-yellow-400 p-4 font-normal"
-              to="/kontakt"
+              aria-label="Kupi odmah"
             >
-              <button aria-label="Kupi odmah">Kupi odmah</button>
-            </NuxtLink>
+              Kupi odmah
+            </button>
             <button
               aria-label="Dodaj u listu zelja"
               @click="toggleWishList(card)"
@@ -156,6 +156,7 @@ import { useProductStore } from "../../../store/product";
 import { CarPart } from "../../../types/cardType";
 import { storeToRefs } from "pinia";
 
+const { insertCard } = addToCart();
 const { toggleWishList } = addToWishList();
 const { cards } = storeToRefs(useProductStore());
 const id = useRoute().params.id;

@@ -101,7 +101,7 @@
               />
               <div
                 @click="handleInput"
-                class="flex cursor-pointer items-center justify-center rounded-full transition duration-150 sm:p-[7px] sm:hover:bg-gray-200"
+                class="flex cursor-pointer items-center justify-center rounded-full transition duration-150 sm:p-[7px] sm:hover:bg-primary/10"
               >
                 <span
                   class="icon-[prime--search] text-4xl text-white sm:text-3xl"

@@ -39,7 +39,7 @@
                 >
                   <NuxtImg
                     format="webp"
-                    sizes="xs:140 sm:80 md:70"
+                    width="90"
                     :src="product.image"
                     alt="Proizvod"
                   />

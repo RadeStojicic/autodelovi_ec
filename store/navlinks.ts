@@ -2,7 +2,10 @@ import { defineStore } from "pinia";
 
 export const useLinkStore = defineStore("links", () => {
   const navLinks = ref([
-    { names: "Početna", to: "/" },
+    {
+      names: "Početna",
+      to: "/",
+    },
     {
       names: "Prodavnica",
       to: "/prodavnica",
@@ -95,8 +98,14 @@ export const useLinkStore = defineStore("links", () => {
         },
       ],
     },
-    { names: "Novosti", to: "/novosti" },
-    { names: "Kontakt", to: "/kontakt" },
+    {
+      names: "Novosti",
+      to: "/novosti",
+    },
+    {
+      names: "Kontakt",
+      to: "/kontakt",
+    },
   ]);
   const categories = navLinks.value[1].categories;
   return { navLinks, categories };

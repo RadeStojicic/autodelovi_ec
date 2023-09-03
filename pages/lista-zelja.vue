@@ -7,8 +7,7 @@
           <p class="mt-2 text-lg">{{ wishList.length || 0 }} proizvoda</p>
         </div>
         <div
-          v-if="wishList.length > 0"
-          class="grid grid-cols-1 gap-6 py-10 sm:grid-cols-2 lg:grid-cols-4"
+          class="grid w-full grid-cols-1 gap-6 py-10 sm:grid-cols-2 lg:grid-cols-4"
         >
           <div
             class="relative w-full rounded-lg border border-gray-200 bg-white hover:border-gray-300"
@@ -89,7 +88,10 @@
             </div>
           </div>
         </div>
-        <div v-else class="w-full py-20 text-center text-lg">
+        <div
+          v-if="wishList.length <= 0"
+          class="w-full py-20 text-center text-lg"
+        >
           Nema dodatih proizvoda u listi želja.
         </div>
       </div>
