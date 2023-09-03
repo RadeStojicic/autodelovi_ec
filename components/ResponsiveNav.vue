@@ -2,7 +2,7 @@
   <div ref="sidenavRef">
     <nav
       v-if="toggleSideNav"
-      class="scrollbar absolute right-0 top-[68px] z-50 h-screen max-h-screen w-5/6 select-none overflow-y-auto border-r border-t border-gray-200 bg-white pb-28 lg:hidden"
+      class="scrollbar absolute right-0 top-[73px] z-50 h-screen max-h-screen w-5/6 select-none overflow-y-auto border-r border-t border-gray-200 bg-white pb-28 lg:hidden"
     >
       <ul class="relative m-0 mt-4 list-none">
         <li @click="openSidenav" class="relative">
@@ -113,14 +113,13 @@
   <div
     v-if="toggleSideNav"
     @click="openSidenav"
-    class="absolute left-0 top-[68px] z-10 h-screen w-full bg-black/50"
+    class="absolute left-0 top-[73px] z-10 h-screen w-full bg-black/50"
   ></div>
 </template>
 
 <script setup lang="ts">
-const toggleSideNav = ref(false);
+import { toggleSideNav } from "../store/constants";
 const showMore = ref(false);
-const sidenavRef = ref(null);
 
 const openSidenav = () => {
   toggleSideNav.value = !toggleSideNav.value;

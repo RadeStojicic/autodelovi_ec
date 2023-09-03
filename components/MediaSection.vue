@@ -1,7 +1,7 @@
 <template>
-  <div class="relative pb-28">
+  <div class="relative pb-20">
     <div
-      class="mx-auto flex h-104 w-full flex-col items-center justify-between gap-4 p-4 md:container lg:h-80 lg:flex-row lg:gap-8"
+      class="mx-auto flex w-full flex-col items-center justify-between gap-4 p-4 md:container lg:h-80 lg:flex-row lg:gap-8"
     >
       <div class="h-full w-full">
         <NuxtLink

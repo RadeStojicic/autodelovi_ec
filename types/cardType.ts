@@ -6,6 +6,7 @@ export interface CarPart {
   title: string;
   oldPrice: number;
   newPrice: number;
+  quantity: number;
   mark: string;
   model: string;
   year: string;

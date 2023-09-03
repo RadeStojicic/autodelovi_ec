@@ -29,6 +29,7 @@
     "@nuxtjs/google-fonts": "^3.0.2",
     "@pinia/nuxt": "^0.4.11",
     "@prisma/client": "^5.2.0",
+    "@splidejs/vue-splide": "^0.6.12",
     "cross-fetch": "^4.0.0",
     "pinia": "^2.1.6",
     "resend": "^0.17.2"

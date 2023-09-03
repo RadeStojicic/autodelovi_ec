@@ -106,7 +106,7 @@
                   Ušteda: {{ card.oldPrice - card.newPrice }} RSD
                 </p>
               </div>
-              <NuxtLink aria-label="Kontakt" to="/kontakt">
+              <button @click="insertCard(card.id)" aria-label="Dodaj u korpu">
                 <div
                   class="flex items-center justify-center rounded-full bg-secondary p-[10px]"
                 >
@@ -114,7 +114,7 @@
                     class="icon-[prime--shopping-cart] text-3xl text-gray-900"
                   />
                 </div>
-              </NuxtLink>
+              </button>
             </div>
           </div>
         </div>
@@ -128,6 +128,7 @@ import { useProductStore } from "../store/product";
 import { storeToRefs } from "pinia";
 
 const { toggleWishList } = addToWishList();
+const { insertCard } = addToCart();
 const { cards } = storeToRefs(useProductStore());
 
 const selectedType = ref("popular");

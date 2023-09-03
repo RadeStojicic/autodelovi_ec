@@ -1,7 +1,7 @@
 <template>
   <div class="bg-gray-100">
     <Main />
-    <Kategorije class="hidden sm:flex" />
+    <Kategorije />
     <AddInfo />
     <Products />
     <MediaSection />

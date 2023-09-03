@@ -112,10 +112,14 @@
             <div
               class="flex items-center justify-between gap-0 sm:gap-1 lg:ml-1"
             >
-              <NuxtLink aria-label="Lista zelja" to="/lista-zelja">
+              <NuxtLink
+                class="hidden sm:block"
+                aria-label="Lista zelja"
+                to="/lista-zelja"
+              >
                 <div class="relative ml-1 p-1 sm:ml-0">
                   <span
-                    class="icon-[prime--heart] relative block bg-white text-4xl sm:text-3xl lg:block"
+                    class="icon-[prime--heart] relative bg-white text-4xl sm:block sm:text-3xl lg:block"
                     aria-hidden="true"
                   />
                   <span
@@ -125,11 +129,21 @@
                   </span>
                 </div>
               </NuxtLink>
+              <div
+                @click="toggleAddToCart"
+                class="relative ml-1 mt-[4px] block cursor-pointer p-1 sm:ml-0"
+              >
+                <span
+                  class="icon-[prime--shopping-bag] bg-white text-[2rem]"
+                  aria-hidden="true"
+                />
+                <span
+                  class="absolute right-[2px] top-[2px] flex h-4 w-4 items-center justify-center rounded-full bg-secondary p-2 text-xs sm:right-[2px] sm:top-[2px]"
+                >
+                  {{ localStorageCart.length }}
+                </span>
+              </div>
 
-              <span
-                class="icon-[prime--shopping-bag] hidden bg-white text-3xl lg:block"
-                aria-hidden="true"
-              />
               <responsive-nav :navLinks="navLinks"></responsive-nav>
             </div>
           </div>
@@ -277,6 +291,15 @@
     @click="handleExit"
     class="h-gray fixed z-[99] h-screen w-full bg-black/30 backdrop-blur-sm"
   ></div>
+  <!--Moja Korpa-->
+  <div>
+    <MojaKorpa @toggleAddToCart="toggleAddToCart" :showCart="showCart" />
+    <div
+      v-if="showCart"
+      @click="toggleAddToCart"
+      class="fixed top-0 z-[1100] h-screen w-full bg-black/40"
+    ></div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -285,10 +308,14 @@ import { useProductStore } from "../store/product";
 import { useLinkStore } from "../store/navlinks";
 import { storeToRefs } from "pinia";
 
+import { showCart } from "../store/constants";
+import { toggleSideNav } from "../store/constants";
+
 const { wishList } = addToWishList();
+const { localStorageCart } = addToCart();
+
 const { cards } = storeToRefs(useProductStore());
 const { navLinks } = storeToRefs(useLinkStore());
-
 // input settings
 const popularSearches = [
   { names: "Akumulatori", to: "/akumulatori" },
@@ -380,6 +407,13 @@ const filterCardsByText = (text: string) => {
   if (filteredCards.value.length < 1) {
     filteredCards.value = cards.value.slice(0, 4);
   }
+};
+
+// MyCart
+const toggleAddToCart = () => {
+  showCart.value = !showCart.value;
+  toggleSideNav.value = false;
+  document.body.style.overflow = showCart.value ? "hidden" : "";
 };
 </script>
 

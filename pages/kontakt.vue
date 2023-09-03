@@ -65,7 +65,9 @@
           <div class="flex flex-col gap-6">
             <div class="flex flex-col gap-6 lg:flex-row">
               <div class="flex w-full flex-col">
-                <label class="font-medium text-gray-800" for="Ime"
+                <label
+                  class="text-[17px] font-medium text-gray-800 sm:text-base"
+                  for="Ime"
                   >Ime <span class="text-red-500">*</span></label
                 >
                 <input
@@ -78,7 +80,10 @@
                 />
               </div>
               <div class="flex w-full flex-col">
-                <label class="font-medium text-gray-800" for="Prezime">
+                <label
+                  class="text-[17px] font-medium text-gray-800 sm:text-base"
+                  for="Prezime"
+                >
                   Prezime <span class="text-red-500">*</span></label
                 >
                 <input
@@ -92,7 +97,9 @@
               </div>
             </div>
             <div class="flex w-full flex-col">
-              <label class="font-medium text-gray-800" for="Email"
+              <label
+                class="text-[17px] font-medium text-gray-800 sm:text-base"
+                for="Email"
                 >Vaš Email <span class="text-red-500">*</span></label
               >
               <input
@@ -106,7 +113,9 @@
             </div>
 
             <div class="flex w-full flex-col">
-              <label class="font-medium text-gray-800" for="Poruka"
+              <label
+                class="text-[17px] font-medium text-gray-800 sm:text-base"
+                for="Poruka"
                 >Poruka <span class="text-red-500">*</span></label
               >
               <textarea

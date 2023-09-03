@@ -1,35 +1,31 @@
 <template>
-  <div class="z-0 mx-auto mt-12 flex justify-center px-4 md:container">
-    <div class="w-full">
-      <div class="mb-6 flex w-full justify-between">
-        <h1 class="mt-4 text-center text-2xl font-semibold">
-          Kategorije autodelova
-        </h1>
-      </div>
-
-      <div
-        class="grid w-full grid-cols-1 content-center gap-4 rounded-lg bg-white px-4 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-5"
+  <div class="z-0 mx-auto mt-12 flex flex-col justify-center px-4 md:container">
+    <div class="flex w-full justify-center bg-white py-8">
+      <Splide
+        class="flex w-[100%] justify-center px-10"
+        :options="options"
+        aria-label="Kategorije"
       >
-        <div
-          class="flex w-full flex-col items-center justify-center gap-4 rounded-lg py-6 lg:py-20"
+        <SplideSlide
+          class="flex flex-col items-center justify-center"
           v-for="(category, index) in categories"
           :key="index"
         >
-          <div class="flex rounded-full bg-gray-200">
-            <NuxtImg
-              width="120"
-              height="120"
-              :src="category.category_image"
-              alt="Slika kategorije"
-            />
-          </div>
-          <div>
-            <p class="mt-2 text-lg font-semibold md:text-base">
+          <button @click="goToCategory">
+            <div class="h-40 w-40 rounded-full bg-gray-100">
+              <NuxtImg
+                width="150"
+                height="150"
+                :src="category.category_image"
+                alt="Slika kategorije"
+              />
+            </div>
+            <p class="mt-2 text-center text-lg font-semibold md:text-base">
               {{ category.title }}
             </p>
-          </div>
-        </div>
-      </div>
+          </button>
+        </SplideSlide>
+      </Splide>
     </div>
   </div>
 </template>
@@ -37,6 +33,29 @@
 <script setup lang="ts">
 import { useLinkStore } from "../store/navlinks";
 import { storeToRefs } from "pinia";
+import { Splide, SplideSlide } from "@splidejs/vue-splide";
+import "@splidejs/vue-splide/css";
+
+const options = {
+  perPage: 4,
+  arrows: true,
+  gap: "3rem",
+  pagination: false,
+  width: "100%",
+  breakpoints: {
+    1200: {
+      perPage: 3,
+    },
+    800: {
+      perPage: 2,
+      gap: "0rem",
+    },
+    540: {
+      perPage: 1,
+    },
+  },
+};
+
 const { categories } = storeToRefs(useLinkStore());
 
 const infoCards = [

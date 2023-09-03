@@ -2,17 +2,16 @@
   <div class="relative z-10 flex h-108 w-full justify-center sm:h-[480px]">
     <NuxtImg
       format="webp"
-      width="1920"
-      height="1080"
-      quality="80"
-      class="w-full object-cover object-center brightness-75"
+      sizes="xs:400px sm: 700px  md:900px lg:1400px xl: 1550px 2xl: 1920px"
+      densities="x1 x2"
+      class="w-full object-cover brightness-75"
       src="/main_image.jpg"
       alt=""
     />
     <form
       class="absolute mx-auto flex h-full w-full flex-col items-center justify-center rounded-lg bg-primary/20"
     >
-      <div class="mb-12 flex w-full flex-col items-center justify-center">
+      <div class="mb-12 flex w-full flex-col items-center justify-center px-4">
         <h1
           class="w-full text-center text-4xl font-bold text-white lg:w-2/3 lg:text-5xl"
         >
@@ -44,7 +43,7 @@
           @click="filterByCar"
           aria-label="Pretrazi"
           :class="{ 'brightness-[80%]': buttonDisabled }"
-          class="mt-4 flex w-52 items-center justify-center gap-1 rounded bg-secondary p-3 text-gray-900 md:mt-0 md:w-40"
+          class="mt-4 flex w-52 cursor-pointer items-center justify-center gap-1 rounded bg-secondary p-3 text-gray-900 md:mt-0 md:w-40"
         >
           <span class="icon-[prime--search] text-lg" />
           Pretraži
@@ -55,114 +54,10 @@
 </template>
 
 <script setup lang="ts">
-interface Selections {
-  placeholderName: string;
-  multipleSel: boolean;
-  disabledInput: boolean;
-  inputIndex: number;
-  selectAll: boolean;
-  options: {
-    id: number;
-    text: string;
-    mark?: string;
-    model?: string;
-    checkboxChecked: boolean;
-  }[];
-}
-const multiSel: Selections[] = [
-  {
-    placeholderName: "Marka",
-    multipleSel: false,
-    disabledInput: false,
-    inputIndex: 0,
-    selectAll: false,
-    options: [
-      { id: 0, text: "BMW", checkboxChecked: false },
-      { id: 1, text: "Audi", checkboxChecked: false },
-      { id: 2, text: "Mercedes", checkboxChecked: false },
-      { id: 3, text: "Polo", checkboxChecked: false },
-      { id: 4, text: "Ford", checkboxChecked: false },
-    ],
-  },
-  {
-    placeholderName: "Model",
-    multipleSel: true,
-    disabledInput: true,
-    inputIndex: 1,
-    selectAll: true,
-    options: [
-      { id: 0, text: "X4", mark: "BMW", checkboxChecked: false },
-      { id: 1, text: "i8", mark: "BMW", checkboxChecked: false },
-      { id: 2, text: "M4", mark: "BMW", checkboxChecked: false },
-      { id: 3, text: "i4", mark: "BMW", checkboxChecked: false },
-      { id: 4, text: "X6", mark: "BMW", checkboxChecked: false },
-      { id: 5, text: "A3", mark: "Audi", checkboxChecked: false },
-      { id: 6, text: "A4", mark: "Audi", checkboxChecked: false },
-      { id: 7, text: "R8", mark: "Audi", checkboxChecked: false },
-      { id: 8, text: "Q7", mark: "Audi", checkboxChecked: false },
-      { id: 9, text: "Glc", mark: "Mercedes", checkboxChecked: false },
-    ],
-  },
-  {
-    placeholderName: "Godište",
-    multipleSel: true,
-    disabledInput: true,
-    inputIndex: 2,
-    selectAll: true,
-    options: [
-      {
-        id: 0,
-        text: "2003",
-        mark: "BMW",
-        model: "X4 i8",
-        checkboxChecked: false,
-      },
-      {
-        id: 1,
-        text: "2004",
-        mark: "BMW",
-        model: "X4 i8",
-        checkboxChecked: false,
-      },
-      {
-        id: 2,
-        text: "2005",
-        mark: "BMW",
-        model: "X4",
-        checkboxChecked: false,
-      },
-      {
-        id: 3,
-        text: "2006",
-        mark: "Audi",
-        model: "Q7",
-        checkboxChecked: false,
-      },
-      {
-        id: 4,
-        text: "2007",
-        mark: "Audi",
-        model: "Q7",
-        checkboxChecked: false,
-      },
-      {
-        id: 5,
-        text: "2008",
-        mark: "Audi",
-        model: "Q7",
-        checkboxChecked: false,
-      },
-      {
-        id: 6,
-        text: "2016",
-        mark: "Mercedes",
-        model: "Glc",
-        checkboxChecked: false,
-      },
-    ],
-  },
-];
+import { useCarStore } from "../store/carfilters";
+import { storeToRefs } from "pinia";
 
+const { multiSel } = storeToRefs(useCarStore());
 const carFilters = ref<string[]>(["", "", ""]);
 const searchText = ref<string[]>(["", "", ""]);
 
@@ -173,28 +68,28 @@ const getFilteredOptions = (index: number) => {
     const mark = carFilters.value[0];
 
     return mark
-      ? multiSel[index].options.filter(
+      ? multiSel.value[index].options.filter(
           (option) =>
             option.mark === mark &&
             option.text.toLowerCase().includes(searchTextInput),
         )
-      : multiSel[index].options.filter((option) =>
+      : multiSel.value[index].options.filter((option) =>
           option.text.toLowerCase().includes(searchTextInput),
         );
   } else if (index === 2) {
     const model = carFilters.value[1];
 
     return model
-      ? multiSel[index].options.filter(
+      ? multiSel.value[index].options.filter(
           (option) =>
             option.model === model.replace(",", "") &&
             option.text.toLowerCase().includes(searchTextInput),
         )
-      : multiSel[index].options.filter((option) =>
+      : multiSel.value[index].options.filter((option) =>
           option.text.toLowerCase().includes(searchTextInput),
         );
   } else {
-    return multiSel[index].options.filter((option) =>
+    return multiSel.value[index].options.filter((option) =>
       option.text.toLowerCase().includes(searchTextInput),
     );
   }
@@ -213,14 +108,16 @@ const applyFilters = (index: number) => {
   if (index == 0) {
     [1, 2].forEach((i) => {
       carFilters.value[i] = "";
-      multiSel[i].options.forEach((option) => (option.checkboxChecked = false));
+      multiSel.value[i].options.forEach(
+        (option) => (option.checkboxChecked = false),
+      );
     });
-    multiSel[1].disabledInput = false;
-    multiSel[2].disabledInput = true;
+    multiSel.value[1].disabledInput = false;
+    multiSel.value[2].disabledInput = true;
   }
   if (index == 1) {
     carFilters.value[2] = "";
-    multiSel[2].disabledInput = false;
+    multiSel.value[2].disabledInput = false;
   }
 };
 
