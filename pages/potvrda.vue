@@ -65,45 +65,14 @@
 </template>
 
 <script setup lang="ts">
-import { useProductStore } from "../store/product";
-import { storeToRefs } from "pinia";
-import { toggleSideNav } from "../store/constants";
-import { showCart } from "../store/constants";
-
-const { localStorageCart, totalPrice } = addToCart();
-const { cards } = storeToRefs(useProductStore());
+const { localStorageCart } = addToCart();
 
 definePageMeta({
   middleware: "checkout",
 });
 
-const toggleAddToCart = () => {
-  showCart.value = !showCart.value;
-  toggleSideNav.value = false;
-  document.body.style.overflow = showCart.value ? "hidden" : "";
-  checkoutButton();
-};
-
-const countries = [{ name: "Srbija" }];
-const showCountry = ref(false);
-const openDropDown = ref(false);
-const selectedCountry = ref("Srbija");
-const toggleShowCountry = (name: string) => {
-  selectedCountry.value = name;
-  showCountry.value = !showCountry.value;
-};
-
-const showInfo = ref(false);
-const purchase = ref(false);
-const checkoutButton = () => {
-  if (localStorageCart.value.length > 0) {
-    purchase.value = true;
-  } else {
-    purchase.value = false;
-  }
-};
 onMounted(() => {
-  checkoutButton();
+  localStorageCart.value = [];
 });
 </script>
 

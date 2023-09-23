@@ -1,4 +1,5 @@
 <template>
+  <!-- header -->
   <div class="sticky top-0 z-[50] w-full bg-primary">
     <div>
       <nav class="mx-auto px-4 md:container">
@@ -15,7 +16,6 @@
               </h1>
             </NuxtLink>
           </div>
-
           <div class="z-50 flex items-center justify-end">
             <div
               class="flex items-center justify-between gap-0 sm:gap-1 lg:ml-1"
@@ -47,12 +47,13 @@
     ></div>
   </div>
   <div class="h-full bg-gray-100">
+    <!-- o kupovini -->
     <div
-      class="flex h-20 w-full items-center justify-around border-b bg-white text-white md:justify-center md:gap-4"
+      class="flex h-20 w-full items-center justify-around gap-2 border-b bg-white px-4 text-white md:justify-center md:gap-4"
     >
       <div class="flex items-center gap-2">
         <p
-          class="flex h-6 w-6 items-center justify-center rounded-full bg-[#183aa1] text-[11px] font-semibold text-white md:text-xs"
+          class="flex h-6 w-6 items-center justify-center rounded-full bg-[#183aa1] text-[11px] text-white md:text-xs"
         >
           1
         </p>
@@ -62,22 +63,22 @@
         <p class="whitespace-nowrap text-black md:hidden">Korpa</p>
       </div>
       <span
-        class="hidden h-[2px] w-10 items-center justify-center bg-gray-300 md:flex"
+        class="flex h-[2px] w-10 items-center justify-center bg-gray-300"
       ></span>
       <div class="flex items-center gap-2">
         <p
-          class="flex h-6 w-6 items-center justify-center rounded-full bg-[#183aa1] text-[11px] font-semibold text-white md:text-xs"
+          class="flex h-6 w-6 items-center justify-center rounded-full bg-[#183aa1] text-[11px] text-white md:text-xs"
         >
           2
         </p>
         <p class="whitespace-nowrap text-black">Informacije</p>
       </div>
       <span
-        class="hidden h-[2px] w-10 items-center justify-center bg-gray-300 md:flex"
+        class="flex h-[2px] w-10 items-center justify-center bg-gray-300"
       ></span>
-      <div class="flex items-center gap-2 opacity-60">
+      <div class="flex items-center gap-2 opacity-50">
         <p
-          class="flex h-6 w-6 items-center justify-center rounded-full bg-[#183aa1] text-[11px] font-semibold text-white md:text-xs"
+          class="flex h-6 w-6 items-center justify-center rounded-full border-[2px] border-[#183aa1] text-[11px] font-semibold text-primary md:text-xs"
         >
           3
         </p>
@@ -87,6 +88,7 @@
         <p class="whitespace-nowrap text-black md:hidden">Potvrda</p>
       </div>
     </div>
+    <!-- formular kupovine -->
     <div class="mb-10 mt-10 h-full w-full">
       <div class="md:mx-4">
         <div class="mx-auto flex h-full justify-center bg-white md:container">
@@ -116,7 +118,9 @@
                         <input
                           class="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-base focus:border focus:border-gray-400 focus:outline-none"
                           type="text"
+                          @change="checkoutButton"
                           name="Ime"
+                          v-model="formData.ime"
                           required
                         />
                       </div>
@@ -130,7 +134,9 @@
                       <input
                         class="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-base focus:border focus:border-gray-400 focus:outline-none"
                         type="text"
+                        @change="checkoutButton"
                         name="Prezime"
+                        v-model="formData.prezime"
                         required
                       />
                     </div>
@@ -180,6 +186,8 @@
                     <input
                       class="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-base focus:border focus:border-gray-400 focus:outline-none"
                       type="text"
+                      @change="checkoutButton"
+                      v-model="formData.adresa"
                       name="Adresa"
                       placeholder="Ulica/broj"
                       required
@@ -196,6 +204,8 @@
                       <input
                         class="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-base focus:border focus:border-gray-400 focus:outline-none"
                         type="text"
+                        @change="checkoutButton"
+                        v-model="formData.postanskiBroj"
                         name="Poštanski broj"
                         required
                       />
@@ -209,6 +219,8 @@
                       <input
                         class="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-base focus:border focus:border-gray-400 focus:outline-none"
                         type="text"
+                        @change="checkoutButton"
+                        v-model="formData.grad"
                         name="Grad"
                         required
                       />
@@ -224,7 +236,9 @@
                       <input
                         class="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-base focus:border focus:border-gray-400 focus:outline-none"
                         type="text"
+                        @change="checkoutButton"
                         name="Telefon"
+                        v-model="formData.telefon"
                         required
                       />
                       <div class="absolute right-2 top-6">
@@ -266,6 +280,8 @@
                     <input
                       class="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-base focus:border focus:border-gray-400 focus:outline-none"
                       type="email"
+                      @change="checkoutButton"
+                      v-model="formData.email"
                       name="Email"
                       placeholder="primer@gmail.com"
                       required
@@ -287,12 +303,27 @@
                         class="w-4 rounded-full border checked:bg-black"
                         type="radio"
                         checked
-                        name="Telefon"
-                        placeholder="Telefon"
+                        name="Placanje"
                         required
                       />Po uzeću</label
                     >
                   </div>
+                  <button
+                    @click.prevent="sendPurchaseData"
+                    :disabled="purchase == false"
+                    aria-label="Posalji"
+                    :class="!purchase ? 'brightness-75' : ' brightness-100'"
+                    class="focus mt-6 w-full cursor-pointer rounded-full bg-primary py-4 md:w-[400px] xl:hidden xl:w-full"
+                  >
+                    <p
+                      class="flex w-full items-center justify-center text-white"
+                    >
+                      Poruči odmah
+                      <span
+                        class="icon-[prime--arrow-up-right] ml-[2px] mt-[3px] text-lg"
+                      />
+                    </p>
+                  </button>
                 </div>
               </form>
             </div>
@@ -351,11 +382,11 @@
                     </p>
                   </div>
                   <button
-                    @click="() => $router.push('/potvrda')"
+                    @click.prevent="sendPurchaseData"
                     :disabled="purchase == false"
                     aria-label="Posalji"
                     :class="!purchase ? 'brightness-75' : ' brightness-100'"
-                    class="focus mt-6 w-full cursor-pointer rounded-full bg-primary py-4 md:w-[400px] xl:w-full"
+                    class="focus mt-6 hidden w-full cursor-pointer rounded-full bg-primary py-4 xl:block"
                   >
                     <p
                       class="flex w-full items-center justify-center text-white"
@@ -406,11 +437,109 @@ const toggleShowCountry = (name: string) => {
   selectedCountry.value = name;
   showCountry.value = !showCountry.value;
 };
-
 const showInfo = ref(false);
+
+interface FormData {
+  ime: string;
+  prezime: string;
+  drzava: string;
+  adresa: string;
+  placanje: string;
+  postanskiBroj: string;
+  grad: string;
+  telefon: string;
+  email: string;
+}
+const formData: FormData = reactive({
+  ime: "",
+  prezime: "",
+  drzava: "Srbija",
+  adresa: "",
+  placanje: "Po uzeću",
+  postanskiBroj: "",
+  grad: "",
+  telefon: "",
+  email: "",
+});
+
+const isFormValid = computed(() => {
+  return (
+    formData.ime !== "" &&
+    formData.prezime !== "" &&
+    formData.drzava !== "" &&
+    formData.adresa !== "" &&
+    formData.placanje !== "" &&
+    formData.postanskiBroj !== "" &&
+    formData.grad !== "" &&
+    formData.telefon !== "" &&
+    formData.email !== ""
+  );
+});
+
+const sendPurchaseData = async () => {
+  if (!isFormValid.value) return;
+  try {
+    const { data: resData }: { data: any } = await useFetch("/api/send/", {
+      method: "post",
+      body: JSON.stringify({
+        from:
+          formData.ime + " " + formData.prezime + " <" + formData.email + ">",
+        to: "radestojicicsd@gmail.com",
+        subject: "Autodelovi - Porudžbina",
+        text:
+          "Podaci o kupcu:" +
+          "\n" +
+          "Ime: " +
+          formData.ime +
+          "\n" +
+          "Prezime: " +
+          formData.prezime +
+          "\n" +
+          "Država: " +
+          formData.drzava +
+          "\n" +
+          "Grad: " +
+          formData.grad +
+          "\n" +
+          "Adresa: " +
+          formData.adresa +
+          "\n" +
+          "Poštanski broj: " +
+          formData.postanskiBroj +
+          "\n" +
+          "Telefon: " +
+          formData.telefon +
+          "\n" +
+          "Email: " +
+          formData.email +
+          "\n\n" +
+          "Porudžbina:\n" +
+          localStorageCart.value
+            .map(
+              (item) =>
+                item.title +
+                " x " +
+                item.quantity +
+                " = " +
+                item.newPrice +
+                " RSD",
+            )
+            .join("\n") +
+          "\n" +
+          "Ukupno: " +
+          totalPrice.value +
+          " RSD",
+      }),
+    });
+    useRouter().push("/potvrda");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const purchase = ref(false);
 const checkoutButton = () => {
-  if (localStorageCart.value.length > 0) {
+  if (localStorageCart.value.length > 0 && isFormValid.value) {
     purchase.value = true;
   } else {
     purchase.value = false;
