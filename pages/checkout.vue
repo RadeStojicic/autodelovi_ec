@@ -525,7 +525,7 @@ const sendPurchaseData = async () => {
                 " RSD",
             )
             .join("\n") +
-          "\n" +
+          "\n\n" +
           "Ukupno: " +
           totalPrice.value +
           " RSD",
