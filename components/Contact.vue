@@ -1,8 +1,8 @@
 <template>
   <div class="relative">
-    <div class="mx-auto h-auto md:container md:h-72 md:px-4">
+    <div class="mx-auto h-auto md:container md:h-72">
       <div
-        class="flex h-full w-full flex-col items-center justify-between gap-10 rounded-none rounded-b-none bg-[#183aa1] px-10 py-14 sm:gap-14 sm:px-4 md:gap-0 md:rounded-t-lg lg:flex-row lg:gap-12 lg:px-12 lg:py-4"
+        class="flex h-full w-full flex-col items-center justify-between gap-10 rounded-none rounded-b-none bg-[#183aa1] px-10 py-14 sm:gap-14 sm:px-4 md:gap-0 lg:flex-row lg:gap-12 lg:px-12 lg:py-4"
       >
         <div class="flex h-full w-full flex-col items-start justify-center">
           <h1

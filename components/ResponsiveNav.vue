@@ -33,9 +33,9 @@
                 to="/prodavnica/popularni"
                 class="flex w-full flex-col items-center justify-center text-center font-semibold text-gray-900/90"
                 ><NuxtImg
-                  width="80"
-                  quality="100"
-                  src="/resNav_pic_1.png"
+                  width="85"
+                  quality="85"
+                  src="/test.jpg"
                   class="rounded-full bg-gray-200"
                 />Popularni
               </NuxtLink>
@@ -45,9 +45,9 @@
                 to="/prodavnica/preporuceni"
                 class="flex w-full flex-col items-center justify-center text-center font-semibold text-gray-900/90"
                 ><NuxtImg
-                  width="80"
-                  quality="100"
-                  src="/resNav_pic_1.png"
+                  width="85"
+                  quality="85"
+                  src="/test.jpg"
                   class="rounded-full bg-gray-200"
                 />Preporučeni</NuxtLink
               >
@@ -57,9 +57,9 @@
                 to="/prodavnica/novi"
                 class="flex w-full flex-col items-center justify-center text-center font-semibold text-gray-900/90"
                 ><NuxtImg
-                  width="80"
-                  quality="100"
-                  src="/resNav_pic_1.png"
+                  width="85"
+                  quality="85"
+                  src="/test.jpg"
                   class="rounded-full bg-gray-200"
                 />Novi</NuxtLink
               >
@@ -72,7 +72,6 @@
                 to="/"
                 class="flex h-12 cursor-pointer items-center gap-1 px-5 py-4 text-gray-600"
               >
-                <span class="icon-[prime--home] bg-gray-700 text-xl" />
                 <span>Početna</span>
               </NuxtLink>
             </li>
@@ -85,9 +84,7 @@
                   @click="openSidenav"
                   to="/prodavnica"
                 >
-                  <span
-                    class="icon-[prime--cart-plus] bg-gray-700 text-xl"
-                  /><span>Prodavnica</span></NuxtLink
+                  <span>Prodavnica</span></NuxtLink
                 >
                 <div
                   @click="showMore = !showMore"
@@ -128,7 +125,6 @@
                 to="/novosti"
                 class="flex h-12 cursor-pointer items-center gap-1 px-5 py-4 text-gray-600"
               >
-                <span class="icon-[prime--map] bg-gray-700 text-xl" />
                 <span>Novosti</span>
               </NuxtLink>
             </li>
@@ -138,7 +134,6 @@
                 to="/kontakt"
                 class="flex h-12 cursor-pointer items-center gap-1 px-5 py-4 text-gray-600"
               >
-                <span class="icon-[prime--phone] bg-gray-700 text-xl" />
                 <span>Kontakt</span>
               </NuxtLink>
             </li>
@@ -152,7 +147,7 @@
                 @click="openSidenav"
                 to="/lista-zelja"
                 aria-label="Lista zelja"
-                class="flex h-12 w-full items-center justify-center rounded-lg bg-primary font-semibold text-white"
+                class="flex h-12 w-full items-center justify-center rounded-lg bg-black font-semibold text-white"
               >
                 Lista želja
                 <span
@@ -162,7 +157,7 @@
               <NuxtLink
                 to="/kontakt"
                 aria-label="Kontakt"
-                class="flex h-12 w-full items-center justify-center rounded-lg border border-primary bg-transparent font-semibold text-primary"
+                class="flex h-12 w-full items-center justify-center rounded-lg border-[1px] border-black/30 bg-transparent font-semibold text-primary"
               >
                 Kontakt
               </NuxtLink>

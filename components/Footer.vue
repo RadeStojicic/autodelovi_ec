@@ -7,9 +7,16 @@
         class="grid grid-cols-2 items-start justify-items-start gap-12 md:grid-cols-4 md:justify-items-center md:gap-2"
       >
         <div>
-          <h1 class="flex items-center text-2xl font-bold text-white">
-            CarGear.
-          </h1>
+          <NuxtLink aria-label="Logo" to="/">
+            <h1
+              class="flex items-center text-2xl font-bold text-white sm:text-2xl"
+            >
+              <span>AutoParts</span
+              ><span
+                class="mb-[-12px] ml-[3px] h-2 w-2 rounded-full bg-secondary text-4xl text-secondary"
+              ></span>
+            </h1>
+          </NuxtLink>
           <p class="mt-3 text-gray-400">
             Naša platforma nudi korisnički prijateljsko iskustvo koje vam
             omogućava laku pretragu i pronalaženje željenih delova.

@@ -69,7 +69,7 @@
             <div
               @click="toggleWishList(card)"
               class="absolute right-2 top-2 flex cursor-pointer items-center justify-center rounded-full bg-gray-100 p-2 transition duration-300 hover:bg-gray-100"
-              :class="card.showFilledHeart ? ' bg-gray-100' : ''"
+              :class="card.showFilledHeart ? ' bg-[gray-100]' : ''"
             >
               <span
                 :class="

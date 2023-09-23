@@ -101,11 +101,13 @@
           <p class="py-5 text-sm text-gray-500">
             Sve cene su prikazane sa PDV-om i nema dodatnih troškova.
           </p>
-          <button
+          <NuxtLink
+            @click="$emit('toggleAddToCart')"
+            to="/checkout"
             class="flex w-full items-center justify-center rounded-full bg-black p-4 text-white"
           >
             Nastavi kupovinu
-          </button>
+          </NuxtLink>
         </div>
       </div>
     </div>
