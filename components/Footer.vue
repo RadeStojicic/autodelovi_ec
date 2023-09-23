@@ -116,12 +116,24 @@
           </div>
         </div>
       </div>
-      <div class="w-full border-t border-gray-700 text-sm">
+      <div class="hidden w-full border-t border-gray-700 text-sm sm:block">
         <div class="mt-8 flex items-start justify-between">
           <p class="text-gray-300">© 2023. Sva prava zadržana.</p>
 
           <div class="flex items-start gap-4 text-gray-300 sm:gap-3">
             <p>Lična prava</p>
+            <p>Uslovi</p>
+            <p>Politika povratka</p>
+          </div>
+        </div>
+      </div>
+      <div class="w-full border-t border-gray-700 text-sm sm:hidden">
+        <div class="mt-8 flex w-full items-start justify-start gap-12">
+          <div class="flex w-full flex-col gap-2">
+            <p class="text-gray-300">© 2023. Sva prava zadržana.</p>
+            <p>Lična prava</p>
+          </div>
+          <div class="flex w-full flex-col gap-2">
             <p>Uslovi</p>
             <p>Politika povratka</p>
           </div>

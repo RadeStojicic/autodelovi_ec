@@ -48,11 +48,11 @@
   </div>
   <div class="h-full bg-gray-100">
     <div
-      class="flex h-20 w-full items-center justify-center gap-2 border-b bg-white text-white sm:gap-4"
+      class="flex h-20 w-full items-center justify-around border-b bg-white text-white md:justify-center md:gap-4"
     >
       <div class="flex items-center gap-2">
         <p
-          class="flex h-6 w-6 items-center justify-center rounded-full bg-[#183aa1] text-xs font-semibold text-white"
+          class="flex h-6 w-6 items-center justify-center rounded-full bg-[#183aa1] text-[11px] font-semibold text-white md:text-xs"
         >
           1
         </p>
@@ -62,22 +62,22 @@
         <p class="whitespace-nowrap text-black md:hidden">Korpa</p>
       </div>
       <span
-        class="flex h-[2px] w-5 items-center justify-center bg-gray-300 md:w-10"
+        class="hidden h-[2px] w-10 items-center justify-center bg-gray-300 md:flex"
       ></span>
       <div class="flex items-center gap-2">
         <p
-          class="flex h-6 w-6 items-center justify-center rounded-full bg-[#183aa1] text-xs font-semibold text-white"
+          class="flex h-6 w-6 items-center justify-center rounded-full bg-[#183aa1] text-[11px] font-semibold text-white md:text-xs"
         >
           2
         </p>
         <p class="whitespace-nowrap text-black">Informacije</p>
       </div>
       <span
-        class="flex h-[2px] w-5 items-center justify-center bg-gray-300 md:w-10"
+        class="hidden h-[2px] w-10 items-center justify-center bg-gray-300 md:flex"
       ></span>
       <div class="flex items-center gap-2 opacity-60">
         <p
-          class="flex h-6 w-6 items-center justify-center rounded-full bg-[#183aa1] text-xs font-semibold text-white"
+          class="flex h-6 w-6 items-center justify-center rounded-full bg-[#183aa1] text-[11px] font-semibold text-white md:text-xs"
         >
           3
         </p>
@@ -91,10 +91,10 @@
       <div class="md:mx-4">
         <div class="mx-auto flex h-full justify-center bg-white md:container">
           <div
-            class="flex h-full w-full flex-col gap-10 bg-gray-100 md:flex-row"
+            class="flex h-full w-full flex-col gap-10 bg-gray-100 xl:flex-row"
           >
             <div
-              class="flex-2 order-2 flex w-full flex-col justify-start bg-white px-10 py-6 md:order-1 md:rounded-lg md:px-8"
+              class="flex-2 order-2 flex w-full flex-col justify-start bg-white px-6 py-8 md:rounded-lg md:px-8 md:py-6 xl:order-1"
             >
               <div class="flex flex-col gap-2">
                 <h1 class="text-2xl font-semibold">Informacije</h1>
@@ -297,10 +297,10 @@
               </form>
             </div>
             <div
-              class="order-1 w-full border-b bg-white md:order-2 md:w-3/6 md:rounded-lg md:border-none"
+              class="order-1 w-full border-b bg-white md:rounded-lg md:border-none xl:order-2 xl:w-3/6"
             >
-              <div class="right-0 h-full w-full border-gray-300 py-6">
-                <div class="flex flex-col px-10 md:px-8">
+              <div class="right-0 h-full w-full border-gray-300 py-8 md:py-6">
+                <div class="flex flex-col px-6 md:px-8">
                   <div class="flex w-full items-center justify-between">
                     <h1 class="text-[21px] font-semibold text-[#282828]">
                       Interesuje vas
@@ -355,7 +355,7 @@
                     :disabled="purchase == false"
                     aria-label="Posalji"
                     :class="!purchase ? 'brightness-75' : ' brightness-100'"
-                    class="focus mt-6 w-full cursor-pointer rounded-full bg-primary py-4"
+                    class="focus mt-6 w-full cursor-pointer rounded-full bg-primary py-4 md:w-[400px] xl:w-full"
                   >
                     <p
                       class="flex w-full items-center justify-center text-white"

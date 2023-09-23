@@ -104,7 +104,7 @@
           <NuxtLink
             @click="$emit('toggleAddToCart')"
             to="/checkout"
-            class="flex w-full items-center justify-center rounded-full bg-black p-4 text-white"
+            class="flex w-full items-center justify-center rounded-full bg-primary p-4 text-white"
           >
             Nastavi kupovinu
           </NuxtLink>

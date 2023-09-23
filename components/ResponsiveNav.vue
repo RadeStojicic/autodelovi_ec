@@ -147,7 +147,7 @@
                 @click="openSidenav"
                 to="/lista-zelja"
                 aria-label="Lista zelja"
-                class="flex h-12 w-full items-center justify-center rounded-lg bg-black font-semibold text-white"
+                class="flex h-12 w-full items-center justify-center rounded-lg bg-primary font-semibold text-white"
               >
                 Lista želja
                 <span

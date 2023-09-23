@@ -42,9 +42,11 @@
       </div>
     </div>
     <div
-      class="md:1/2 mx-auto flex h-full w-full flex-col items-center justify-center gap-4 px-6 py-20 text-center sm:w-2/3 sm:px-0"
+      class="md:1/2 mx-auto flex h-full w-full flex-col items-center justify-center gap-5 px-6 py-20 text-center sm:w-2/3 sm:px-0"
     >
-      <h1 class="text-2xl">Uspešno smo primili vaše informacije o kupovini.</h1>
+      <h1 class="text-3xl font-bold text-primary">
+        Uspešno smo primili vaše informacije o kupovini.
+      </h1>
       <p class="text-sm">
         Vaši proizvodi uskoro će biti pripremljeni i poslati na vašu adresu.
         Očekujte ih u najkraćem mogućem roku.
