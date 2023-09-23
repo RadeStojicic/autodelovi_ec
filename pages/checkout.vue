@@ -107,7 +107,7 @@
               </div>
               <form class="mt-6 w-full">
                 <div class="flex flex-col gap-3">
-                  <div class="flex w-full flex-col md:flex-row md:gap-4">
+                  <div class="flex w-full flex-col gap-4 md:flex-row md:gap-6">
                     <div class="flex w-full flex-col">
                       <div class="flex w-full flex-col">
                         <label
@@ -188,12 +188,13 @@
                       type="text"
                       @change="checkoutButton"
                       v-model="formData.adresa"
+                      maxlength="50"
                       name="Adresa"
                       placeholder="Ulica/broj"
                       required
                     />
                   </div>
-                  <div class="flex w-full flex-col gap-4 md:flex-row md:gap-8">
+                  <div class="flex w-full flex-col gap-4 md:flex-row md:gap-6">
                     <div class="flex w-full flex-col">
                       <label
                         class="text-[17px] font-medium text-gray-800 sm:text-base"
@@ -237,6 +238,7 @@
                         class="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-base focus:border focus:border-gray-400 focus:outline-none"
                         type="text"
                         @change="checkoutButton"
+                        maxlength="15"
                         name="Telefon"
                         v-model="formData.telefon"
                         required
@@ -313,7 +315,7 @@
                     :disabled="purchase == false"
                     aria-label="Posalji"
                     :class="!purchase ? 'brightness-75' : ' brightness-100'"
-                    class="focus mt-6 w-full cursor-pointer rounded-full bg-primary py-4 md:w-[400px] xl:hidden xl:w-full"
+                    class="focus mt-6 w-full cursor-pointer rounded-full bg-primary py-4 md:w-[400px] xl:hidden"
                   >
                     <p
                       class="flex w-full items-center justify-center text-white"
@@ -404,6 +406,23 @@
         </div>
       </div>
     </div>
+    <div
+      v-if="postMessage != ''"
+      class="sm fixed bottom-0 left-0 z-50 w-full p-2 text-white sm:left-auto sm:right-0 sm:w-auto"
+    >
+      <div
+        class="flex w-full items-center justify-between rounded-md bg-black/95 p-3 sm:w-auto"
+      >
+        <p class="px-2 text-sm">
+          {{ postMessage }}
+        </p>
+        <span
+          @click="postMessage = ''"
+          class="icon-[prime--times] mt-[2px] cursor-pointer text-lg"
+        />
+      </div>
+    </div>
+
     <Contact />
     <Footer />
   </div>
@@ -462,6 +481,7 @@ const formData: FormData = reactive({
   email: "",
 });
 
+const postMessage = ref("");
 const isFormValid = computed(() => {
   return (
     formData.ime !== "" &&
@@ -531,11 +551,22 @@ const sendPurchaseData = async () => {
           " RSD",
       }),
     });
-    useRouter().push("/potvrda");
+    if (toRaw(resData.value.error)) {
+      displayPostMessage("Došlo je do greške, pokušajte ponovo...");
+    } else {
+      useRouter().push("/potvrda");
+    }
   } catch (error) {
     console.log(error);
   }
 };
+
+function displayPostMessage(message: string) {
+  postMessage.value = message;
+  setTimeout(() => {
+    postMessage.value = "";
+  }, 1900);
+}
 
 const purchase = ref(false);
 const checkoutButton = () => {

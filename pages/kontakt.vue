@@ -145,7 +145,7 @@
               class="sm fixed bottom-0 left-0 z-50 w-full p-2 text-white sm:left-auto sm:right-0 sm:w-auto"
             >
               <div
-                class="flex w-full items-center justify-between rounded-md bg-popupBackground p-3 sm:w-auto"
+                class="flex w-full items-center justify-between rounded-md bg-black/95 p-3 sm:w-auto"
               >
                 <p class="px-2 text-sm">
                   {{ postMessage }}
