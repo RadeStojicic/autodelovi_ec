@@ -9,18 +9,23 @@
         <h1 class="w-full text-4xl font-bold">
           Brzo i jednostavno naručivanje uz svega par klikova.
         </h1>
-        <p class="mt-4 w-full text-gray-500">
+        <p class="mb-6 mt-4 w-full text-gray-500">
           Potrebne su vam dodatne informacije ocenama ili dostupnosti autodelova
           ? Naš tim stoji vam na raspolaganju za sva pitanja i nedoumice.
         </p>
-        <NuxtImg
-          format="webp"
-          width="100%"
-          height="100%"
-          class="mt-6 w-full rounded-md"
-          src="/office_2.jpg"
-          alt="office"
-        />
+        <div class="relative h-full w-full">
+          <NuxtImg
+            format="webp"
+            width="100%"
+            height="100%"
+            class="w-full rounded-md"
+            src="/office_2.jpg"
+            alt="office"
+          />
+          <div
+            class="absolute top-0 z-10 h-full w-full rounded-md bg-blueColor/10"
+          ></div>
+        </div>
         <div class="mb-2 mt-10">
           <div
             class="flex flex-col items-start justify-between gap-10 lg:flex-row"
@@ -71,7 +76,7 @@
                   >Ime <span class="text-red-500">*</span></label
                 >
                 <input
-                  class="mt-2 w-full rounded-sm border px-3 py-2 focus:border focus:border-gray-300 focus:outline-none"
+                  class="mt-2 w-full rounded-md border px-3 py-2 focus:border focus:border-gray-300 focus:outline-none"
                   type="text"
                   name="ime"
                   placeholder="Unesite..."
@@ -87,7 +92,7 @@
                   Prezime <span class="text-red-500">*</span></label
                 >
                 <input
-                  class="mt-2 w-full rounded-sm border border-gray-200 px-3 py-2 focus:border focus:border-gray-300 focus:outline-none"
+                  class="mt-2 w-full rounded-md border border-gray-200 px-3 py-2 focus:border focus:border-gray-300 focus:outline-none"
                   type="text"
                   name="prezime"
                   placeholder="Unesite..."
@@ -103,7 +108,7 @@
                 >Vaš Email <span class="text-red-500">*</span></label
               >
               <input
-                class="mt-2 rounded-sm border px-3 py-2 focus:border focus:border-gray-300 focus:outline-none"
+                class="mt-2 rounded-md border px-3 py-2 focus:border focus:border-gray-300 focus:outline-none"
                 type="email"
                 name="email"
                 v-model="formData.email"
@@ -119,7 +124,7 @@
                 >Poruka <span class="text-red-500">*</span></label
               >
               <textarea
-                class="mt-2 rounded-sm border px-3 py-2 focus:border focus:border-gray-300 focus:outline-none"
+                class="mt-2 rounded-md border px-3 py-2 focus:border focus:border-gray-300 focus:outline-none"
                 name="poruka"
                 cols="30"
                 rows="8"
@@ -131,9 +136,9 @@
             <button
               aria-label="Posalji"
               @click.prevent="sendMail"
-              class="focus mt-3 w-1/2 cursor-pointer rounded-md bg-secondary py-3 sm:w-1/3"
+              class="focus mt-3 w-1/2 cursor-pointer rounded-md bg-blueColor py-3 sm:w-1/3"
             >
-              <p class="flex w-full items-center justify-center text-gray-900">
+              <p class="flex w-full items-center justify-center text-white">
                 Posalji
                 <span
                   class="icon-[prime--arrow-up-right] ml-[2px] mt-[3px] text-lg"

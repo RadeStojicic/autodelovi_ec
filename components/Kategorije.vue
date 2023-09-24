@@ -1,6 +1,6 @@
 <template>
   <div
-    class="z-0 mx-auto mt-12 flex flex-col justify-center px-10 md:container"
+    class="z-0 mx-auto mt-12 flex flex-col justify-center px-4 md:container md:px-12"
   >
     <div class="flex w-full justify-center bg-white py-8">
       <Splide class="w-full" :options="options" aria-label="Kategorije">

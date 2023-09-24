@@ -69,6 +69,9 @@
             </li>
           </ul>
         </div>
+        <div class="border-b border-gray-200">
+          <h1 class="px-4 py-6 text-xl font-semibold">Brend</h1>
+        </div>
       </div>
     </div>
   </div>

@@ -77,18 +77,24 @@
           <div class="mt-8 flex w-full flex-col gap-5">
             <button
               @click="insertCard(card.id)"
-              class="flex w-full justify-center rounded-full bg-yellow-400 p-4 font-normal"
+              class="flex w-full justify-center rounded-full bg-yellow-400 p-4 font-normal xl:w-2/3"
               aria-label="Kupi odmah"
             >
               Kupi odmah
             </button>
             <button
+              :class="card.showFilledHeart ? 'bg-gray-100 ' : 'bg-transparent'"
               aria-label="Dodaj u listu zelja"
               @click="toggleWishList(card)"
-              class="flex w-full items-center justify-center gap-1 rounded-full border border-gray-300 p-4 font-normal"
+              class="flex w-full items-center justify-center gap-1 rounded-full border border-gray-300 p-4 font-normal xl:w-2/3"
             >
               Dodaj u listu želja<span
-                class="icon-[prime--heart] mt-[3px] text-lg"
+                :class="
+                  card.showFilledHeart
+                    ? 'icon-[prime--heart-fill] '
+                    : 'icon-[prime--heart] '
+                "
+                class="mt-[3px] text-lg transition-all duration-150"
               />
             </button>
           </div>

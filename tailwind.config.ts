@@ -18,6 +18,7 @@ module.exports = {
         navbarText: "#878787;",
         primary: "#032443",
         secondary: "#f1c607",
+        blueColor: "#183aa1",
       },
       height: {
         18: "4.5rem",
