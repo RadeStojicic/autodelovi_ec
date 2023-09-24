@@ -6,9 +6,8 @@ const props = defineProps({
 });
 
 onMounted(() => {
-  handleError();
+  clearError({ redirect: "/" });
 });
-const handleError = () => clearError({ redirect: "/" });
 </script>
 
 <style scoped></style>
