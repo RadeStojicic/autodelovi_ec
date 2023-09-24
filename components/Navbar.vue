@@ -57,9 +57,14 @@
                   v-if="link.categories"
                   class="absolute left-0 top-full hidden w-full border-b border-gray-200 bg-white shadow-sm group-hover:block"
                 >
-                  <ul class="m-auto flex w-5/6 justify-between py-12">
+                  <ul
+                    class="container m-auto mx-auto flex justify-between px-8 py-12 sm:w-[100%] xl:w-[90%] 2xl:w-[80%]"
+                  >
                     <li
-                      v-for="(category, subIndex) in link.categories"
+                      v-for="(category, subIndex) in link.categories.slice(
+                        0,
+                        5,
+                      )"
                       :key="subIndex"
                     >
                       <NuxtLink aria-label="Navbar link">
@@ -82,6 +87,20 @@
                           </MyLink>
                         </li>
                       </ul>
+                    </li>
+                    <li
+                      class="relative flex items-end"
+                      v-if="link.categories.length > 5"
+                    >
+                      <NuxtLink
+                        to="/prodavnica"
+                        class="flex items-center py-1 font-semibold text-blue-500 hover:bg-gray-50"
+                      >
+                        Vidi sve
+                        <span
+                          class="icon-[prime--arrow-right] mt-[1px] flex items-center justify-center text-base"
+                        />
+                      </NuxtLink>
                     </li>
                   </ul>
                 </div>

@@ -1,7 +1,7 @@
 <template>
   <transition name="slideRight" mode="out-in">
     <div
-      class="scrollbar fixed top-0 z-[80] h-screen w-5/6 select-none overflow-y-auto border border-gray-200 bg-white text-black lg:hidden"
+      class="scrollbar fixed left-0 top-0 z-[80] h-screen w-5/6 select-none overflow-y-auto border border-gray-200 bg-white text-black lg:hidden"
       v-if="sideNavFilters"
     >
       <div class="flex items-center justify-between border-b p-4 lg:hidden">

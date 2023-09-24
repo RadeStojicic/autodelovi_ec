@@ -1,11 +1,14 @@
 <template>
   <div>
     <div class="full mx-auto flex flex-col md:container md:flex-row">
-      <Sidenav
-        class="hidden lg:block"
-        @filter-by-main-category="filterByMainCategory"
-        @filter-by-sub-category="filterBySubCategory"
-      />
+      <transition name="sidenav-slide">
+        <Sidenav
+          v-if="sidenav"
+          class="hidden"
+          @filter-by-main-category="filterByMainCategory"
+          @filter-by-sub-category="filterBySubCategory"
+        />
+      </transition>
       <ResponsiveSidenav
         @filter-by-main-category="filterByMainCategory"
         @filter-by-sub-category="filterBySubCategory"
@@ -18,103 +21,194 @@
           <div
             class="flex w-full items-center justify-between border-b border-gray-200"
           >
-            <h1 class="py-4 text-2xl text-black md:text-3xl">Proizvodi</h1>
+            <div class="flex items-center gap-1">
+              <span
+                @click="toggleFilters"
+                class="icon-[prime--sliders-h] mt-[2px] hidden cursor-pointer items-center text-3xl lg:flex"
+              />
+              <h1 class="py-4 text-2xl text-black md:text-3xl">Proizvodi</h1>
+            </div>
+
+            <div class="hidden items-center gap-3 lg:flex">
+              <p>Sortiraj po:</p>
+              <div class="relative w-40">
+                <button
+                  @click="openSortBy = !openSortBy"
+                  class="flex w-40 items-center justify-between rounded-md bg-gray-200 px-3 py-2 text-sm"
+                >
+                  {{ choosedSort }}
+                  <span
+                    class="icon-[prime--chevron-down] flex items-center text-xl"
+                  />
+                </button>
+                <ul
+                  v-if="openSortBy"
+                  class="absolute z-[40] w-full border bg-white text-xs shadow"
+                >
+                  <li
+                    @click="applySort('Cena opadajuće')"
+                    class="cursor-pointer border-b px-2 py-2 hover:bg-gray-100 hover:text-black"
+                  >
+                    Cena opadajuće
+                  </li>
+                  <li
+                    @click="applySort('Cena rastuće')"
+                    class="cursor-pointer border-b px-2 py-2 hover:bg-gray-100 hover:text-black"
+                  >
+                    Cena rastuće
+                  </li>
+                  <li
+                    @click="applySort('Popusti opadajuće')"
+                    class="cursor-pointer px-2 py-2 hover:bg-gray-100 hover:text-black"
+                  >
+                    Popusti opadajuće
+                  </li>
+                </ul>
+              </div>
+            </div>
           </div>
-          <div class="mt-4 w-full lg:hidden">
+          <div class="mt-4 flex w-full gap-2 lg:hidden">
             <button
               aria-label="Filteri"
               @click="handleSideFilters"
-              class="flex w-44 items-center justify-between rounded-lg border border-gray-200 bg-gray-100 px-4 py-3"
+              class="flex w-full items-center justify-between rounded-lg border border-gray-200 bg-gray-100 px-4 py-3"
             >
               Filteri<span
                 class="icon-[prime--chevron-down] text-2xl text-gray-950/70"
               />
             </button>
+            <div
+              class="relative flex w-full items-center justify-between rounded-lg border border-gray-200 bg-gray-100 px-4 py-3"
+            >
+              <button
+                @click="openSortBy = !openSortBy"
+                class="flex w-full items-center justify-between text-sm"
+              >
+                {{ choosedSort }}
+                <span
+                  class="icon-[prime--chevron-down] flex items-center text-2xl text-gray-950/70"
+                />
+              </button>
+              <ul
+                v-if="openSortBy"
+                class="absolute left-0 top-12 z-40 w-full border bg-white text-sm"
+              >
+                <li
+                  @click="applySort('Cena opadajuće')"
+                  class="cursor-pointer border-b px-3 py-3"
+                >
+                  Cena opadajuće
+                </li>
+                <li
+                  @click="applySort('Cena rastuće')"
+                  class="cursor-pointer border-b px-3 py-3"
+                >
+                  Cena rastuće
+                </li>
+                <li
+                  @click="applySort('Popusti opadajuće')"
+                  class="cursor-pointer px-3 py-3"
+                >
+                  Popusti opadajuće
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-
-        <div
-          class="mx-6 mt-12 grid grid-cols-1 gap-x-2 gap-y-5 pb-20 pt-6 sm:grid-cols-2 md:mt-0 md:gap-12 lg:mx-10 lg:grid-cols-3 lg:gap-8"
-        >
+        <transition name="slide-width" mode="out-in">
           <div
-            class="relative w-full rounded-lg border border-gray-200 bg-white hover:border-gray-300"
-            v-for="(card, index) in filteredCards"
-            :key="index"
+            :class="
+              sidenav
+                ? 'sm:grid-cols-2 md:gap-12 lg:grid-cols-3 '
+                : '  sm:grid-cols-3 md:gap-4 lg:grid-cols-4'
+            "
+            class="mt-12 grid grid-cols-1 gap-x-2 gap-y-5 px-6 pb-20 pt-6 md:mt-0 lg:gap-8 lg:px-10"
           >
-            <NuxtLink
-              aria-label="Proizvod"
-              :to="'/prodavnica/' + card.to + '/' + card.id"
-            >
-              <div class="flex items-center justify-center rounded-lg p-12">
-                <NuxtImg
-                  :src="card.image"
-                  alt="product_image"
-                  width="130"
-                  quality="100"
-                  format="webp"
-                />
-              </div>
-            </NuxtLink>
             <div
-              class="absolute top-0 flex w-full items-center justify-between p-4"
+              class="relative w-full rounded-lg border border-gray-200 bg-white hover:border-gray-300"
+              v-for="(card, index) in filteredCards"
+              :key="index"
             >
-              <span
-                v-if="card.discount"
-                class="rounded bg-black px-3 py-[0.4rem] text-xs font-bold text-white sm:px-2 sm:py-1"
-                >{{ card.discount }}%</span
+              <NuxtLink
+                aria-label="Proizvod"
+                :to="'/prodavnica/' + card.to + '/' + card.id"
               >
+                <div class="flex items-center justify-center rounded-lg p-12">
+                  <NuxtImg
+                    :src="card.image"
+                    alt="product_image"
+                    width="130"
+                    quality="100"
+                    format="webp"
+                  />
+                </div>
+              </NuxtLink>
               <div
-                @click="toggleWishList(card)"
-                class="absolute right-2 top-2 flex cursor-pointer items-center justify-center rounded-full bg-gray-100 p-2 transition duration-300 hover:bg-gray-100"
-                :class="card.showFilledHeart ? ' bg-gray-100' : ''"
+                class="absolute top-0 flex w-full items-center justify-between p-4"
               >
                 <span
-                  :class="
-                    card.showFilledHeart
-                      ? 'icon-[prime--heart-fill] '
-                      : 'icon-[prime--heart] '
-                  "
-                  class="p-[14px] text-gray-900 sm:p-3"
-                />
-              </div>
-            </div>
-
-            <div class="mt-4 flex flex-col items-start justify-start px-4 pb-4">
-              <p class="mt-1 text-xs text-gray-400">{{ card.category }}</p>
-              <h1 class="text-base font-bold sm:text-sm">
-                {{ card.title }}
-              </h1>
-              <div class="mt-4 flex w-full items-center justify-between">
-                <div class="flex flex-col items-start">
-                  <p
-                    v-if="card.oldPrice"
-                    class="text-xs text-gray-400 line-through decoration-1"
-                  >
-                    {{ card.oldPrice }} RSD
-                  </p>
-                  <p class="ml-[-2px] text-2xl font-bold text-gray-800">
-                    {{ card.newPrice }} RSD
-                  </p>
-                  <p
-                    v-if="card.oldPrice"
-                    class="mt-1 text-xs font-semibold text-red-600"
-                  >
-                    Ušteda: {{ card.oldPrice - card.newPrice }} RSD
-                  </p>
+                  v-if="card.discount"
+                  class="rounded bg-black px-3 py-[0.4rem] text-xs font-bold text-white sm:px-2 sm:py-1"
+                  >{{ card.discount }}%</span
+                >
+                <div
+                  @click="toggleWishList(card)"
+                  class="absolute right-2 top-2 flex cursor-pointer items-center justify-center rounded-full bg-gray-100 p-2 transition duration-300 hover:bg-gray-100"
+                  :class="card.showFilledHeart ? ' bg-gray-100' : ''"
+                >
+                  <span
+                    :class="
+                      card.showFilledHeart
+                        ? 'icon-[prime--heart-fill] '
+                        : 'icon-[prime--heart] '
+                    "
+                    class="p-[14px] text-gray-900 sm:p-3"
+                  />
                 </div>
-                <button @click="insertCard(card.id)" aria-label="Dodaj u korpu">
-                  <div
-                    class="flex items-center justify-center rounded-full bg-secondary p-[10px]"
-                  >
-                    <span
-                      class="icon-[prime--shopping-cart] text-[2rem] text-gray-900"
-                    />
+              </div>
+
+              <div
+                class="mt-4 flex flex-col items-start justify-start px-4 pb-4"
+              >
+                <p class="mt-1 text-xs text-gray-400">{{ card.category }}</p>
+                <h1 class="text-base font-bold sm:text-sm">
+                  {{ card.title }}
+                </h1>
+                <div class="mt-4 flex w-full items-center justify-between">
+                  <div class="flex flex-col items-start">
+                    <p
+                      v-if="card.oldPrice"
+                      class="text-xs text-gray-400 line-through decoration-1"
+                    >
+                      {{ card.oldPrice }} RSD
+                    </p>
+                    <p class="ml-[-2px] text-2xl font-bold text-gray-800">
+                      {{ card.newPrice }} RSD
+                    </p>
+                    <p
+                      v-if="card.oldPrice"
+                      class="mt-1 text-xs font-semibold text-red-600"
+                    >
+                      Ušteda: {{ card.oldPrice - card.newPrice }} RSD
+                    </p>
                   </div>
-                </button>
+                  <button
+                    @click="insertCard(card.id)"
+                    aria-label="Dodaj u korpu"
+                  >
+                    <div
+                      class="flex items-center justify-center rounded-full bg-secondary p-[10px]"
+                    >
+                      <span
+                        class="icon-[prime--shopping-cart] text-[2rem] text-gray-900"
+                      />
+                    </div>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </transition>
       </div>
     </div>
   </div>
@@ -123,6 +217,7 @@
 <script setup lang="ts">
 import { useProductStore } from "../../store/product";
 import { storeToRefs } from "pinia";
+import { CarPart } from "../../types/cardType";
 
 const { insertCard } = addToCart();
 const { toggleWishList } = addToWishList();
@@ -188,6 +283,48 @@ const filterByMainCategory = (name: string) => {
   );
   sideNavFilters.value = false;
 };
+
+const openSortBy = ref(false);
+const choosedSort = ref("Cena opadajuće");
+const applySort = (sortName: string) => {
+  choosedSort.value = sortName;
+  openSortBy.value = false;
+  if (sortName === "Cena opadajuće") {
+    filteredCards.value = filteredCards.value.sort(
+      (a: CarPart, b: CarPart) => b.newPrice - a.newPrice,
+    );
+  } else if (sortName === "Cena rastuće") {
+    filteredCards.value = filteredCards.value.sort(
+      (a: CarPart, b: CarPart) => a.newPrice - b.newPrice,
+    );
+  } else if (sortName === "Popusti opadajuće") {
+    filteredCards.value = filteredCards.value.sort(
+      (a: CarPart, b: CarPart) => b.discount - a.discount,
+    );
+  }
+};
+
+const sidenav = ref(true);
+const toggleFilters = () => {
+  sidenav.value = !sidenav.value;
+};
 </script>
 
-<style scoped></style>
+<style scoped>
+.sidenav-slide-enter-active,
+.sidenav-slide-leave-active {
+  transition: width 0.3s ease;
+}
+
+.sidenav-slide-enter-from,
+.sidenav-slide-leave-to {
+  width: 0;
+  opacity: 0;
+}
+
+.sidenav-slide-enter-to,
+.sidenav-slide-leave-from {
+  width: 384px;
+  opacity: 1;
+}
+</style>

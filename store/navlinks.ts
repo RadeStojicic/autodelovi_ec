@@ -12,7 +12,7 @@ export const useLinkStore = defineStore("links", () => {
       categories: [
         {
           title: "Enterijer",
-          to: "/motor-i-pogon",
+          to: "/enterijer",
           category_image: "/shocks.png",
           showMore: true,
           sublinks: [
@@ -26,7 +26,7 @@ export const useLinkStore = defineStore("links", () => {
         },
         {
           title: "Eksterijer",
-          to: "/elektrika-i-elektronika",
+          to: "/eksterijer",
           category_image: "/shocks.png",
           showMore: false,
           sublinks: [
@@ -41,7 +41,7 @@ export const useLinkStore = defineStore("links", () => {
 
         {
           title: "Pribor",
-          to: "/osvetljenje-i-signalizacija",
+          to: "/pribor",
           category_image: "/shocks.png",
           showMore: false,
           sublinks: [
@@ -67,7 +67,7 @@ export const useLinkStore = defineStore("links", () => {
         },
         {
           title: "Svetla",
-          to: "/karoserija-i-enterijer",
+          to: "/svetla",
           category_image: "/shocks.png",
           showMore: false,
           sublinks: [
@@ -83,8 +83,25 @@ export const useLinkStore = defineStore("links", () => {
           ],
         },
         {
+          title: "Električni Delovi",
+          to: "/elektricni-delovi",
+          category_image: "/shocks.png",
+          showMore: false,
+          sublinks: [
+            { names: "Starteri i Alternatori", to: "/spoljna-ogledala" },
+            { names: "Akumulatori i Baterije", to: "/branici-i-amortizeri" },
+            { names: "Svećice i Kabliranje", to: "/stakla-i-vetrobrani" },
+            {
+              names: "Senzori i Elektronske Kontrole",
+              to: "/enterijerni-delovi-i-tapacirung",
+            },
+            { names: "Radio", to: "/vrata-i-zakljucavanje" },
+            { names: "Multimedija", to: "/vrata-i-zakljucavanje" },
+          ],
+        },
+        {
           title: "Ostalo",
-          to: "/pneumatici",
+          to: "/ostalo",
           category_image: "/shocks.png",
           showMore: false,
           sublinks: [

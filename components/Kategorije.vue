@@ -1,17 +1,15 @@
 <template>
-  <div class="z-0 mx-auto mt-12 flex flex-col justify-center px-4 md:container">
+  <div
+    class="z-0 mx-auto mt-12 flex flex-col justify-center px-10 md:container"
+  >
     <div class="flex w-full justify-center bg-white py-8">
-      <Splide
-        class="flex w-[100%] justify-center px-10"
-        :options="options"
-        aria-label="Kategorije"
-      >
+      <Splide class="w-full" :options="options" aria-label="Kategorije">
         <SplideSlide
           class="flex flex-col items-center justify-center"
           v-for="(category, index) in categories"
           :key="index"
         >
-          <button @click="goToCategory">
+          <NuxtLink :to="category.to">
             <div class="h-40 w-40 rounded-full bg-gray-100">
               <NuxtImg
                 width="150"
@@ -23,7 +21,7 @@
             <p class="mt-2 text-center text-lg font-semibold md:text-base">
               {{ category.title }}
             </p>
-          </button>
+          </NuxtLink>
         </SplideSlide>
       </Splide>
     </div>
@@ -37,14 +35,19 @@ import { Splide, SplideSlide } from "@splidejs/vue-splide";
 import "@splidejs/vue-splide/css";
 
 const options = {
-  perPage: 4,
+  perPage: 5,
   arrows: true,
-  gap: "3rem",
+  gap: ".5rem",
   pagination: false,
   width: "100%",
   breakpoints: {
+    1600: {
+      perPage: 4,
+      gap: "0rem",
+    },
     1200: {
       perPage: 3,
+      gap: "0rem",
     },
     800: {
       perPage: 2,
@@ -57,25 +60,6 @@ const options = {
 };
 
 const { categories } = storeToRefs(useLinkStore());
-
-const infoCards = [
-  {
-    name: "Preko 1000 autodelova",
-    class: "icon-[prime--cog]  text-secondary text-5xl ",
-  },
-  {
-    name: "Besplatna dostava",
-    class: "icon-[prime--truck] text-secondary text-5xl ",
-  },
-  {
-    name: "14-dnevna garancija",
-    class: "icon-[prime--sync] text-secondary text-5xl ",
-  },
-  {
-    name: "14-dnevna garancija",
-    class: "icon-[prime--credit-card] text-secondary text-5xl ",
-  },
-];
 </script>
 
 <style lang="scss" scoped></style>
