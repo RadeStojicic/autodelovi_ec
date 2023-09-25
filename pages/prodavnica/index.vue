@@ -31,7 +31,7 @@
 
             <div class="hidden items-center gap-3 lg:flex">
               <p>Sortiraj po:</p>
-              <div class="relative w-40">
+              <div class="relative w-40 cursor-pointer">
                 <button
                   @click="openSortBy = !openSortBy"
                   class="flex w-40 items-center justify-between rounded-md bg-gray-200 px-3 py-2 text-sm"
@@ -66,6 +66,11 @@
                 </ul>
               </div>
             </div>
+            <div
+              v-if="openSortBy"
+              @click="openSortBy = false"
+              class="absolute left-0 top-0 z-[39] h-full w-full"
+            ></div>
           </div>
           <div class="mt-4 flex w-full gap-2 lg:hidden">
             <button
@@ -116,20 +121,29 @@
           </div>
         </div>
         <div class="mt-4 flex w-full gap-1 px-6 text-gray-500 lg:px-10">
-          <p>(Izabrano vozilo:</p>
-          <p
-            v-if="
-              queryParams.marka == null ||
-              queryParams.model == null ||
-              queryParams.godiste == null
-            "
+          <div
+            class="flex w-auto gap-2 rounded-full bg-gray-200 px-3 py-2 text-sm"
           >
-            Sva)
-          </p>
-          <p v-else>
-            {{ queryParams.marka }} {{ queryParams.model }}
-            {{ queryParams.godiste }})
-          </p>
+            <div class="flex items-center gap-2">
+              <p>Izabrano vozilo:</p>
+              <p
+                v-if="
+                  queryParams.marka == null ||
+                  queryParams.model == null ||
+                  queryParams.godiste == null
+                "
+              >
+                Sva)
+              </p>
+              <p v-else>
+                {{ queryParams.marka }} {{ queryParams.model }}
+                {{ queryParams.godiste }}
+              </p>
+            </div>
+            <span
+              class="icon-[prime--times] flex cursor-pointer items-center p-2 text-xl"
+            />
+          </div>
         </div>
         <transition name="slide-width" mode="out-in">
           <div

@@ -21,6 +21,9 @@
           Pronađite savršene autodelove u nekoliko klikova
         </p>
       </div>
+      <button @click="sendData" class="w-32 cursor-pointer bg-white p-2">
+        Ubaci u bazu
+      </button>
 
       <div
         class="relative flex w-full flex-col items-center justify-center gap-4 px-4 md:w-full md:flex-row"
@@ -132,6 +135,41 @@ const filterByCar = () => {
     router.push(`/prodavnica?${queryParams.toString()}`);
   }
 };
+
+const { data } = useAsyncData("products", () => $fetch("/api/products"));
+
+import { useProductStore } from "../store/product";
+
+const { cards } = storeToRefs(useProductStore());
+import { products } from "~/server/schemas/products.schema";
+import { boolean } from "drizzle-orm/mysql-core";
+function sendData() {
+  $fetch("/api/products", {
+    method: "POST",
+    body: {
+      to: JSON.stringify(cards.value[1].to),
+      image: JSON.stringify(cards.value[1].image),
+      main_category: JSON.stringify(cards.value[1].main_category),
+      category: JSON.stringify(cards.value[1].category),
+      name: JSON.stringify(cards.value[1].title),
+      oldPrice: parseFloat(JSON.stringify(cards.value[1].oldPrice)),
+      newPrice: parseFloat(JSON.stringify(cards.value[1].newPrice)),
+      quantity: parseInt(JSON.stringify(cards.value[1].quantity)),
+      mark: JSON.stringify(cards.value[1].mark),
+      model: JSON.stringify(cards.value[1].model),
+      year: JSON.stringify(cards.value[1].year),
+      type: JSON.stringify(cards.value[1].type),
+      aboutProduct: JSON.stringify(cards.value[1].aboutProduct),
+      description: JSON.stringify(cards.value[1].description),
+      additionalInfo: JSON.stringify(cards.value[1].additionalInfo),
+      other_images: JSON.stringify(cards.value[1].other_images),
+      discount: parseFloat(JSON.stringify(cards.value[1].discount)),
+      showFilledHeart: JSON.parse(
+        JSON.stringify(cards.value[1].showFilledHeart),
+      ),
+    } satisfies typeof products.$inferInsert,
+  });
+}
 </script>
 
 <style lang="scss" scoped></style>

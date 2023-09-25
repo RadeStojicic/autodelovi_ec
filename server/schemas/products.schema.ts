@@ -1,0 +1,31 @@
+import {
+  pgTable,
+  serial,
+  text,
+  varchar,
+  integer,
+  boolean,
+  doublePrecision,
+} from "drizzle-orm/pg-core";
+
+export const products = pgTable("products", {
+  id: serial("id").primaryKey().notNull(),
+  to: text("to").notNull(),
+  image: text("image").notNull(),
+  main_category: text("main_category").notNull(),
+  category: text("category").notNull(),
+  name: text("name").notNull(),
+  oldPrice: doublePrecision("oldPrice").notNull(),
+  newPrice: doublePrecision("newPrice").notNull(),
+  quantity: integer("quantity").notNull(),
+  mark: text("mark").notNull(),
+  model: text("model").notNull(),
+  year: text("year").notNull(),
+  type: text("type").notNull(),
+  aboutProduct: text("aboutProduct").notNull(),
+  description: text("description").notNull(),
+  additionalInfo: text("additionalInfo").notNull(),
+  other_images: text("other_images").notNull(),
+  discount: integer("discount").notNull(),
+  showFilledHeart: boolean("showFilledHeart").notNull(),
+});
