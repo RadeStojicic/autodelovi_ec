@@ -115,6 +115,22 @@
             </div>
           </div>
         </div>
+        <div class="mt-4 flex w-full gap-1 px-6 text-gray-500 lg:px-10">
+          <p>(Izabrano vozilo:</p>
+          <p
+            v-if="
+              queryParams.marka == null ||
+              queryParams.model == null ||
+              queryParams.godiste == null
+            "
+          >
+            Sva)
+          </p>
+          <p v-else>
+            {{ queryParams.marka }} {{ queryParams.model }}
+            {{ queryParams.godiste }})
+          </p>
+        </div>
         <transition name="slide-width" mode="out-in">
           <div
             :class="
@@ -246,14 +262,12 @@ const queryParams = reactive<QueryParams>({
   model: null,
   godiste: null,
 });
-
 const filteredCards = ref();
 
 const filterCards = () => {
   queryParams.marka = route.query.marka as string;
   queryParams.model = route.query.model as string;
   queryParams.godiste = route.query.godiste as string;
-  console.log(queryParams.marka, queryParams.model, queryParams.godiste);
   if (
     queryParams.marka != null &&
     queryParams.model != null &&

@@ -47,7 +47,7 @@
       <h1 class="text-3xl font-bold text-primary">
         Uspešno smo primili vaše informacije o kupovini.
       </h1>
-      <p class="text-sm">
+      <p class="text-sm sm:text-base">
         Vaši proizvodi uskoro će biti pripremljeni i poslati na vašu adresu.
         Očekujte ih u najkraćem mogućem roku.
       </p>

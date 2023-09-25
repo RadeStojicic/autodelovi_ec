@@ -92,6 +92,14 @@ const productsMainCategory = (name: string) => {
 const productsSubCategory = (name: string) => {
   return cards.value.filter((card: CarPart) => card.category === name).length;
 };
+
+//filter by mark model and year
+const filterByCar = (mark: string, model: string, year: string) => {
+  return cards.value.filter(
+    (card: CarPart) =>
+      card.mark === mark && card.model === model && card.year === year,
+  );
+};
 </script>
 
 <style scoped></style>

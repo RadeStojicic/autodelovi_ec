@@ -116,7 +116,7 @@
                           >Ime <span class="text-red-500">*</span></label
                         >
                         <input
-                          class="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-base focus:border focus:border-gray-400 focus:outline-none"
+                          class="mt-2 w-full rounded-md border border-gray-300 px-3 py-3 text-base focus:border focus:border-gray-400 focus:outline-none"
                           type="text"
                           @change="checkoutButton"
                           name="Ime"
@@ -132,7 +132,7 @@
                         >Prezime <span class="text-red-500">*</span></label
                       >
                       <input
-                        class="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-base focus:border focus:border-gray-400 focus:outline-none"
+                        class="mt-2 w-full rounded-md border border-gray-300 px-3 py-3 text-base focus:border focus:border-gray-400 focus:outline-none"
                         type="text"
                         @change="checkoutButton"
                         name="Prezime"
@@ -149,11 +149,11 @@
                     >
                     <div
                       @click="openDropDown = !openDropDown"
-                      class="relative mt-2 cursor-pointer rounded-lg border border-gray-300 bg-[#183aa1]/10 px-3"
+                      class="relative mt-2 cursor-pointer rounded-md border border-gray-300 bg-[#183aa1]/10 px-3"
                     >
                       <div class="flex w-full items-center justify-between">
                         <p
-                          class="w-full rounded-lg py-3 text-base focus:border focus:border-gray-400 focus:outline-none"
+                          class="w-full rounded-md py-3 text-base focus:border focus:border-gray-400 focus:outline-none"
                           name="drzava"
                         >
                           {{ selectedCountry }}
@@ -184,7 +184,7 @@
                       >Adresa <span class="text-red-500">*</span></label
                     >
                     <input
-                      class="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-base focus:border focus:border-gray-400 focus:outline-none"
+                      class="mt-2 w-full rounded-md border border-gray-300 px-3 py-3 text-base focus:border focus:border-gray-400 focus:outline-none"
                       type="text"
                       @change="checkoutButton"
                       v-model="formData.adresa"
@@ -203,7 +203,7 @@
                         <span class="text-red-500">*</span></label
                       >
                       <input
-                        class="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-base focus:border focus:border-gray-400 focus:outline-none"
+                        class="mt-2 w-full rounded-md border border-gray-300 px-3 py-3 text-base focus:border focus:border-gray-400 focus:outline-none"
                         type="text"
                         @change="checkoutButton"
                         v-model="formData.postanskiBroj"
@@ -218,7 +218,7 @@
                         >Grad <span class="text-red-500">*</span></label
                       >
                       <input
-                        class="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-base focus:border focus:border-gray-400 focus:outline-none"
+                        class="mt-2 w-full rounded-md border border-gray-300 px-3 py-3 text-base focus:border focus:border-gray-400 focus:outline-none"
                         type="text"
                         @change="checkoutButton"
                         v-model="formData.grad"
@@ -235,7 +235,7 @@
                     </label>
                     <div class="relative">
                       <input
-                        class="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-base focus:border focus:border-gray-400 focus:outline-none"
+                        class="mt-2 w-full rounded-md border border-gray-300 px-3 py-3 text-base focus:border focus:border-gray-400 focus:outline-none"
                         type="text"
                         @change="checkoutButton"
                         maxlength="15"
@@ -256,7 +256,7 @@
                         >
                           <div
                             v-if="showInfo"
-                            class="w-36 rounded-lg bg-primary p-2 text-white"
+                            class="w-36 rounded-md bg-primary p-2 text-white"
                           >
                             <div class="relative">
                               <div
@@ -280,7 +280,7 @@
                       >Vaš Email <span class="text-red-500">*</span></label
                     >
                     <input
-                      class="mt-2 w-full rounded-lg border border-gray-300 px-3 py-3 text-base focus:border focus:border-gray-400 focus:outline-none"
+                      class="mt-2 w-full rounded-md border border-gray-300 px-3 py-3 text-base focus:border focus:border-gray-400 focus:outline-none"
                       type="email"
                       @change="checkoutButton"
                       v-model="formData.email"
@@ -298,7 +298,7 @@
                       </p>
                     </div>
                     <label
-                      class="flex w-full gap-2 rounded-lg border bg-[#183aa1]/10 px-3 py-4 text-base"
+                      class="flex w-full gap-2 rounded-md border bg-[#183aa1]/10 px-3 py-4 text-base"
                       for="Placanje"
                     >
                       <input

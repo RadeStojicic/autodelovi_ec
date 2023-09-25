@@ -15,6 +15,7 @@ export const useLinkStore = defineStore("links", () => {
           to: "/enterijer",
           category_image: "/shocks.png",
           showMore: true,
+          mark: "BMW",
           sublinks: [
             { names: "Sedista", to: "/motorne-komponente" },
             { names: "Podne prostirke", to: "/kuleri-i-hladnjaci" },
@@ -29,6 +30,7 @@ export const useLinkStore = defineStore("links", () => {
           to: "/eksterijer",
           category_image: "/shocks.png",
           showMore: false,
+          mark: "BMW",
           sublinks: [
             { names: "Branici i spojleri", to: "/akumulatori" },
             { names: "Retrovizori", to: "/svecice-i-kablovi" },
@@ -44,6 +46,7 @@ export const useLinkStore = defineStore("links", () => {
           to: "/pribor",
           category_image: "/shocks.png",
           showMore: false,
+          mark: "BMW",
           sublinks: [
             {
               names: "Filteri (vazduh, ulje, gorivo)",
@@ -70,6 +73,7 @@ export const useLinkStore = defineStore("links", () => {
           to: "/svetla",
           category_image: "/shocks.png",
           showMore: false,
+          mark: "BMW",
           sublinks: [
             { names: "Prednja svetla", to: "/spoljna-ogledala" },
             { names: "Zadnja svetla", to: "/branici-i-amortizeri" },
@@ -87,6 +91,7 @@ export const useLinkStore = defineStore("links", () => {
           to: "/elektricni-delovi",
           category_image: "/shocks.png",
           showMore: false,
+          mark: "BMW",
           sublinks: [
             { names: "Starteri i Alternatori", to: "/spoljna-ogledala" },
             { names: "Akumulatori i Baterije", to: "/branici-i-amortizeri" },
@@ -104,6 +109,7 @@ export const useLinkStore = defineStore("links", () => {
           to: "/ostalo",
           category_image: "/shocks.png",
           showMore: false,
+          mark: "BMW",
           sublinks: [
             { names: "Auspuh i izduvni sistemi", to: "/zimske-i-letnje-gume" },
             { names: "Vešanje i amortizeri", to: "/felne-i-ratkapne" },
