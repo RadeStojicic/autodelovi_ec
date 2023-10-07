@@ -14,7 +14,7 @@ export const products = pgTable("products", {
   image: text("image").notNull(),
   main_category: text("main_category").notNull(),
   category: text("category").notNull(),
-  name: text("name").notNull(),
+  title: text("title").notNull(),
   oldPrice: doublePrecision("oldPrice").notNull(),
   newPrice: doublePrecision("newPrice").notNull(),
   quantity: integer("quantity").notNull(),
