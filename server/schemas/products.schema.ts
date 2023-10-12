@@ -2,30 +2,33 @@ import {
   pgTable,
   serial,
   text,
-  varchar,
   integer,
   boolean,
   doublePrecision,
 } from "drizzle-orm/pg-core";
+import { subcategories } from "./subcategories.schema";
+import { categories } from "./categories.schema";
+import { vehicles } from "./vehicles.schema";
 
 export const products = pgTable("products", {
   id: serial("id").primaryKey().notNull(),
-  to: text("to").notNull(),
-  image: text("image").notNull(),
-  main_category: text("main_category").notNull(),
-  category: text("category").notNull(),
-  title: text("title").notNull(),
-  oldPrice: doublePrecision("oldPrice").notNull(),
+  category_id: integer("category_id")
+    .notNull()
+    .references(() => categories.id),
+  subcategory_id: integer("subcategory_id")
+    .notNull()
+    .references(() => subcategories.id),
+  vehicle_id: integer("vehicle_id")
+    .notNull()
+    .references(() => vehicles.id),
+  name: text("name").notNull(),
+  oldPrice: doublePrecision("oldPrice"),
   newPrice: doublePrecision("newPrice").notNull(),
   quantity: integer("quantity").notNull(),
-  mark: text("mark").notNull(),
-  model: text("model").notNull(),
-  year: text("year").notNull(),
-  type: text("type").notNull(),
+  supplies: integer("supplies").notNull(),
   aboutProduct: text("aboutProduct").notNull(),
   description: text("description").notNull(),
   additionalInfo: text("additionalInfo").notNull(),
-  other_images: text("other_images").notNull(),
-  discount: integer("discount").notNull(),
+  discount: integer("discount"),
   showFilledHeart: boolean("showFilledHeart").notNull(),
 });

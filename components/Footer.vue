@@ -22,10 +22,10 @@
             omogućava laku pretragu i pronalaženje željenih delova.
           </p>
           <div class="mt-4 flex items-center gap-1 text-3xl">
-            <span class="icon-[prime--instagram]" />
-            <span class="icon-[prime--facebook]" />
-            <span class="icon-[prime--twitter]" />
-            <span class="icon-[prime--linkedin]" />
+            <Icon name="prime:instagram" />
+            <Icon name="prime:facebook" />
+            <Icon name="prime:twitter" />
+            <Icon name="prime:linkedin" />
           </div>
         </div>
         <div>

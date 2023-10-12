@@ -7,11 +7,11 @@
       >
         <div class="flex items-center gap-4 text-sm md:text-xs">
           <div class="flex items-center justify-start gap-[2px]">
-            <span class="icon-[prime--phone] text-lg" />
+            <Icon class="text-lg" name="prime:phone" />
             <p class="text-sm">+381 6442786</p>
           </div>
           <div class="hidden items-center justify-start gap-[2px] md:flex">
-            <span class="icon-[prime--envelope] text-lg" />
+            <Icon class="text-lg" name="prime:envelope" />
             <p class="text-sm">radestojicicsd@gmail.com</p>
           </div>
         </div>
@@ -97,8 +97,10 @@
                         class="flex items-center py-1 font-semibold text-blue-500 hover:bg-gray-50"
                       >
                         Vidi sve
-                        <span
-                          class="icon-[prime--arrow-right] mt-[1px] flex items-center justify-center text-base"
+
+                        <Icon
+                          class="mt-[1px] flex items-center justify-center text-base"
+                          name="prime:arrow-right"
                         />
                       </NuxtLink>
                     </li>
@@ -122,8 +124,9 @@
                 @click="handleInput"
                 class="flex cursor-pointer items-center justify-center rounded-full transition duration-150 sm:p-[7px] sm:hover:bg-primary/10"
               >
-                <span
-                  class="icon-[prime--search] text-4xl text-white sm:text-3xl"
+                <Icon
+                  class="text-4xl text-white sm:text-3xl"
+                  name="prime:search"
                   aria-hidden="true"
                 />
               </div>
@@ -137,8 +140,10 @@
                 to="/lista-zelja"
               >
                 <div class="relative ml-1 p-1 sm:ml-0">
-                  <span
-                    class="icon-[prime--heart] relative bg-white text-4xl sm:block sm:text-3xl lg:block"
+                  <Icon
+                    color="white"
+                    class="relative text-4xl sm:block sm:text-3xl lg:block"
+                    name="prime:heart"
                     aria-hidden="true"
                   />
                   <span
@@ -150,12 +155,15 @@
               </NuxtLink>
               <div
                 @click="toggleAddToCart"
-                class="relative ml-1 mt-[4px] block cursor-pointer p-1 sm:ml-0"
+                class="relative ml-1 block cursor-pointer p-1 sm:ml-0"
               >
-                <span
-                  class="icon-[prime--shopping-bag] bg-white text-[2rem]"
+                <Icon
+                  color="white"
+                  class="relative text-[2rem]"
+                  name="prime:shopping-bag"
                   aria-hidden="true"
                 />
+
                 <span
                   class="absolute right-[2px] top-[2px] flex h-4 w-4 items-center justify-center rounded-full bg-secondary p-2 text-xs sm:right-[2px] sm:top-[2px]"
                 >
@@ -205,8 +213,9 @@
           :to="'/prodavnica' + '/' + searchInput"
         >
           <div class="flex cursor-pointer items-center justify-center">
-            <span
-              class="icon-[prime--search] text-3xl sm:text-3xl"
+            <Icon
+              class="text-3xl text-primary sm:text-3xl"
+              name="prime:search"
               aria-hidden="true"
             />
           </div>

@@ -34,12 +34,11 @@
               <h1 class="text-xl font-bold">Važne informacije</h1>
               <div class="mt-2 flex flex-col text-sm">
                 <div class="flex items-center gap-1 text-gray-500">
-                  <span
-                    class="icon-[prime--envelope] mt-[2px] text-xl"
-                  />radestojicicsd@gmail.com
+                  <Icon class="mt-[2px] text-xl" name="prime:envelope" />
+                  radestojicicsd@gmail.com
                 </div>
                 <div class="flex items-center gap-1 text-gray-500">
-                  <span class="icon-[prime--phone] mt-[2px] text-xl" />
+                  <Icon class="mt-[2px] text-xl" name="prime:phone" />
                   <p class="underline">
                     <a href="tel:+3816442788">+3816442788</a>
                   </p>
@@ -49,7 +48,7 @@
             <div class="flex flex-col">
               <h1 class="text-xl font-bold">Lokacija</h1>
               <div class="mt-2 flex gap-1 text-sm text-gray-500">
-                <span class="icon-[prime--map-marker] mt-[2px] text-xl" />
+                <Icon class="mt-[2px] text-xl" name="prime:map-marker" />
                 <p>4, Bulevar Mihajla Pupina 10 z, Beograd 11070</p>
               </div>
             </div>
@@ -140,8 +139,9 @@
             >
               <p class="flex w-full items-center justify-center text-white">
                 Posalji
-                <span
-                  class="icon-[prime--arrow-up-right] ml-[2px] mt-[3px] text-lg"
+                <Icon
+                  class="ml-[2px] mt-[3px] text-xl"
+                  name="prime:arrow-up-right"
                 />
               </p>
             </button>
@@ -155,9 +155,10 @@
                 <p class="px-2 text-sm">
                   {{ postMessage }}
                 </p>
-                <span
+                <Icon
                   @click="postMessage = ''"
-                  class="icon-[prime--times] mt-[2px] cursor-pointer text-lg"
+                  class="cursor-pointer text-lg"
+                  name="prime:times"
                 />
               </div>
             </div>

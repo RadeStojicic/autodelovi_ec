@@ -44,7 +44,7 @@
           :class="{ 'brightness-[80%]': buttonDisabled }"
           class="mt-4 flex w-52 cursor-pointer items-center justify-center gap-1 rounded bg-secondary p-3 text-gray-900 md:mt-0 md:w-40"
         >
-          <span class="icon-[prime--search] text-lg" />
+          <Icon class="text-lg" name="prime:search" />
           Pretraži
         </buttton>
       </div>

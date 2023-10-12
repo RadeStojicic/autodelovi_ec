@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     "@nuxtjs/google-fonts",
     "@vueuse/nuxt",
     "@nuxt/image",
+    "nuxt-icon",
   ],
   app: {
     head: {

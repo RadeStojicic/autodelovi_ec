@@ -7,9 +7,10 @@
       >
         <div class="relative h-auto">
           <div class="mx-5 flex items-start justify-end border-b pt-2">
-            <span
+            <Icon
+              class="relative bottom-1 left-3 cursor-pointer text-[42px] hover:text-gray-700"
               @click="openSidenav"
-              class="cursor pointer icon-[prime--times] relative bottom-1 left-3 cursor-pointer text-[42px] hover:bg-gray-700"
+              name="prime:times"
             />
           </div>
           <div class="mx-5 flex flex-col border-b">
@@ -21,8 +22,9 @@
                 class="flex items-center text-sm font-semibold text-gray-900/90"
               >
                 Vidi sve
-                <span
-                  class="icon-[prime--chevron-right] text-xl text-gray-900/80"
+                <Icon
+                  class="text-xl text-gray-900/80"
+                  name="prime:chevron-right"
                 />
               </NuxtLink>
             </div>
@@ -90,14 +92,15 @@
                   @click="showMore = !showMore"
                   class="relative left-3 px-2 py-1"
                 >
-                  <span
-                    :class="[
-                      showMore
-                        ? 'icon-[prime--chevron-up]'
-                        : 'icon-[prime--chevron-down]',
-                      !showMore ? 'icon-[prime--chevron-down]' : '',
-                    ]"
+                  <Icon
                     class="text-3xl"
+                    v-if="showMore"
+                    name="prime:chevron-up"
+                  />
+                  <Icon
+                    class="text-3xl"
+                    v-if="!showMore"
+                    name="prime:chevron-down"
                   />
                 </div>
               </div>
@@ -150,8 +153,9 @@
                 class="flex h-12 w-full items-center justify-center rounded-lg bg-primary font-semibold text-white"
               >
                 Lista želja
-                <span
-                  class="icon-[prime--heart] ml-[1px] mt-[3px] flex items-center justify-center text-lg"
+                <Icon
+                  class="ml-[1px] mt-[3px] flex items-center justify-center text-lg"
+                  name="prime:heart"
                 />
               </NuxtLink>
               <NuxtLink
@@ -165,14 +169,15 @@
             <p
               class="mt-3 flex w-full items-center gap-1 pb-1 pt-2 text-gray-700"
             >
-              <span
-                class="icon-[prime--envelope] mt-[3px] text-xl text-gray-700"
-              />autodeloviofficial@gmail.com
+              <Icon
+                class="mt-[3px] text-xl text-gray-700"
+                name="prime:envelope"
+              />
+              autodeloviofficial@gmail.com
             </p>
             <p class="flex w-full items-center gap-1 pb-2 text-gray-700">
-              <span
-                class="icon-[prime--phone] mt-[3px] text-xl text-gray-700"
-              />+381 642732014
+              <Icon class="mt-[3px] text-xl text-gray-700" name="prime:phone" />
+              +381 642732014
             </p>
           </div>
         </div>
@@ -183,7 +188,7 @@
       @click="openSidenav"
       class="ml-1 flex w-full items-center justify-center lg:hidden"
     >
-      <span class="icon-[prime--bars] text-[2.5em] text-white" />
+      <Icon class="text-[2.5em] text-white" name="prime:bars" />
     </button>
   </div>
 

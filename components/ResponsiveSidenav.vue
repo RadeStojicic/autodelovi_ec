@@ -6,9 +6,11 @@
     >
       <div class="flex items-center justify-between border-b p-4 lg:hidden">
         <h1 class="text-2xl font-semibold">Filteri</h1>
-        <span
+
+        <Icon
+          class="cursor-pointer text-3xl text-gray-500"
           @click="handleExit"
-          class="icon-[prime--times] cursor-pointer py-1 text-3xl text-gray-500"
+          name="prime:times"
         />
       </div>
       <div class="w-full bg-gray-200">
@@ -19,9 +21,11 @@
             <NuxtLink aria-label="Pocetna" class="text-black/80" to="/"
               >Početna</NuxtLink
             >
-            <span
-              class="icon-[prime--chevron-right] mt-[3px] text-lg text-gray-500"
+            <Icon
+              class="mt-[3px] text-lg text-gray-500"
+              name="prime:chevron-right"
             />
+
             <NuxtLink to="/prodavnica">Prodavnica</NuxtLink>
           </div>
           <div class="border-b border-gray-200">
@@ -47,13 +51,17 @@
                     {{ link.title }} ({{ productsMainCategory(link.title) }})
                   </NuxtLink>
 
-                  <span
+                  <Icon
                     @click="link.showMore = !link.showMore"
-                    class="cursor-pointer p-2 text-2xl"
-                    :class="{
-                      'icon-[prime--chevron-up]': link.showMore,
-                      'icon-[prime--chevron-down]': !link.showMore,
-                    }"
+                    class="cursor-pointer text-2xl"
+                    v-if="link.showMore"
+                    name="prime:chevron-up"
+                  />
+                  <Icon
+                    @click="link.showMore = !link.showMore"
+                    class="cursor-pointer text-2xl"
+                    v-if="!link.showMore"
+                    name="prime:chevron-down"
                   />
                 </div>
                 <ul

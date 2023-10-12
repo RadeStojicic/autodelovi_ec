@@ -21,8 +21,8 @@
               aria-label="Kupi odmah"
               class="mt-3 flex items-center gap-1 text-lg text-white md:text-base"
               to="/prodavnica"
-              >Kupi odmah <span class="icon-[prime--arrow-right]"
-            /></NuxtLink>
+              >Kupi odmah <Icon name="prime:arrow-right" />
+            </NuxtLink>
           </div>
         </NuxtLink>
       </div>
@@ -43,7 +43,7 @@
               aria-label="Kupi odmah"
               class="mt-3 flex items-center gap-1 text-lg text-white md:text-base"
               to="/prodavnica"
-              >Kupi odmah <span class="icon-[prime--arrow-right]"
+              >Kupi odmah <Icon name="prime:arrow-right"
             /></NuxtLink>
           </div>
         </NuxtLink>

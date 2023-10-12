@@ -8,8 +8,9 @@
       <div class="order-2 flex w-full flex-col gap-4 lg:order-1 lg:flex-row">
         <p class="flex items-center text-gray-500 lg:hidden">
           {{ card.main_category }}
-          <span
-            class="icon-[prime--chevron-right] mt-[3px] text-lg text-gray-500"
+          <Icon
+            name="prime:chevron-right"
+            class="mt-[3px] text-lg text-gray-500"
           />{{ card.category }}
         </p>
         <div
@@ -47,12 +48,14 @@
           <div class="w-full border-b pb-3">
             <p class="mb-4 hidden items-center text-gray-500 lg:flex">
               <span>Prodavnica </span
-              ><span
-                class="icon-[prime--chevron-right] mt-[3px] text-lg text-gray-500"
+              ><Icon
+                name="prime:chevron-right"
+                class="mt-[3px] text-lg text-gray-500"
               />
               {{ card.main_category }}
-              <span
-                class="icon-[prime--chevron-right] mt-[3px] text-lg text-gray-500"
+              <Icon
+                name="prime:chevron-right"
+                class="mt-[3px] text-lg text-gray-500"
               />{{ card.category }}
             </p>
             <h1 class="text-3xl font-semibold">{{ card.title }}</h1>
@@ -88,13 +91,17 @@
               @click="toggleWishList(card)"
               class="flex w-full items-center justify-center gap-1 rounded-full border border-gray-300 p-4 font-normal xl:w-2/3"
             >
-              Dodaj u listu želja<span
-                :class="
-                  card.showFilledHeart
-                    ? 'icon-[prime--heart-fill] '
-                    : 'icon-[prime--heart] '
-                "
+              Dodaj u listu želja
+              <Icon
+                v-if="card.showFilledHeart"
                 class="mt-[3px] text-lg transition-all duration-150"
+                name="prime:heart-fill"
+              />
+
+              <Icon
+                v-if="!card.showFilledHeart"
+                class="mt-[3px] text-lg transition-all duration-150"
+                name="prime:heart"
               />
             </button>
           </div>
@@ -102,22 +109,22 @@
             <div class="flex items-center gap-2">
               <NuxtLink aria-label="Instagram" to="https://instagram.com">
                 <div class="flex rounded-full border border-gray-300 p-1">
-                  <span class="icon-[prime--instagram]" />
+                  <Icon name="prime:instagram" />
                 </div>
               </NuxtLink>
               <NuxtLink aria-label="Facebook" to="https://facebook.com">
                 <div class="flex rounded-full border border-gray-300 p-1">
-                  <span class="icon-[prime--facebook]" />
+                  <Icon name="prime:facebook" />
                 </div>
               </NuxtLink>
               <NuxtLink aria-label="Twitter" to="https://twitter.com">
                 <div class="flex rounded-full border border-gray-300 p-1">
-                  <span class="icon-[prime--twitter]" />
+                  <Icon name="prime:twitter" />
                 </div>
               </NuxtLink>
               <NuxtLink aria-label="LinkedIn" to="https://linkedin.com">
                 <div class="flex rounded-full border border-gray-300 p-1">
-                  <span class="icon-[prime--linkedin]" />
+                  <Icon name="prime:linkedin" />
                 </div>
               </NuxtLink>
             </div>

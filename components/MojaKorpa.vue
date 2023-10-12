@@ -7,9 +7,10 @@
       <div class="scrollbar flex w-full flex-col overflow-scroll p-5">
         <div class="flex items-start justify-between">
           <h1 class="text-2xl font-[700]">Vaša korpa</h1>
-          <span
+          <Icon
             @click="$emit('toggleAddToCart')"
-            class="cursor pointer icon-[prime--times] relative bottom-[2px] left-2 cursor-pointer text-[42px] hover:bg-gray-700"
+            class="relative bottom-[2px] left-2 cursor-pointer text-[42px] hover:text-gray-700"
+            name="prime:times"
           />
         </div>
         <div class="mt-2 flex flex-col pb-3">
@@ -84,9 +85,10 @@
                 </button>
               </div>
               <div>
-                <span
+                <Icon
                   @click="removeFromCart(product.id)"
-                  class="icon-[prime--trash] mt-2 cursor-pointer text-[1.4em]"
+                  class="cursor-pointer text-[1.4em]"
+                  name="prime:trash"
                 />
               </div>
             </div>

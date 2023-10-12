@@ -22,9 +22,10 @@
             class="flex w-full items-center justify-between border-b border-gray-200"
           >
             <div class="flex items-center gap-1">
-              <span
+              <Icon
                 @click="toggleFilters"
-                class="icon-[prime--sliders-h] mt-[2px] hidden cursor-pointer items-center text-3xl lg:flex"
+                name="prime:sliders-h"
+                class="mt-[2px] hidden cursor-pointer items-center text-3xl lg:flex"
               />
               <h1 class="py-4 text-2xl text-black md:text-3xl">Proizvodi</h1>
             </div>
@@ -37,8 +38,9 @@
                   class="flex w-40 items-center justify-between rounded-md bg-gray-200 px-3 py-2 text-sm"
                 >
                   {{ choosedSort }}
-                  <span
-                    class="icon-[prime--chevron-down] flex items-center text-xl"
+                  <Icon
+                    name="prime:chevron-down"
+                    class="flex items-center text-xl"
                   />
                 </button>
                 <ul
@@ -78,8 +80,9 @@
               @click="handleSideFilters"
               class="flex w-full items-center justify-between rounded-lg border border-gray-200 bg-gray-100 px-4 py-3"
             >
-              Filteri<span
-                class="icon-[prime--chevron-down] text-2xl text-gray-950/70"
+              Filteri<Icon
+                name="prime:chevron-down"
+                class="text-2xl text-gray-950/70"
               />
             </button>
             <div
@@ -90,8 +93,9 @@
                 class="flex w-full items-center justify-between text-sm"
               >
                 {{ choosedSort }}
-                <span
-                  class="icon-[prime--chevron-down] flex items-center text-2xl text-gray-950/70"
+                <Icon
+                  name="prime:chevron-down"
+                  class="flex items-center text-2xl text-gray-950/70"
                 />
               </button>
               <ul
@@ -133,15 +137,16 @@
                   queryParams.godiste == null
                 "
               >
-                Sva)
+                (Sva)
               </p>
               <p v-else>
                 {{ queryParams.marka }} {{ queryParams.model }}
                 {{ queryParams.godiste }}
               </p>
             </div>
-            <span
-              class="icon-[prime--times] flex cursor-pointer items-center p-2 text-xl"
+            <Icon
+              name="prime:times"
+              class="flex cursor-pointer items-center text-xl"
             />
           </div>
         </div>
@@ -186,13 +191,16 @@
                   class="absolute right-2 top-2 flex cursor-pointer items-center justify-center rounded-full bg-gray-100 p-2 transition duration-300 hover:bg-gray-100"
                   :class="card.showFilledHeart ? ' bg-gray-100' : ''"
                 >
-                  <span
-                    :class="
-                      card.showFilledHeart
-                        ? 'icon-[prime--heart-fill] '
-                        : 'icon-[prime--heart] '
-                    "
-                    class="p-[14px] text-gray-900 sm:p-3"
+                  <Icon
+                    v-if="card.showFilledHeart"
+                    class="text-2xl text-gray-900"
+                    name="prime:heart-fill"
+                  />
+
+                  <Icon
+                    v-if="!card.showFilledHeart"
+                    class="text-2xl text-gray-900"
+                    name="prime:heart"
                   />
                 </div>
               </div>
@@ -229,8 +237,9 @@
                     <div
                       class="flex items-center justify-center rounded-full bg-secondary p-[10px]"
                     >
-                      <span
-                        class="icon-[prime--shopping-cart] text-[2rem] text-gray-900"
+                      <Icon
+                        class="text-[2rem] text-gray-900"
+                        name="prime:shopping-cart"
                       />
                     </div>
                   </button>

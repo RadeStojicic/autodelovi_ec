@@ -41,13 +41,16 @@
                 class="absolute right-2 top-2 flex cursor-pointer items-center justify-center rounded-full bg-gray-100 p-2 transition duration-300 hover:bg-gray-100"
                 :class="card.showFilledHeart ? ' bg-gray-100' : ''"
               >
-                <span
-                  :class="
-                    card.showFilledHeart
-                      ? 'icon-[prime--heart-fill] '
-                      : 'icon-[prime--heart] '
-                  "
-                  class="p-[14px] text-gray-900 sm:p-3"
+                <Icon
+                  v-if="card.showFilledHeart"
+                  class="text-2xl text-gray-900"
+                  name="prime:heart-fill"
+                />
+
+                <Icon
+                  v-if="!card.showFilledHeart"
+                  class="text-2xl text-gray-900"
+                  name="prime:heart"
                 />
               </div>
             </div>
@@ -79,8 +82,9 @@
                   <div
                     class="flex items-center justify-center rounded-full bg-secondary p-[10px]"
                   >
-                    <span
-                      class="icon-[prime--shopping-cart] text-[2rem] text-gray-900"
+                    <Icon
+                      class="text-[2rem] text-gray-900"
+                      name="prime:shopping-cart"
                     />
                   </div>
                 </button>

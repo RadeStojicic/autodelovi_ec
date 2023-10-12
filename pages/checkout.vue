@@ -24,8 +24,9 @@
                 @click="toggleAddToCart"
                 class="relative ml-1 mt-[4px] block cursor-pointer p-1 sm:ml-0"
               >
-                <span
-                  class="icon-[prime--shopping-bag] bg-white text-[2rem]"
+                <Icon
+                  name="prime:shopping-bag"
+                  class="text-[2rem] text-white"
                   aria-hidden="true"
                 />
                 <span
@@ -71,7 +72,7 @@
         >
           2
         </p>
-        <p class="whitespace-nowrap text-black">Informacije</p>
+        <p class="whitespace-nowrap text-sm text-black">Informacije</p>
       </div>
       <span
         class="flex h-[2px] w-10 items-center justify-center bg-gray-300"
@@ -158,8 +159,9 @@
                         >
                           {{ selectedCountry }}
                         </p>
-                        <span
-                          class="icon-[prime--chevron-down] cursor-pointer p-1 text-2xl"
+                        <Icon
+                          class="cursor-pointer text-2xl"
+                          name="prime:chevron-down"
                         />
                         <div
                           v-if="openDropDown"
@@ -243,11 +245,11 @@
                         v-model="formData.telefon"
                         required
                       />
-                      <div class="absolute right-2 top-6">
-                        <span
-                          @mouseover="showInfo = true"
-                          @mouseout="showInfo = false"
-                          class="icon-[prime--question-circle] cursor-pointer text-xl text-gray-500"
+                      <div class="absolute right-2 top-[18px]">
+                        <Icon
+                          @click="showInfo = !showInfo"
+                          name="prime:question-circle"
+                          class="cursor-pointer text-xl text-gray-500"
                         />
                         <div
                           class="absolute bottom-8 right-[-10px]"
@@ -321,8 +323,9 @@
                       class="flex w-full items-center justify-center text-white"
                     >
                       Poruči odmah
-                      <span
-                        class="icon-[prime--arrow-up-right] ml-[2px] mt-[3px] text-lg"
+                      <Icon
+                        name="prime:arrow-up-right"
+                        class="ml-[2px] mt-[3px] text-lg"
                       />
                     </p>
                   </button>
@@ -394,8 +397,9 @@
                       class="flex w-full items-center justify-center text-white"
                     >
                       Poruči odmah
-                      <span
-                        class="icon-[prime--arrow-up-right] ml-[2px] mt-[3px] text-lg"
+                      <Icon
+                        name="prime:arrow-up-right"
+                        class="ml-[2px] mt-[3px] text-lg"
                       />
                     </p>
                   </button>
@@ -416,9 +420,10 @@
         <p class="px-2 text-sm">
           {{ postMessage }}
         </p>
-        <span
+        <Icon
           @click="postMessage = ''"
-          class="icon-[prime--times] mt-[2px] cursor-pointer text-lg"
+          name="prime:times"
+          class="mt-[2px] cursor-pointer text-lg"
         />
       </div>
     </div>

@@ -9,7 +9,7 @@
         :key="index"
       >
         <div class="flex rounded-full bg-white">
-          <span :class="card.class" />
+          <Icon :class="card.class" :name="card.icon" />
         </div>
         <div class="flex flex-col">
           <p class="text-lg font-bold md:text-base">{{ card.name }}</p>
@@ -27,22 +27,26 @@ const infoCards = [
   {
     name: "Preko 1000 autodelova",
     text: "od preko 200 razlicitih automobila",
-    class: "icon-[prime--cog]  text-secondary text-5xl ",
+    icon: "prime:cog",
+    class: " text-secondary text-5xl ",
   },
   {
     name: "Besplatna dostava",
     text: "za porudzbine preko 5000 dinara",
-    class: "icon-[prime--truck] text-secondary text-5xl ",
+    icon: "prime:truck",
+    class: "text-secondary text-5xl ",
   },
   {
     name: "14-dnevna garancija",
     text: "povratak sa besplatnom dostavom",
-    class: "icon-[prime--sync] text-secondary text-5xl ",
+    icon: "prime:sync",
+    class: "text-secondary text-5xl ",
   },
   {
     name: "14-dnevna garancija",
     text: "povratak sa besplatnom dostavom",
-    class: "icon-[prime--credit-card] text-secondary text-5xl ",
+    icon: "prime:credit-card",
+    class: "text-secondary text-5xl ",
   },
 ];
 </script>

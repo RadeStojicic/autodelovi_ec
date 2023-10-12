@@ -1,6 +1,13 @@
 <template>
-  <div class="flex h-[100vh] w-full flex-col bg-[#f5f6f8] p-10">
-    <div class="flex gap-4">
+  <div class="mx-auto flex h-[100vh] w-full max-w-[1200px] flex-col px-6">
+    <div class="flex justify-between border-b py-5">
+      <h1 class="text-2xl font-bold">Proizvodi</h1>
+      <button class="w-32 rounded-full bg-black p-2 text-sm text-white">
+        <Icon size="32" name="mdi:plus" />
+        Dodaj proizvod
+      </button>
+    </div>
+    <div class="mt-8 flex gap-4">
       <div class="flex flex-col items-center gap-4">
         <input
           v-model="formFields.title"
@@ -111,12 +118,14 @@
     </button>
   </div>
 </template>
-
 <script lang="ts" setup>
+definePageMeta({
+  layout: "admin-layout",
+});
 const { data } = useAsyncData("products", () => $fetch("/api/products"));
 
 import { storeToRefs } from "pinia";
-import { useProductStore } from "../store/product";
+import { useProductStore } from "~/store/product";
 import { products } from "~/server/schemas/products.schema";
 import { boolean } from "drizzle-orm/mysql-core";
 import { uuid } from "drizzle-orm/pg-core";
@@ -137,32 +146,41 @@ const formFields = ref({
   additionalInfo: "",
   description: "",
 });
-function sendData() {
-  $fetch("/api/products", {
-    method: "POST",
-    body: {
-      to: "",
-      image: "",
-      main_category: formFields.value.main_category || "auto",
-      category: formFields.value.category || "auto",
-      title: formFields.value.title || "auto",
-      oldPrice: parseFloat(formFields.value.oldPrice) || 0,
-      newPrice: parseFloat(formFields.value.newPrice) || 0,
-      quantity: formFields.value.quantity || 0,
-      mark: formFields.value.mark || "auto",
-      model: formFields.value.model || "auto",
-      year: formFields.value.year || "auto",
-      type: formFields.value.type || "auto",
-      aboutProduct: formFields.value.aboutProduct || "",
-      description: formFields.value.description || "",
-      additionalInfo: formFields.value.additionalInfo || "",
-      other_images: "",
-      discount: parseFloat(formFields.value.discount) || 0,
-      showFilledHeart: false,
-      id: 123,
-    } satisfies typeof products.$inferInsert,
-  });
-}
-</script>
+// const client = useSupabaseClient();
+// async function uploadImagesToSupabase(image: string) {
+//   const { data, error } = await client.storage
+//     .from("products")
+//     .upload("my-image.png", image);
 
+//   if (error) {
+//     console.log(error);
+//     return;
+//   }
+//   console.log(data);
+// }
+
+// function sendData() {
+//   $fetch("/api/products", {
+//     method: "POST",
+//     body: {
+//       category: formFields.value.category || "auto",
+//       title: formFields.value.title || "auto",
+//       oldPrice: parseFloat(formFields.value.oldPrice) || 0,
+//       newPrice: parseFloat(formFields.value.newPrice) || 0,
+//       quantity: formFields.value.quantity || 0,
+//       mark: formFields.value.mark || "auto",
+//       model: formFields.value.model || "auto",
+//       year: formFields.value.year || "auto",
+//       type: formFields.value.type || "auto",
+//       aboutProduct: formFields.value.aboutProduct || "",
+//       description: formFields.value.description || "",
+//       additionalInfo: formFields.value.additionalInfo || "",
+//       other_images: "",
+//       discount: parseFloat(formFields.value.discount) || 0,
+//       showFilledHeart: false,
+//       id: 123,
+//     } satisfies typeof products.$inferInsert,
+//   });
+// }
+</script>
 <style lang="scss" scoped></style>

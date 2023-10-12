@@ -10,9 +10,11 @@
           <NuxtLink aria-label="Pocetna" class="text-black/80" to="/"
             >Početna</NuxtLink
           >
-          <span
-            class="icon-[prime--chevron-right] mt-[3px] text-lg text-gray-500"
+          <Icon
+            class="mt-[3px] text-lg text-gray-500"
+            name="prime:chevron-right"
           />
+
           <NuxtLink aria-label="Prodavnica" to="/prodavnica"
             >Prodavnica</NuxtLink
           >
@@ -40,13 +42,17 @@
                   {{ link.title }} ({{ productsMainCategory(link.title) }})
                 </NuxtLink>
 
-                <span
+                <Icon
                   @click="link.showMore = !link.showMore"
-                  class="cursor-pointer p-2 text-2xl"
-                  :class="{
-                    'icon-[prime--chevron-up]': link.showMore,
-                    'icon-[prime--chevron-down]': !link.showMore,
-                  }"
+                  class="cursor-pointer text-2xl"
+                  v-if="link.showMore"
+                  name="prime:chevron-up"
+                />
+                <Icon
+                  @click="link.showMore = !link.showMore"
+                  class="cursor-pointer text-2xl"
+                  v-if="!link.showMore"
+                  name="prime:chevron-down"
                 />
               </div>
               <ul

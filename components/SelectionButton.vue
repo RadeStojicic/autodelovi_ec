@@ -12,9 +12,11 @@
         type="text"
         readonly="true"
       />
-      <span
-        class="icon-[prime--chevron-down] absolute right-0 text-3xl"
-        :class="{ 'bg-blue-500': showOptions, 'bg-gray-600': !showOptions }"
+
+      <Icon
+        :class="{ 'text-blue-500': showOptions, 'text-gray-600': !showOptions }"
+        class="absolute right-0 text-3xl"
+        name="prime:chevron-down"
       />
     </div>
     <div
