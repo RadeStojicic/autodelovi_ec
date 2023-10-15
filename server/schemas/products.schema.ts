@@ -22,8 +22,7 @@ export const products = pgTable("products", {
     .notNull()
     .references(() => vehicles.id),
   name: text("name").notNull(),
-  oldPrice: doublePrecision("oldPrice"),
-  newPrice: doublePrecision("newPrice").notNull(),
+  price: doublePrecision("price").notNull(),
   quantity: integer("quantity").notNull(),
   supplies: integer("supplies").notNull(),
   aboutProduct: text("aboutProduct").notNull(),

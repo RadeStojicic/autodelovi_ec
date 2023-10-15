@@ -6,7 +6,7 @@
     <div
       class="flex h-16 w-16 items-center justify-center rounded-full bg-gray-200 p-2"
     >
-      <span class="icon-[prime--android] text-5xl text-primary" />
+      <Icon name="prime:android" class="text-5xl text-primary" />
     </div>
     <h1 class="text-3xl font-bold text-primary">Greška 404</h1>
     <p class="text-sm sm:text-base">
