@@ -1,5 +1,12 @@
 <template>
-  <div ref="dropdownRef" class="relative w-full select-none rounded-sm sm:w-72">
+  <div
+    ref="dropdownRef"
+    :class="{ 'sm:w-72': !newWidth, 'sm:w-full': newWidth }"
+    class="roundeds-sm relative w-full select-none"
+  >
+    <p v-if="inputName" class="p-1 font-medium">
+      {{ inputName }}
+    </p>
     <div
       @click="showOptions = !showOptions && !disabledInput"
       class="relative flex w-full cursor-pointer items-center justify-between rounded-sm bg-white focus:outline-none focus:ring-1 focus:ring-sky-200"
@@ -81,6 +88,8 @@ const props = defineProps<{
   checkboxChecked?: boolean;
   selection: any;
   getFilteredOptions: any;
+  newWidth: boolean;
+  inputName: string;
 }>();
 
 const model = defineModel<string>("model");

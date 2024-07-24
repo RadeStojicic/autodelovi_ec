@@ -117,7 +117,7 @@
                     v-for="(sublink, subIndex) in link.categories"
                     :key="subIndex"
                     :to="sublink.to"
-                    >{{ sublink.title }}
+                    >{{ sublink.categoryName }}
                   </NuxtLink>
                 </li>
               </ul>

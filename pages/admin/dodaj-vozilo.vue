@@ -12,10 +12,10 @@
           <label class="w-72" for="marka"
             ><p class="p-1 font-medium">Marka</p>
             <input
-              v-model="formFields.mark"
+              v-model="formFields.brand"
               class="w-full rounded-md border bg-white p-2 text-sm"
               type="text"
-              placeholder="Ime Kategorije"
+              placeholder="Ime marke"
           /></label>
           <label class="w-72" for="model"
             ><p class="p-1 font-medium">Modeli</p>
@@ -38,10 +38,10 @@
             <ul
               class="mt-4 flex w-72 flex-col items-start justify-start rounded-md border-l border-r border-t bg-white text-sm"
             >
-              <li class="w-full" v-if="models.length > 0">
+              <li class="w-full" v-if="modelsArr.length > 0">
                 <div
                   class="flex w-full items-center justify-between border-b px-2 py-2"
-                  v-for="(model, index) in models"
+                  v-for="(model, index) in modelsArr"
                   :key="index"
                 >
                   <p>{{ model }}</p>
@@ -62,7 +62,7 @@
             <AdminDropdown
               v-model:model="selectedModel"
               :placeholderName="model"
-              :dropdownOptions="models"
+              :dropdownOptions="modelsArr"
             />
             <div class="mt-4 flex items-center gap-2">
               <input
@@ -85,11 +85,13 @@
             >
               <li
                 class="w-full"
-                v-if="years[selectedModel] && years[selectedModel].length > 0"
+                v-if="
+                  yearsArr[selectedModel] && yearsArr[selectedModel].length > 0
+                "
               >
                 <div
                   class="flex w-full items-center justify-between border-b px-2 py-2"
-                  v-for="(year, index) in years[selectedModel]"
+                  v-for="(year, index) in yearsArr[selectedModel]"
                   :key="index"
                 >
                   <p>{{ year }}</p>
@@ -120,44 +122,93 @@
 </template>
 
 <script setup lang="ts">
+import { brands } from "~/server/schemas/brands.schema";
+import { models } from "~/server/schemas/models.schema";
+import { years } from "~/server/schemas/years.schema";
+
 definePageMeta({
   layout: "admin-layout",
 });
 
 const formFields = reactive({
-  mark: "",
+  brand: "",
   model: "",
   year: "",
 });
 
 const modelValue = ref<string>("");
-const models = ref<string[]>([]);
+const modelsArr = ref<string[]>([]);
 const selectedModel = ref<string>("");
-const years = ref<Record<string, string[]>>({});
+const yearsArr = ref<Record<string, string[]>>({});
 
 const addModel = () => {
   if (formFields.model.length < 1) return;
-  models.value.push(formFields.model);
+  modelsArr.value.push(formFields.model);
   formFields.model = "";
 };
 
 const addYear = () => {
   if (formFields.year.length < 1 || !selectedModel.value) return;
-  if (!years.value[selectedModel.value]) {
-    years.value[selectedModel.value] = [];
+  if (!yearsArr.value[selectedModel.value]) {
+    yearsArr.value[selectedModel.value] = [];
   }
-  years.value[selectedModel.value].push(formFields.year);
+  yearsArr.value[selectedModel.value].push(formFields.year);
   formFields.year = "";
 };
 
 const deleteModel = (index: number) => {
-  models.value.splice(index, 1);
+  modelsArr.value.splice(index, 1);
   selectedModel.value = "";
 };
 
 const deleteYear = (index: number) => {
-  years.value[selectedModel.value].splice(index, 1);
+  yearsArr.value[selectedModel.value].splice(index, 1);
 };
+
+async function sendData() {
+  const brandsResponse = await $fetch("/api/vehicles_d/brands", {
+    method: "POST",
+    body: {
+      name: formFields.brand,
+    } satisfies typeof brands.$inferInsert,
+  });
+  console.log(brandsResponse);
+
+  modelsArr.value.forEach(async (model) => {
+    const modelResponse = await $fetch("/api/vehicles_d/models", {
+      method: "POST",
+      body: {
+        brand_id: brandsResponse[0].id,
+        name: model,
+      } satisfies typeof models.$inferInsert,
+    });
+    console.log(modelResponse);
+  });
+
+  for (const model in yearsArr.value) {
+    for (const year of yearsArr.value[model]) {
+      const modelResponse = await $fetch("/api/vehicles_d/models", {
+        method: "POST",
+        body: {
+          brand_id: brandsResponse[0].id,
+          name: model,
+        } satisfies typeof models.$inferInsert,
+      });
+      await $fetch("/api/vehicles_d/years", {
+        method: "POST",
+        body: {
+          model_id: modelResponse[0].id,
+          name: year,
+        } satisfies typeof years.$inferInsert,
+      });
+    }
+  }
+  formFields.brand = "";
+  modelsArr.value = [];
+  yearsArr.value = {};
+
+  useRouter().push("/admin/vozila");
+}
 </script>
 
 <style scoped></style>

@@ -61,13 +61,34 @@
               placeholder="Popust (%)"
           /></label>
         </div>
-        <div class="grid grid-cols-4 items-center gap-4">
+        <div class="grid w-full grid-cols-3 items-center gap-4">
           <AdminDropdown
             :dropdownOptions="dropdownOptions[index].options"
             :placeholderName="dropdownOptions[index].name"
             v-model:model="dropdownValues[index]"
             v-for="(option, index) in dropdownOptions"
             :key="index"
+          />
+          <SelectionButton
+            :selection="tableData.map((item) => item.brand)"
+            newWidth="true"
+            inputName="Marka"
+            v-model:model="selectedBrands"
+            multipleSel="true"
+          />
+          <SelectionButton
+            :selection="tableData.map((item) => item.brand)"
+            newWidth="true"
+            inputName="Model"
+            v-model:model="selectedModels"
+            multipleSel="true"
+          />
+          <SelectionButton
+            :selection="tableData.map((item) => item.brand)"
+            newWidth="true"
+            inputName="Godište"
+            v-model:model="selectedYears"
+            multipleSel="true"
           />
         </div>
         <div class="grid w-full grid-cols-3 items-start gap-4">
@@ -163,16 +184,22 @@
 </template>
 
 <script setup lang="ts">
+import { storeToRefs } from "pinia";
+import { useCategoriesStore } from "~/store/categories";
+import { useSubcategoriesStore } from "../../store/subcategories";
+import { useVehiclesStore } from "../../store/vehicles";
+import { subcategories } from "~/server/schemas/subcategories.schema";
+import { useTypesStore } from "../../store/product_types";
+
 definePageMeta({
   layout: "admin-layout",
 });
-const { data } = useAsyncData("products", () => $fetch("/api/products"));
 
-import { storeToRefs } from "pinia";
-import { useProductStore } from "~/store/product";
-import { products } from "~/server/schemas/products.schema";
-import { boolean } from "drizzle-orm/mysql-core";
-import { uuid } from "drizzle-orm/pg-core";
+interface BrandModelYear {
+  brand: string;
+  models: { name: string }[];
+  years: { name: string }[];
+}
 
 const formFields = ref({
   name: "",
@@ -186,27 +213,86 @@ const formFields = ref({
   discount: null,
 });
 
-const dropdownValues = ref<string[]>(["", "", "", ""]);
+const dropdownValues = ref<string[]>(["", "", ""]);
+const { categoriesData } = storeToRefs(useCategoriesStore());
+const { getCategories } = useCategoriesStore();
+const { subCategoriesData } = storeToRefs(useSubcategoriesStore());
+const { getSubCategories } = useSubcategoriesStore();
+const { typesData } = storeToRefs(useTypesStore());
+const { getTypes } = useTypesStore();
 
-const dropdownOptions = ref([
-  {
-    id: 1,
-    name: "Kategorija",
-    options: ["Enterijer", "Eksterijer", "Ostlao", "Alati"],
-  },
-  {
-    id: 2,
-    name: "Podkategorija",
-    options: ["Tockovi", "Auspuh", "Hauba", "Sediste"],
-  },
-  { id: 3, name: "Vozilo", options: ["BMW", "Skoda", "Golf", "Yugo"] },
-  {
-    id: 4,
-    name: "Tip",
-    options: ["Popularan", "Novi", "Preporucen", "Najjeftiniji"],
-  },
-]);
+const dropdownOptions = ref<object[]>([]);
 
+const getData = async () => {
+  await getTypes();
+  await getCategories();
+  await getSubCategories();
+};
+getData();
+
+// categories/subcategories/types
+watchEffect(() => {
+  const selectedCategory = categoriesData.value.find(
+    (category) => category.name === dropdownValues.value[0],
+  );
+  const subcategoryFilteredOptions = ref<string[]>([]);
+
+  if (selectedCategory) {
+    dropdownValues.value[1] = "";
+    subcategoryFilteredOptions.value = subCategoriesData.value
+      .filter((subCategory) => subCategory.category_id === selectedCategory.id)
+      .map((subCategory) => subCategory.name);
+  }
+
+  dropdownOptions.value = [
+    {
+      id: 1,
+      name: "Kategorija",
+      options: categoriesData.value.map((category) => category.name),
+    },
+    {
+      id: 2,
+      name: "Podkategorija",
+      options: subcategoryFilteredOptions,
+    },
+    {
+      id: 3,
+      name: "Tip",
+      options: typesData.value.map((type) => type.name),
+    },
+  ];
+});
+
+const selectedBrands = ref<string[]>([]);
+const selectedModels = ref<string[]>([]);
+const selectedYears = ref<string[]>([]);
+
+const tableData = ref<BrandModelYear[]>([]);
+watchEffect(() => {
+  const { brandsData, modelsData, yearsData } = storeToRefs(useVehiclesStore());
+  tableData.value = brandsData.value.map(
+    (brand: { name: string; id: number }) => {
+      const brandModels = modelsData.value.filter(
+        (model: { brand_id: number; id: number; name: string }) =>
+          model.brand_id === brand.id,
+      );
+      const brandYears = brandModels.map((model: { id: number }) =>
+        yearsData.value.filter(
+          (year: { model_id: number; id: number; name: string }) =>
+            year.model_id === model.id,
+        ),
+      );
+      return {
+        brand: brand.name,
+        models: brandModels,
+        years: brandYears.flat(),
+      };
+    },
+  );
+  console.log(tableData.value);
+});
+
+// product images
 const selectedFiles = ref<File[]>([]);
 const imagePreviews = ref<string[]>([]);
 

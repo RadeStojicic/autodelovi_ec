@@ -4,7 +4,7 @@
   >
     <div class="flex items-center justify-between border-b py-4">
       <div>
-        <h1 class="text-2xl font-bold">Tipovi ({{ 0 }})</h1>
+        <h1 class="text-2xl font-bold">Tipovi ({{ tableData.length }})</h1>
         <p class="mt-1 text-sm">Upravljajte tipovima proizvoda</p>
       </div>
       <NuxtLink
@@ -20,19 +20,29 @@
 </template>
 
 <script setup lang="ts">
+import { useTypesStore } from "../../store/product_types";
+import { storeToRefs } from "pinia";
 definePageMeta({
   layout: "admin-layout",
 });
 
-const tableData = [
-  { id: 1, name: "John", age: 30 },
-  { id: 2, name: "Jane", age: 25 },
-  { id: 3, name: "Bob", age: 40 },
-];
-const tableColumns = [
-  { name: "ID", key: "id" },
-  { name: "Tip", key: "name" },
-];
+const tableData = ref<object[]>([]);
+const { typesData } = storeToRefs(useTypesStore());
+const { getTypes } = useTypesStore();
+
+const getData = async () => {
+  await getTypes();
+};
+getData();
+
+watchEffect(() => {
+  tableData.value = typesData.value.map((type) => {
+    return {
+      name: type.name,
+    };
+  });
+});
+const tableColumns = [{ name: "Tip", key: "name" }];
 </script>
 
 <style scoped></style>

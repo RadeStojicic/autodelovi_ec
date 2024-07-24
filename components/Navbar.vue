@@ -71,19 +71,21 @@
                         <p
                           class="mb-4 py-1 font-semibold text-gray-700 hover:bg-gray-50"
                         >
-                          {{ category.title }}
+                          {{ category.categoryName }}
                         </p>
                       </NuxtLink>
                       <ul>
                         <li
-                          v-for="(sublink, subLinkIndex) in category.sublinks"
+                          v-for="(
+                            sublink, subLinkIndex
+                          ) in category.subcategories"
                           :key="subLinkIndex"
                         >
                           <MyLink
-                            :to="'/prodavnica' + sublink.to"
+                            :to="'/prodavnica' + '/' + sublink.name"
                             class="block py-1 text-sm text-gray-600 hover:bg-gray-50"
                           >
-                            {{ sublink.names }}
+                            {{ sublink.name }}
                           </MyLink>
                         </li>
                       </ul>

@@ -4,7 +4,9 @@
   >
     <div class="flex items-center justify-between border-b py-4">
       <div>
-        <h1 class="text-2xl font-bold">Kategorije ({{ 0 }})</h1>
+        <h1 class="text-2xl font-bold">
+          Kategorije ({{ categoriesData.length }})
+        </h1>
         <p class="mt-1 text-sm">Upravljajte kategorijama prodavnice</p>
       </div>
       <NuxtLink
@@ -20,18 +22,41 @@
 </template>
 
 <script setup lang="ts">
+import { useCategoriesStore } from "../../store/categories";
+import { useSubcategoriesStore } from "../../store/subcategories";
+import { storeToRefs } from "pinia";
+
 definePageMeta({
   layout: "admin-layout",
 });
-const tableData = [
-  { id: 1, category: "John", subcategories: "sub2" },
-  { id: 2, category: "Jane", subcategories: "sub1" },
-  { id: 3, category: "Bob", subcategories: "sub3" },
-];
+
+const { categoriesData } = storeToRefs(useCategoriesStore());
+const { subCategoriesData } = storeToRefs(useSubcategoriesStore());
+const { getCategories } = useCategoriesStore();
+const { getSubCategories } = useSubcategoriesStore();
+
+const tableData = ref<object[]>([]);
+
+const getData = async () => {
+  await getCategories();
+  await getSubCategories();
+};
+getData();
+watchEffect(() => {
+  tableData.value = categoriesData.value.map((category) => {
+    const subcategories = subCategoriesData.value.filter(
+      (subcategory) => subcategory.category_id === category.id,
+    );
+    return {
+      name: category.name,
+      subcategories: subcategories.map((subcategory) => subcategory.name),
+    };
+  });
+});
+
 const tableColumns = [
-  { name: "ID", key: "id" },
-  { name: "Kategorija", key: "category" },
-  { name: "Podkategorije", key: "subcategories" },
+  { name: "Kategorija", key: "name", showPopup: false },
+  { name: "Podkategorije", key: "subcategories", showPopup: true },
 ];
 </script>
 

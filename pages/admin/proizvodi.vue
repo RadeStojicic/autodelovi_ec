@@ -28,22 +28,45 @@ definePageMeta({
 });
 
 const tableData = [
-  { id: 1, mark: "BMW", model: "M4", year: "2015" },
-  { id: 2, mark: "Audi", model: "Q7", year: "2010" },
-  { id: 3, mark: "Golf", model: "6", year: "2012" },
+  {
+    id: 1,
+    name: "MOBIL ulje 1323",
+    price: 1200,
+    category: "Ulja",
+    subcategories: "Motorna ulja",
+    vehicles: "Audi A4",
+    supplies: "5",
+    aboutProduct: "Motorna ulja",
+    description: "Motorna ulja",
+    additionalInfo: "Motorna ulja",
+    discount: "0",
+  },
+  {
+    id: 2,
+    name: "Tocak 3231",
+    price: 2200,
+    category: "Enterijer",
+    subcategories: "Tockovi",
+    vehicles: "Audi A4",
+    supplies: "5",
+    aboutProduct: "Motorna ulja",
+    description: "Motorna ulja",
+    additionalInfo: "Motorna ulja",
+    discount: "0",
+  },
 ];
+
 const tableColumns = [
-  { name: "ID", key: "id" },
-  { name: "Ime", key: "mark" },
-  { name: "Cena", key: "model" },
-  { name: "Kategorija", key: "year" },
-  { name: "Podkategorija", key: "year" },
-  { name: "Vozilo", key: "year" },
-  { name: "Zalihe", key: "year" },
-  { name: "O proizvodu", key: "year" },
-  { name: "Opis", key: "year" },
-  { name: "Dodatne informacije", key: "year" },
-  { name: "Popust", key: "year" },
+  { name: "Ime", key: "name" },
+  { name: "Cena", key: "price" },
+  { name: "Kategorija", key: "category" },
+  { name: "Podkategorija", key: "subcategories" },
+  { name: "Vozilo", key: "vehicles" },
+  { name: "Zalihe", key: "supplies" },
+  { name: "O proizvodu", key: "aboutProduct" },
+  { name: "Opis", key: "description" },
+  { name: "Dodatne informacije", key: "additionalInfo" },
+  { name: "Popust", key: "discount" },
 ];
 </script>
 <style lang="scss" scoped></style>

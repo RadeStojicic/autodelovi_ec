@@ -30,7 +30,7 @@
       </div>
       <div
         v-if="showOptions"
-        class="absolute z-50 mt-[.5px] w-full bg-white py-2 shadow transition duration-200"
+        class="absolute z-50 mt-[.5px] w-full bg-white shadow transition duration-200"
       >
         <div class="scrollbar max-h-48 w-full overflow-y-auto">
           <div class="flex w-full flex-col bg-white">

@@ -12,7 +12,7 @@
           <label class="w-72" for="ime"
             ><p class="p-1 font-medium">Ime</p>
             <input
-              v-model="formFields.name"
+              v-model="formFields.category"
               class="w-full rounded-md border bg-white p-2 text-sm"
               type="text"
               placeholder="Ime Kategorije"
@@ -40,10 +40,10 @@
         <ul
           class="flex w-72 flex-col items-start justify-start rounded-md border-l border-r border-t bg-white text-sm"
         >
-          <li class="w-full" v-if="subcategories.length > 0">
+          <li class="w-full" v-if="subcategoriesArr.length > 0">
             <div
               class="flex w-full items-center justify-between border-b px-2 py-2"
-              v-for="(subcategory, index) in subcategories"
+              v-for="(subcategory, index) in subcategoriesArr"
               :key="index"
             >
               <p>{{ subcategory }}</p>
@@ -72,26 +72,49 @@
 </template>
 
 <script setup lang="ts">
+import { categories } from "~/server/schemas/categories.schema";
+import { subcategories } from "~/server/schemas/subcategories.schema";
+
 definePageMeta({
   layout: "admin-layout",
 });
 
 const formFields = reactive({
-  name: "",
   category: "",
   subcategory: "",
 });
 
-const subcategories = ref<string[]>([]);
+const subcategoriesArr = ref<string[]>([]);
 const addSubcategory = () => {
   if (formFields.subcategory.length < 3) return;
-  subcategories.value.push(formFields.subcategory);
+  subcategoriesArr.value.push(formFields.subcategory);
   formFields.subcategory = "";
 };
 
 const deleteSubcategory = (index: number) => {
-  subcategories.value.splice(index, 1);
+  subcategoriesArr.value.splice(index, 1);
 };
+
+async function sendData() {
+  const categoryResponse = await $fetch("/api/categories_d/categories", {
+    method: "POST",
+    body: {
+      name: formFields.category,
+    } satisfies typeof categories.$inferInsert,
+  });
+  subcategoriesArr.value.forEach((subcategory) => {
+    $fetch("/api/categories_d/subcategories", {
+      method: "POST",
+      body: {
+        category_id: categoryResponse[0].id,
+        name: subcategory,
+      } satisfies typeof subcategories.$inferInsert,
+    });
+  });
+  formFields.category = "";
+  subcategoriesArr.value = [];
+  useRouter().push("/admin/kategorije");
+}
 </script>
 
 <style scoped></style>

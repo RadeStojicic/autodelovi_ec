@@ -32,6 +32,8 @@
 </template>
 
 <script setup lang="ts">
+import { productTypes } from "~/server/schemas/productTypes.schema";
+
 definePageMeta({
   layout: "admin-layout",
 });
@@ -39,6 +41,17 @@ definePageMeta({
 const formFields = reactive({
   name: "",
 });
+
+async function sendData() {
+  const typesResponse = await $fetch("/api/types_d/productTypes", {
+    method: "POST",
+    body: {
+      name: formFields.name,
+    } satisfies typeof productTypes.$inferInsert,
+  });
+  formFields.name = "";
+  useRouter().push("/admin/tipovi");
+}
 </script>
 
 <style scoped></style>
